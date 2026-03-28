@@ -4,324 +4,338 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>AI星语 · 疗愈时空 | 每日星座运势</title>
+        <title>AI星语 · 疗愈时空</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
         <style>
             body {
-                background: linear-gradient(135deg, #fce7f3 0%, #f3e8ff 50%, #e0e7ff 100%);
+                background-color: #fdf2f8;
+                background-image: radial-gradient(at 0% 0%, #fefce8 0, transparent 50%), radial-gradient(at 50% 0%, #f3e8ff 0, transparent 50%), radial-gradient(at 100% 0%, #fce7f3 0, transparent 50%);
                 font-family: 'Noto Serif SC', serif;
                 min-height: 100vh;
             }
             .glass-card {
-                background: rgba(255, 255, 255, 0.4);
-                backdrop-filter: blur(12px);
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                border-radius: 24px;
-                transition: all 0.3s ease;
+                background: rgba(255, 255, 255, 0.7);
+                backdrop-filter: blur(10px);
+                border-radius: 32px;
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             }
-            .glass-card:hover {
-                transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); background: rgba(255, 255, 255, 0.6);
-            }
+            .glass-card:hover { transform: scale(1.02); box-shadow: 0 25px 50px rgba(0,0,0,0.08); }
             .title-font { font-family: 'Zhi Mang Xing', cursive; }
-            .gradient-text {
-                background: linear-gradient(to right, #7c3aed, #db2777);
-                -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            }
         </style>
     </head>
-    <body class="p-6 md:p-12">
-        <header class="text-center mb-16">
-            <h1 class="text-7xl md:text-9xl title-font gradient-text mb-4">AI星语</h1>
-            <p class="text-gray-500 tracking-widest text-lg italic">“ 在星辰的指引下，遇见更好的自己 ”</p>
+    <body class="p-6 md:p-16">
+        <header class="text-center mb-24">
+            <h1 class="text-8xl md:text-9xl title-font bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent mb-6">AI星语</h1>
+            <p class="text-gray-400 tracking-[0.5em] text-xl uppercase">Meet your inner peace</p>
         </header>
 
-        <section class="max-w-3xl mx-auto glass-card p-8 mb-16 text-center">
-            <h2 class="text-xl font-bold text-purple-800 mb-4">✨ 今日疗愈金句</h2>
-            <p class="text-2xl leading-relaxed text-gray-700">“ 所有未曾起舞的日子，都是对生命的辜负。今天的你，值得一切美好的发生。 ”</p>
+        <section class="max-w-4xl mx-auto glass-card p-12 mb-24 text-center">
+            <div class="mb-8">
+                <span class="inline-block bg-pink-100 text-pink-600 px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest">Today's Wisdom</span>
+            </div>
+            <p class="text-3xl md:text-4xl leading-relaxed text-gray-700 font-light italic">
+                “ 所有未曾起舞的日子，都是对生命的辜负。今天的你，值得一切美好的发生。 ”
+            </p>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
             
-        <div class="glass-card p-6 md:p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-purple-700">白羊座</h3>
-                <span class="text-xs bg-purple-100 text-purple-600 px-3 py-1 rounded-full">2026-03-27</span>
-            </div>
-            <div class="space-y-3 mb-6">
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">综合运势</span>
-                    <span class="text-yellow-500">⭐⭐⭐⭐</span>
-                </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">爱情指数</span>
-                    <span class="text-pink-500">⭐⭐⭐</span>
+        <div class="glass-card group overflow-hidden">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1579546123302-b82433d4573b?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="白羊座">
+                <div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
+                <div class="absolute bottom-4 left-6">
+                    <span class="text-4xl">♈️</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">白羊座</h3>
                 </div>
             </div>
-            <div class="border-t border-dashed border-purple-200 pt-6">
-                <p class="text-gray-600 leading-relaxed text-sm italic">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-4 text-sm font-medium">
+                    <span class="text-purple-600 bg-purple-50 px-3 py-1 rounded-full">3月28日 运势</span>
+                    <span class="text-yellow-500">综合 ⭐⭐⭐⭐</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-base">
                     “ 春色三分，二分是你的努力，一分是今天的运气。高效的自己才是最治愈的风景。 ”
                 </p>
+                <div class="mt-6 flex justify-between items-center border-t border-gray-100 pt-4">
+                    <button class="text-purple-600 font-semibold hover:text-purple-800 transition">查看深度解析 →</button>
+                    <span class="text-pink-400">💕 98%</span>
+                </div>
             </div>
         </div>
         
-        <div class="glass-card p-6 md:p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-purple-700">金牛座</h3>
-                <span class="text-xs bg-purple-100 text-purple-600 px-3 py-1 rounded-full">2026-03-27</span>
-            </div>
-            <div class="space-y-3 mb-6">
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">综合运势</span>
-                    <span class="text-yellow-500">⭐⭐⭐</span>
-                </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">爱情指数</span>
-                    <span class="text-pink-500">⭐⭐⭐⭐</span>
+        <div class="glass-card group overflow-hidden">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="金牛座">
+                <div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
+                <div class="absolute bottom-4 left-6">
+                    <span class="text-4xl">♉️</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">金牛座</h3>
                 </div>
             </div>
-            <div class="border-t border-dashed border-purple-200 pt-6">
-                <p class="text-gray-600 leading-relaxed text-sm italic">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-4 text-sm font-medium">
+                    <span class="text-purple-600 bg-purple-50 px-3 py-1 rounded-full">3月28日 运势</span>
+                    <span class="text-yellow-500">综合 ⭐⭐⭐⭐</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-base">
                     “ 别急着赶路，今天的惊喜藏在路边盛开的小花里。稳稳的幸福，就是最好的转运符。 ”
                 </p>
+                <div class="mt-6 flex justify-between items-center border-t border-gray-100 pt-4">
+                    <button class="text-purple-600 font-semibold hover:text-purple-800 transition">查看深度解析 →</button>
+                    <span class="text-pink-400">💕 98%</span>
+                </div>
             </div>
         </div>
         
-        <div class="glass-card p-6 md:p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-purple-700">双子座</h3>
-                <span class="text-xs bg-purple-100 text-purple-600 px-3 py-1 rounded-full">2026-03-27</span>
-            </div>
-            <div class="space-y-3 mb-6">
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">综合运势</span>
-                    <span class="text-yellow-500">⭐⭐⭐⭐</span>
-                </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">爱情指数</span>
-                    <span class="text-pink-500">⭐⭐</span>
+        <div class="glass-card group overflow-hidden">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="双子座">
+                <div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
+                <div class="absolute bottom-4 left-6">
+                    <span class="text-4xl">♊️</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">双子座</h3>
                 </div>
             </div>
-            <div class="border-t border-dashed border-purple-200 pt-6">
-                <p class="text-gray-600 leading-relaxed text-sm italic">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-4 text-sm font-medium">
+                    <span class="text-purple-600 bg-purple-50 px-3 py-1 rounded-full">3月28日 运势</span>
+                    <span class="text-yellow-500">综合 ⭐⭐⭐⭐</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-base">
                     “ 思维的跳跃是你的天赋，但今天的宁静是你的礼物。放下手机，那些烦恼其实不值一提。 ”
                 </p>
+                <div class="mt-6 flex justify-between items-center border-t border-gray-100 pt-4">
+                    <button class="text-purple-600 font-semibold hover:text-purple-800 transition">查看深度解析 →</button>
+                    <span class="text-pink-400">💕 98%</span>
+                </div>
             </div>
         </div>
         
-        <div class="glass-card p-6 md:p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-purple-700">巨蟹座</h3>
-                <span class="text-xs bg-purple-100 text-purple-600 px-3 py-1 rounded-full">2026-03-27</span>
-            </div>
-            <div class="space-y-3 mb-6">
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">综合运势</span>
-                    <span class="text-yellow-500">⭐⭐⭐</span>
-                </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">爱情指数</span>
-                    <span class="text-pink-500">⭐⭐⭐⭐⭐</span>
+        <div class="glass-card group overflow-hidden">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1550684847-75bdda21cc95?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="巨蟹座">
+                <div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
+                <div class="absolute bottom-4 left-6">
+                    <span class="text-4xl">♋️</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">巨蟹座</h3>
                 </div>
             </div>
-            <div class="border-t border-dashed border-purple-200 pt-6">
-                <p class="text-gray-600 leading-relaxed text-sm italic">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-4 text-sm font-medium">
+                    <span class="text-purple-600 bg-purple-50 px-3 py-1 rounded-full">3月28日 运势</span>
+                    <span class="text-yellow-500">综合 ⭐⭐⭐⭐</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-base">
                     “ 家人的关怀是今日最温暖的港湾。适时地表达爱，你会收获双倍的温柔。 ”
                 </p>
+                <div class="mt-6 flex justify-between items-center border-t border-gray-100 pt-4">
+                    <button class="text-purple-600 font-semibold hover:text-purple-800 transition">查看深度解析 →</button>
+                    <span class="text-pink-400">💕 98%</span>
+                </div>
             </div>
         </div>
         
-        <div class="glass-card p-6 md:p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-purple-700">狮子座</h3>
-                <span class="text-xs bg-purple-100 text-purple-600 px-3 py-1 rounded-full">2026-03-27</span>
-            </div>
-            <div class="space-y-3 mb-6">
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">综合运势</span>
-                    <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
-                </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">爱情指数</span>
-                    <span class="text-pink-500">⭐⭐⭐</span>
+        <div class="glass-card group overflow-hidden">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1550684846-1790bdc0f58a?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="狮子座">
+                <div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
+                <div class="absolute bottom-4 left-6">
+                    <span class="text-4xl">♌️</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">狮子座</h3>
                 </div>
             </div>
-            <div class="border-t border-dashed border-purple-200 pt-6">
-                <p class="text-gray-600 leading-relaxed text-sm italic">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-4 text-sm font-medium">
+                    <span class="text-purple-600 bg-purple-50 px-3 py-1 rounded-full">3月28日 运势</span>
+                    <span class="text-yellow-500">综合 ⭐⭐⭐⭐</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-base">
                     “ 自信是你的铠甲，但谦逊是你的光芒。今天在职场上，你的领导力将熠熠生辉。 ”
                 </p>
+                <div class="mt-6 flex justify-between items-center border-t border-gray-100 pt-4">
+                    <button class="text-purple-600 font-semibold hover:text-purple-800 transition">查看深度解析 →</button>
+                    <span class="text-pink-400">💕 98%</span>
+                </div>
             </div>
         </div>
         
-        <div class="glass-card p-6 md:p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-purple-700">处女座</h3>
-                <span class="text-xs bg-purple-100 text-purple-600 px-3 py-1 rounded-full">2026-03-27</span>
-            </div>
-            <div class="space-y-3 mb-6">
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">综合运势</span>
-                    <span class="text-yellow-500">⭐⭐⭐⭐</span>
-                </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">爱情指数</span>
-                    <span class="text-pink-500">⭐⭐⭐</span>
+        <div class="glass-card group overflow-hidden">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1550684848-81156208bb0d?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="处女座">
+                <div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
+                <div class="absolute bottom-4 left-6">
+                    <span class="text-4xl">♍️</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">处女座</h3>
                 </div>
             </div>
-            <div class="border-t border-dashed border-purple-200 pt-6">
-                <p class="text-gray-600 leading-relaxed text-sm italic">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-4 text-sm font-medium">
+                    <span class="text-purple-600 bg-purple-50 px-3 py-1 rounded-full">3月28日 运势</span>
+                    <span class="text-yellow-500">综合 ⭐⭐⭐⭐</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-base">
                     “ 细节决定成败，但也不要过分苛求自己。完美不在于没有瑕疵，而在于全力以赴。 ”
                 </p>
+                <div class="mt-6 flex justify-between items-center border-t border-gray-100 pt-4">
+                    <button class="text-purple-600 font-semibold hover:text-purple-800 transition">查看深度解析 →</button>
+                    <span class="text-pink-400">💕 98%</span>
+                </div>
             </div>
         </div>
         
-        <div class="glass-card p-6 md:p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-purple-700">天秤座</h3>
-                <span class="text-xs bg-purple-100 text-purple-600 px-3 py-1 rounded-full">2026-03-27</span>
-            </div>
-            <div class="space-y-3 mb-6">
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">综合运势</span>
-                    <span class="text-yellow-500">⭐⭐⭐</span>
-                </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">爱情指数</span>
-                    <span class="text-pink-500">⭐⭐⭐⭐</span>
+        <div class="glass-card group overflow-hidden">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1550684848-b4b105a30554?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="天秤座">
+                <div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
+                <div class="absolute bottom-4 left-6">
+                    <span class="text-4xl">♎️</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">天秤座</h3>
                 </div>
             </div>
-            <div class="border-t border-dashed border-purple-200 pt-6">
-                <p class="text-gray-600 leading-relaxed text-sm italic">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-4 text-sm font-medium">
+                    <span class="text-purple-600 bg-purple-50 px-3 py-1 rounded-full">3月28日 运势</span>
+                    <span class="text-yellow-500">综合 ⭐⭐⭐⭐</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-base">
                     “ 平衡是一门艺术。今天适合在社交与独处之间找到那个完美的支点。 ”
                 </p>
+                <div class="mt-6 flex justify-between items-center border-t border-gray-100 pt-4">
+                    <button class="text-purple-600 font-semibold hover:text-purple-800 transition">查看深度解析 →</button>
+                    <span class="text-pink-400">💕 98%</span>
+                </div>
             </div>
         </div>
         
-        <div class="glass-card p-6 md:p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-purple-700">天蝎座</h3>
-                <span class="text-xs bg-purple-100 text-purple-600 px-3 py-1 rounded-full">2026-03-27</span>
-            </div>
-            <div class="space-y-3 mb-6">
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">综合运势</span>
-                    <span class="text-yellow-500">⭐⭐⭐⭐</span>
-                </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">爱情指数</span>
-                    <span class="text-pink-500">⭐⭐⭐⭐</span>
+        <div class="glass-card group overflow-hidden">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1550684848-68fbd2d64098?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="天蝎座">
+                <div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
+                <div class="absolute bottom-4 left-6">
+                    <span class="text-4xl">♏️</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">天蝎座</h3>
                 </div>
             </div>
-            <div class="border-t border-dashed border-purple-200 pt-6">
-                <p class="text-gray-600 leading-relaxed text-sm italic">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-4 text-sm font-medium">
+                    <span class="text-purple-600 bg-purple-50 px-3 py-1 rounded-full">3月28日 运势</span>
+                    <span class="text-yellow-500">综合 ⭐⭐⭐⭐</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-base">
                     “ 洞察力是你今日的利刃。看透表象背后的真相，你会做出最正确的决策。 ”
                 </p>
+                <div class="mt-6 flex justify-between items-center border-t border-gray-100 pt-4">
+                    <button class="text-purple-600 font-semibold hover:text-purple-800 transition">查看深度解析 →</button>
+                    <span class="text-pink-400">💕 98%</span>
+                </div>
             </div>
         </div>
         
-        <div class="glass-card p-6 md:p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-purple-700">射手座</h3>
-                <span class="text-xs bg-purple-100 text-purple-600 px-3 py-1 rounded-full">2026-03-27</span>
-            </div>
-            <div class="space-y-3 mb-6">
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">综合运势</span>
-                    <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
-                </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">爱情指数</span>
-                    <span class="text-pink-500">⭐⭐⭐</span>
+        <div class="glass-card group overflow-hidden">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1550684847-d0d18f5043ae?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="射手座">
+                <div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
+                <div class="absolute bottom-4 left-6">
+                    <span class="text-4xl">♐️</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">射手座</h3>
                 </div>
             </div>
-            <div class="border-t border-dashed border-purple-200 pt-6">
-                <p class="text-gray-600 leading-relaxed text-sm italic">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-4 text-sm font-medium">
+                    <span class="text-purple-600 bg-purple-50 px-3 py-1 rounded-full">3月28日 运势</span>
+                    <span class="text-yellow-500">综合 ⭐⭐⭐⭐</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-base">
                     “ 自由的灵魂从不被束缚。今天适合开启一段小小的冒险，哪怕只是换一条路回家。 ”
                 </p>
+                <div class="mt-6 flex justify-between items-center border-t border-gray-100 pt-4">
+                    <button class="text-purple-600 font-semibold hover:text-purple-800 transition">查看深度解析 →</button>
+                    <span class="text-pink-400">💕 98%</span>
+                </div>
             </div>
         </div>
         
-        <div class="glass-card p-6 md:p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-purple-700">摩羯座</h3>
-                <span class="text-xs bg-purple-100 text-purple-600 px-3 py-1 rounded-full">2026-03-27</span>
-            </div>
-            <div class="space-y-3 mb-6">
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">综合运势</span>
-                    <span class="text-yellow-500">⭐⭐⭐⭐</span>
-                </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">爱情指数</span>
-                    <span class="text-pink-500">⭐⭐</span>
+        <div class="glass-card group overflow-hidden">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1550684847-60fbd2d64098?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="摩羯座">
+                <div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
+                <div class="absolute bottom-4 left-6">
+                    <span class="text-4xl">♑️</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">摩羯座</h3>
                 </div>
             </div>
-            <div class="border-t border-dashed border-purple-200 pt-6">
-                <p class="text-gray-600 leading-relaxed text-sm italic">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-4 text-sm font-medium">
+                    <span class="text-purple-600 bg-purple-50 px-3 py-1 rounded-full">3月28日 运势</span>
+                    <span class="text-yellow-500">综合 ⭐⭐⭐⭐</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-base">
                     “ 攀登者从不回头看山脚。你的坚韧将带你到达前所未有的高度，继续努力。 ”
                 </p>
+                <div class="mt-6 flex justify-between items-center border-t border-gray-100 pt-4">
+                    <button class="text-purple-600 font-semibold hover:text-purple-800 transition">查看深度解析 →</button>
+                    <span class="text-pink-400">💕 98%</span>
+                </div>
             </div>
         </div>
         
-        <div class="glass-card p-6 md:p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-purple-700">水瓶座</h3>
-                <span class="text-xs bg-purple-100 text-purple-600 px-3 py-1 rounded-full">2026-03-27</span>
-            </div>
-            <div class="space-y-3 mb-6">
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">综合运势</span>
-                    <span class="text-yellow-500">⭐⭐⭐</span>
-                </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">爱情指数</span>
-                    <span class="text-pink-500">⭐⭐⭐⭐</span>
+        <div class="glass-card group overflow-hidden">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1550684848-81156208bb0d?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="水瓶座">
+                <div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
+                <div class="absolute bottom-4 left-6">
+                    <span class="text-4xl">♒️</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">水瓶座</h3>
                 </div>
             </div>
-            <div class="border-t border-dashed border-purple-200 pt-6">
-                <p class="text-gray-600 leading-relaxed text-sm italic">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-4 text-sm font-medium">
+                    <span class="text-purple-600 bg-purple-50 px-3 py-1 rounded-full">3月28日 运势</span>
+                    <span class="text-yellow-500">综合 ⭐⭐⭐⭐</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-base">
                     “ 独特的灵魂终会相遇。今天你的奇思妙想会得到意想不到的共鸣。 ”
                 </p>
+                <div class="mt-6 flex justify-between items-center border-t border-gray-100 pt-4">
+                    <button class="text-purple-600 font-semibold hover:text-purple-800 transition">查看深度解析 →</button>
+                    <span class="text-pink-400">💕 98%</span>
+                </div>
             </div>
         </div>
         
-        <div class="glass-card p-6 md:p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-purple-700">双鱼座</h3>
-                <span class="text-xs bg-purple-100 text-purple-600 px-3 py-1 rounded-full">2026-03-27</span>
-            </div>
-            <div class="space-y-3 mb-6">
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">综合运势</span>
-                    <span class="text-yellow-500">⭐⭐⭐⭐</span>
-                </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">爱情指数</span>
-                    <span class="text-pink-500">⭐⭐⭐⭐⭐</span>
+        <div class="glass-card group overflow-hidden">
+            <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1550684848-0c6114e59005?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="双鱼座">
+                <div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
+                <div class="absolute bottom-4 left-6">
+                    <span class="text-4xl">♓️</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">双鱼座</h3>
                 </div>
             </div>
-            <div class="border-t border-dashed border-purple-200 pt-6">
-                <p class="text-gray-600 leading-relaxed text-sm italic">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-4 text-sm font-medium">
+                    <span class="text-purple-600 bg-purple-50 px-3 py-1 rounded-full">3月28日 运势</span>
+                    <span class="text-yellow-500">综合 ⭐⭐⭐⭐</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-base">
                     “ 梦境是现实的倒影。今天请相信你的直觉，它会带你走向最温柔的彼岸。 ”
                 </p>
+                <div class="mt-6 flex justify-between items-center border-t border-gray-100 pt-4">
+                    <button class="text-purple-600 font-semibold hover:text-purple-800 transition">查看深度解析 →</button>
+                    <span class="text-pink-400">💕 98%</span>
+                </div>
             </div>
         </div>
         
         </div>
 
-        <section class="max-w-4xl mx-auto mt-20 text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">🎨 今日推荐疗愈壁纸</h2>
-            <div class="glass-card p-4 inline-block">
-                <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=80" 
-                     class="rounded-xl w-full max-w-2xl shadow-lg mb-4" alt="Wallpaper">
-                <p class="text-gray-500 mb-4 italic">“ 像向日葵一样，永远朝着光亮的方向。 ”</p>
-                <button class="bg-purple-600 text-white px-8 py-3 rounded-full hover:bg-purple-700 transition">下载高清原图</button>
-            </div>
-        </section>
-
-        <footer class="mt-24 text-center text-gray-400 pb-12">
-            <p>© 2026 AI星语 · 疗愈时空 | Powered by OpenClaw</p>
-            <p class="mt-2 text-sm italic">让 AI 成为你心灵的摆渡人</p>
+        <footer class="mt-32 text-center text-gray-400 pb-20 border-t border-gray-100 pt-20">
+            <p class="text-lg mb-4">© 2026 AI星语 · 疗愈时空</p>
+            <p class="text-sm">关注公众号：AI疗愈星人 | 获取专属定制报告</p>
         </footer>
     </body>
     </html>
