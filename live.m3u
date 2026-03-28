@@ -1,311 +1,302 @@
 #EXTM3U
-# Updated: 2026-03-28 20:11
-
-#EXTINF:-1 group-title="体育频道", 纬来电影
+# TRUE ALIVE | 2026-03-28 20:20
+#EXTINF:-1,  纬来电影
 https://stream1.freetv.fun/wei-lai-dian-ying-1.m3u8
-#EXTINF:-1 group-title="体育频道", 劲爆体育
+#EXTINF:-1,  劲爆体育
 https://www.freetv.top/migu/796071336.m3u8?migutoken=1cc947d86cb584c31c31c88c005d55965238dbfff7ed75fca8451aed0b564786fde7e4b327e93b92dc96ef57e64e3bb56e8a9e921338080cdae817cb6125d8450b687659ecfee06be9c5d53ac6
-#EXTINF:-1 group-title="体育频道", 山东体育
+#EXTINF:-1,  山东体育
 https://stream1.freetv.fun/shan-dong-ti-yu-19.m3u8
-#EXTINF:-1 group-title="体育频道", 纬来育乐
+#EXTINF:-1,  纬来育乐
 https://live.catvod.com/live.php?id=videolandmax
-#EXTINF:-1 group-title="体育频道", 五星体育
+#EXTINF:-1,  五星体育
 https://stream1.freetv.fun/wu-xing-ti-yu-9.m3u8
-#EXTINF:-1 group-title="体育频道", 山东体育
+#EXTINF:-1,  山东体育
 https://stream1.freetv.fun/shan-dong-ti-yu-4.m3u8
-#EXTINF:-1 group-title="体育频道", 纬来电影
+#EXTINF:-1,  纬来电影
 https://stream1.freetv.fun/wei-lai-dian-ying-3.m3u8
-#EXTINF:-1 group-title="体育频道", 陕西体育休闲
+#EXTINF:-1,  陕西体育休闲
 https://iptv.catvod.com/live.php?id=%E9%99%95%E8%A5%BF%E4%BD%93%E8%82%B2%E4%BC%91%E9%97%B2%E9%A2%91%E9%81%93&line=1
-#EXTINF:-1 group-title="体育频道", 山东体育
+#EXTINF:-1,  山东体育
 https://stream1.freetv.fun/shan-dong-ti-yu-8.m3u8
-#EXTINF:-1 group-title="体育频道", 纬来育乐
+#EXTINF:-1,  纬来育乐
 https://live.catvod.com/live.php?id=videolandyule
-#EXTINF:-1 group-title="体育频道", 安徽综艺体育
+#EXTINF:-1,  安徽综艺体育
 https://stream1.freetv.fun/an-hui-zong-yi-ti-yu-8.m3u8
-#EXTINF:-1 group-title="体育频道", 山东体育
+#EXTINF:-1,  山东体育
 https://stream1.freetv.fun/shan-dong-ti-yu-7.m3u8
-#EXTINF:-1 group-title="体育频道", 纬来体育
+#EXTINF:-1,  纬来体育
 https://epg.pw/stream/4f18dfe0593db5c686eb64ae8edaf2a9202d4d46bdc9bbde2cee27708e12ea01.m3u8
-#EXTINF:-1 group-title="体育频道", 安徽综艺体育
+#EXTINF:-1,  安徽综艺体育
 https://stream1.freetv.fun/an-hui-zong-yi-ti-yu-4.ctv
-#EXTINF:-1 group-title="体育频道", 纬来体育
+#EXTINF:-1,  纬来体育
 https://epg.pw/stream/ab6df63b64d0cc44a1f4f029ed847a26fa54a7aebd455578fb05a63f02c22f4b.m3u8
-#EXTINF:-1 group-title="体育频道", 劲爆体育
+#EXTINF:-1,  劲爆体育
 https://www.freetv.top/migu/796071336.m3u8?migutoken=05144ee4526abc2f6a8d44a41f9e078ef10c1a9f8930d51d7f453315d3577b613eac76898b1e0965789f7010cd3f8a1bca3167ef6e625cb77fc2c575eec35c8d07aaff61dc4b79f75fc67ef667
-#EXTINF:-1 group-title="央视频道", CCTV-1
+#EXTINF:-1,  CCTV-1
 https://iptv.catvod.com/live.php?id=CCTV1&line=16
-#EXTINF:-1 group-title="央视频道", CCTV-13
+#EXTINF:-1,  CCTV-13
 https://iptv.catvod.com/live.php?id=CCTV13&line=7
-#EXTINF:-1 group-title="央视频道", CCTV-3
+#EXTINF:-1,  CCTV-3
 https://iptv.catvod.com/live.php?id=CCTV3&line=4
-#EXTINF:-1 group-title="央视频道", CCTV-6
+#EXTINF:-1,  CCTV-6
 https://iptv.catvod.com/live.php?id=CCTV6&line=13
-#EXTINF:-1 group-title="央视频道", CCTV-6
+#EXTINF:-1,  CCTV-6
 https://iptv.catvod.com/live.php?id=CCTV6&line=11
-#EXTINF:-1 group-title="央视频道", CCTV-2
+#EXTINF:-1,  CCTV-2
 https://iptv.catvod.com/live.php?id=CCTV2&line=8
-#EXTINF:-1 group-title="央视频道", CCTV-13
+#EXTINF:-1,  CCTV-13
 https://iptv.catvod.com/live.php?id=CCTV13&line=13
-#EXTINF:-1 group-title="央视频道", CCTV-15
+#EXTINF:-1,  CCTV-15
 https://iptv.catvod.com/live.php?id=CCTV15
-#EXTINF:-1 group-title="央视频道", CCTV-8
+#EXTINF:-1,  CCTV-8
 https://iptv.catvod.com/live.php?id=CCTV8&line=4
-#EXTINF:-1 group-title="央视频道", CCTV-9
+#EXTINF:-1,  CCTV-9
 https://iptv.catvod.com/live.php?id=CCTV9&line=5
-#EXTINF:-1 group-title="央视频道", CCTV-11
+#EXTINF:-1,  CCTV-11
 https://iptv.catvod.com/live.php?id=CCTV11&line=2
-#EXTINF:-1 group-title="央视频道", CCTV-6
+#EXTINF:-1,  CCTV-6
 https://iptv.catvod.com/live.php?id=CCTV6&line=5
-#EXTINF:-1 group-title="央视频道", CCTV-10
+#EXTINF:-1,  CCTV-10
 https://iptv.catvod.com/live.php?id=CCTV10&line=3
-#EXTINF:-1 group-title="央视频道", CCTV-7
+#EXTINF:-1,  CCTV-7
 https://iptv.catvod.com/live.php?id=CCTV7&line=9
-#EXTINF:-1 group-title="央视频道", CCTV-17
+#EXTINF:-1,  CCTV-17
 https://iptv.catvod.com/live.php?id=CCTV17&line=5
-#EXTINF:-1 group-title="央视频道", CCTV-5+
+#EXTINF:-1,  CCTV-5+
 http://38.75.136.137:98/gslb/dsdqbv/cctv5p.m3u8?auth=test20251009
-#EXTINF:-1 group-title="央视频道", CCTV-14
+#EXTINF:-1,  CCTV-14
 https://iptv.catvod.com/live.php?id=CCTV14&line=6
-#EXTINF:-1 group-title="央视频道", CCTV-3
+#EXTINF:-1,  CCTV-3
 https://iptv.catvod.com/live.php?id=CCTV3&line=3
-#EXTINF:-1 group-title="央视频道", CCTV-8
+#EXTINF:-1,  CCTV-8
 https://iptv.catvod.com/live.php?id=CCTV8&line=15
-#EXTINF:-1 group-title="央视频道", CCTV-14
+#EXTINF:-1,  CCTV-14
 https://iptv.catvod.com/live.php?id=CCTV14&line=3
-#EXTINF:-1 group-title="央视频道", CCTV-1
+#EXTINF:-1,  CCTV-1
 https://iptv.catvod.com/live.php?id=CCTV1&line=4
-#EXTINF:-1 group-title="央视频道", CCTV-15
+#EXTINF:-1,  CCTV-15
 https://iptv.catvod.com/live.php?id=CCTV15&line=3
-#EXTINF:-1 group-title="央视频道", CCTV-17
+#EXTINF:-1,  CCTV-17
 https://iptv.catvod.com/live.php?id=CCTV17&line=1
-#EXTINF:-1 group-title="央视频道", CCTV-7
+#EXTINF:-1,  CCTV-7
 http://38.75.136.137:98/gslb/dsdqbv/cctv7hd.m3u8?auth=test20251009
-#EXTINF:-1 group-title="央视频道", CCTV-14
+#EXTINF:-1,  CCTV-14
 https://iptv.catvod.com/live.php?id=CCTV14&line=2
-#EXTINF:-1 group-title="央视频道", CCTV-5
+#EXTINF:-1,  CCTV-5
 https://iptv.catvod.com/live.php?id=CCTV5&line=6
-#EXTINF:-1 group-title="央视频道", CCTV-8
+#EXTINF:-1,  CCTV-8
 https://iptv.catvod.com/live.php?id=CCTV8&line=10
-#EXTINF:-1 group-title="央视频道", CCTV-11
+#EXTINF:-1,  CCTV-11
 https://iptv.catvod.com/live.php?id=CCTV11&line=4
-#EXTINF:-1 group-title="央视频道", CCTV-5
+#EXTINF:-1,  CCTV-5
 http://38.75.136.137:98/gslb/dsdqpub/cctv5hd.m3u8?auth=testpub
-#EXTINF:-1 group-title="央视频道", CCTV-5+
+#EXTINF:-1,  CCTV-5+
 https://www.freetv.top/migu/641886773.m3u8?migutoken=03a1b82e35e58cd89a95034ecb29e77e50493397000ec2b1e4d1ce59af01e6420d6dbc068c8230ec03be3a35a20eed8714e0959e3570a08713a7a2e8d86085eabf8f1aa85744c80c38343988b2
-#EXTINF:-1 group-title="央视频道", CCTV-13
+#EXTINF:-1,  CCTV-13
 https://iptv.catvod.com/live.php?id=CCTV13&line=4
-#EXTINF:-1 group-title="央视频道", CCTV-2
+#EXTINF:-1,  CCTV-2
 https://iptv.catvod.com/live.php?id=CCTV2&line=3
-#EXTINF:-1 group-title="央视频道", CCTV-6
+#EXTINF:-1,  CCTV-6
 https://iptv.catvod.com/live.php?id=CCTV6&line=9
-#EXTINF:-1 group-title="央视频道", CCTV-5+
+#EXTINF:-1,  CCTV-5+
 http://74.91.26.218:82/live/cctv5p.m3u8
-#EXTINF:-1 group-title="央视频道", CCTV-2
+#EXTINF:-1,  CCTV-2
 https://iptv.catvod.com/live.php?id=CCTV2&line=4
-#EXTINF:-1 group-title="央视频道", CCTV-17
+#EXTINF:-1,  CCTV-17
 https://iptv.catvod.com/live.php?id=CCTV17&line=3
-#EXTINF:-1 group-title="央视频道", CCTV-10
+#EXTINF:-1,  CCTV-10
 https://iptv.catvod.com/live.php?id=CCTV10&line=2
-#EXTINF:-1 group-title="央视频道", CCTV-4
+#EXTINF:-1,  CCTV-4
 https://iptv.catvod.com/live.php?id=CCTV4&line=6
-#EXTINF:-1 group-title="央视频道", CCTV-12
+#EXTINF:-1,  CCTV-12
 https://iptv.catvod.com/live.php?id=CCTV12&line=6
-#EXTINF:-1 group-title="央视频道", CCTV-15
+#EXTINF:-1,  CCTV-15
 https://iptv.catvod.com/live.php?id=CCTV15&line=4
-#EXTINF:-1 group-title="央视频道", CCTV-1
+#EXTINF:-1,  CCTV-1
 http://38.75.136.137:98/gslb/dsdqpub/cctv1hd.m3u8?auth=testpub
-#EXTINF:-1 group-title="央视频道", CCTV-15
+#EXTINF:-1,  CCTV-15
 https://www.freetv.top/migu/673168223.m3u8?migutoken=4e8d5766579c6bef231494cabd07e5b49d965804790214280c9791e4c331fd90311cb62ea43d3a1899229bfa57be4afe5a567b32a6b78153fc9a9801e28a39435e078b48c211e71d6083519be4
-#EXTINF:-1 group-title="央视频道", CCTV-10
+#EXTINF:-1,  CCTV-10
 https://iptv.catvod.com/live.php?id=CCTV10&line=10
-#EXTINF:-1 group-title="央视频道", CCTV-4
+#EXTINF:-1,  CCTV-4
 http://74.91.26.218:82/live/cctv4hd.m3u8
-#EXTINF:-1 group-title="央视频道", CCTV-1
+#EXTINF:-1,  CCTV-1
 https://iptv.catvod.com/live.php?id=CCTV1&line=14
-#EXTINF:-1 group-title="央视频道", CCTV-5
+#EXTINF:-1,  CCTV-5
 https://www.freetv.top/migu/641886683.m3u8?migutoken=3e5c01f93922de8d1c940fe15bb47349b27e8f7a2e624dde1a83dff3b2a80f58b7624151a3a4d00488edee34f202818557340903382fae02bb754084eb942bd50e59061df36fab62fb5b908903
-#EXTINF:-1 group-title="央视频道", CCTV-5
+#EXTINF:-1,  CCTV-5
 https://iptv.catvod.com/live.php?id=CCTV5&line=1
-#EXTINF:-1 group-title="央视频道", CCTV-9
+#EXTINF:-1,  CCTV-9
 http://74.91.26.218:82/live/cctv9hd.m3u8
-#EXTINF:-1 group-title="央视频道", CCTV-16
+#EXTINF:-1,  CCTV-16
 http://74.91.26.218:82/live/cctv16hd.m3u8
-#EXTINF:-1 group-title="央视频道", CCTV-15
+#EXTINF:-1,  CCTV-15
 https://iptv.catvod.com/live.php?id=CCTV15&line=5
-#EXTINF:-1 group-title="央视频道", CCTV-5+
+#EXTINF:-1,  CCTV-5+
 http://223.112.114.228:50080/newlive/live/hls/180/live.m3u8
-#EXTINF:-1 group-title="央视频道", CCTV-16
+#EXTINF:-1,  CCTV-16
 http://38.75.136.137:98/gslb/dsdqpub/cctv16hd.m3u8?auth=testpub
-#EXTINF:-1 group-title="央视频道", CCTV-4
+#EXTINF:-1,  CCTV-4
 http://38.75.136.137:98/gslb/dsdqpub/cctv4k.m3u8?auth=testpub
-#EXTINF:-1 group-title="央视频道", CCTV-12
+#EXTINF:-1,  CCTV-12
 http://38.75.136.137:98/gslb/dsdqpub/cctv12hd.m3u8?auth=testpub
-#EXTINF:-1 group-title="央视频道", CCTV-8
+#EXTINF:-1,  CCTV-8
 https://iptv.catvod.com/live.php?id=CCTV8&line=14
-#EXTINF:-1 group-title="央视频道", CCTV-2
+#EXTINF:-1,  CCTV-2
 https://iptv.catvod.com/live.php?id=CCTV2&line=1
-#EXTINF:-1 group-title="央视频道", CCTV-14
+#EXTINF:-1,  CCTV-14
 https://iptv.catvod.com/live.php?id=CCTV14&line=4
-#EXTINF:-1 group-title="央视频道", CCTV-16
+#EXTINF:-1,  CCTV-16
 https://iptv.catvod.com/live.php?id=CCTV16&line=2
-#EXTINF:-1 group-title="央视频道", CCTV-5
+#EXTINF:-1,  CCTV-5
 https://iptv.catvod.com/live.php?id=CCTV5&line=10
-#EXTINF:-1 group-title="央视频道", CCTV-3
+#EXTINF:-1,  CCTV-3
 https://iptv.catvod.com/live.php?id=CCTV3&line=5
-#EXTINF:-1 group-title="央视频道", CCTV-10
+#EXTINF:-1,  CCTV-10
 https://iptv.catvod.com/live.php?id=CCTV10&line=8
-#EXTINF:-1 group-title="央视频道", CCTV-3
+#EXTINF:-1,  CCTV-3
 https://iptv.catvod.com/live.php?id=CCTV3&line=7
-#EXTINF:-1 group-title="央视频道", CCTV-1
+#EXTINF:-1,  CCTV-1
 https://iptv.catvod.com/live.php?id=CCTV1&line=6
-#EXTINF:-1 group-title="央视频道", CCTV-2
+#EXTINF:-1,  CCTV-2
 https://iptv.catvod.com/live.php?id=CCTV2&line=5
-#EXTINF:-1 group-title="央视频道", CCTV-4
+#EXTINF:-1,  CCTV-4
 http://38.75.136.137:98/gslb/dsdqbv/cctv4hd.m3u8?auth=test20251009
-#EXTINF:-1 group-title="央视频道", CCTV-8
+#EXTINF:-1,  CCTV-8
 https://iptv.catvod.com/live.php?id=CCTV8&line=11
-#EXTINF:-1 group-title="央视频道", CCTV-7
+#EXTINF:-1,  CCTV-7
 https://iptv.catvod.com/live.php?id=CCTV7&line=7
-#EXTINF:-1 group-title="央视频道", CCTV-5
+#EXTINF:-1,  CCTV-5
 https://iptv.catvod.com/live.php?id=CCTV5&line=8
-#EXTINF:-1 group-title="央视频道", CCTV-14
+#EXTINF:-1,  CCTV-14
 https://iptv.catvod.com/live.php?id=CCTV14
-#EXTINF:-1 group-title="央视频道", CCTV-12
-http://38.75.136.137:98/gslb/dsdqbv/cctv12hd.m3u8?auth=test20251009
-#EXTINF:-1 group-title="央视频道", CCTV-12
+#EXTINF:-1,  CCTV-12
 https://iptv.catvod.com/live.php?id=CCTV12&line=5
-#EXTINF:-1 group-title="央视频道", CCTV-11
+#EXTINF:-1,  CCTV-11
 https://iptv.catvod.com/live.php?id=CCTV11&line=3
-#EXTINF:-1 group-title="央视频道", CCTV-9
+#EXTINF:-1,  CCTV-9
 https://iptv.catvod.com/live.php?id=CCTV9&line=3
-#EXTINF:-1 group-title="央视频道", CCTV-16
+#EXTINF:-1,  CCTV-16
 https://iptv.catvod.com/live.php?id=CCTV16&line=1
-#EXTINF:-1 group-title="央视频道", CCTV-5+
+#EXTINF:-1,  CCTV-5+
 http://107.150.60.122/live/cctv5p.m3u8
-#EXTINF:-1 group-title="央视频道", CCTV-12
+#EXTINF:-1,  CCTV-12
 http://23.237.228.134/live3/CCTV12.m3u8
-#EXTINF:-1 group-title="央视频道", CCTV-6
+#EXTINF:-1,  CCTV-6
 https://iptv.catvod.com/live.php?id=CCTV6&line=7
-#EXTINF:-1 group-title="央视频道", CCTV-15
+#EXTINF:-1,  CCTV-15
 http://38.75.136.137:98/gslb/dsdqpub/cctv15hd.m3u8?auth=testpub
-#EXTINF:-1 group-title="央视频道", CCTV-11
+#EXTINF:-1,  CCTV-11
 https://iptv.catvod.com/live.php?id=CCTV11&line=5
-#EXTINF:-1 group-title="央视频道", CCTV-4
+#EXTINF:-1,  CCTV-4
 https://iptv.catvod.com/live.php?id=CCTV4&line=3
-#EXTINF:-1 group-title="央视频道", CCTV-17
+#EXTINF:-1,  CCTV-17
 https://iptv.catvod.com/live.php?id=CCTV17&line=2
-#EXTINF:-1 group-title="央视频道", CCTV-10
+#EXTINF:-1,  CCTV-10
 https://iptv.catvod.com/live.php?id=CCTV10&line=6
-#EXTINF:-1 group-title="央视频道", CCTV-16
+#EXTINF:-1,  CCTV-16
 https://iptv.catvod.com/live.php?id=CCTV16
-#EXTINF:-1 group-title="央视频道", CCTV-13
+#EXTINF:-1,  CCTV-13
 https://iptv.catvod.com/live.php?id=CCTV13&line=12
-#EXTINF:-1 group-title="央视频道", CCTV-11
+#EXTINF:-1,  CCTV-11
 https://iptv.catvod.com/live.php?id=CCTV11&line=7
-#EXTINF:-1 group-title="央视频道", CCTV-3
+#EXTINF:-1,  CCTV-3
 https://iptv.catvod.com/live.php?id=CCTV3&line=6
-#EXTINF:-1 group-title="央视频道", CCTV-13
+#EXTINF:-1,  CCTV-13
 https://iptv.catvod.com/live.php?id=CCTV13&line=2
-#EXTINF:-1 group-title="央视频道", CCTV-17
+#EXTINF:-1,  CCTV-17
 https://iptv.catvod.com/live.php?id=CCTV17&line=6
-#EXTINF:-1 group-title="央视频道", CCTV-9
+#EXTINF:-1,  CCTV-9
 https://iptv.catvod.com/live.php?id=CCTV9&line=4
-#EXTINF:-1 group-title="港台频道", 三立新闻
+#EXTINF:-1,  三立新闻
 https://stream1.freetv.fun/san-li-xin-wen-4.m3u8
-#EXTINF:-1 group-title="港台频道", 凤凰资讯
+#EXTINF:-1,  凤凰资讯
 http://61.221.215.25:8800/hls/47/index.m3u8
-#EXTINF:-1 group-title="港台频道", 东森洋片
+#EXTINF:-1,  东森洋片
 https://stream1.freetv.fun/dong-sen-yang-pian-3.m3u8
-#EXTINF:-1 group-title="港台频道", 翡翠台
+#EXTINF:-1,  翡翠台
 http://r.jdshipin.com/n90gt
-#EXTINF:-1 group-title="港台频道", 三立台湾
+#EXTINF:-1,  三立台湾
 https://stream1.freetv.fun/san-li-tai-wan-1.ctv
-#EXTINF:-1 group-title="港台频道", 三立新闻
+#EXTINF:-1,  三立新闻
 https://stream1.freetv.fun/san-li-xin-wen-5.ctv
-#EXTINF:-1 group-title="港台频道", TVBS亚洲
+#EXTINF:-1,  TVBS亚洲
 http://38.64.72.148/hls/modn/list/4005/chunklist0.m3u8
-#EXTINF:-1 group-title="港台频道", 翡翠台
+#EXTINF:-1,  翡翠台
 http://iptv.4666888.xyz/iptv2A.php?id=34
-#EXTINF:-1 group-title="港台频道", 东森超视
+#EXTINF:-1,  东森超视
 https://stream1.freetv.fun/dong-sen-chao-shi-8.m3u8
-#EXTINF:-1 group-title="港台频道", 三立新闻
+#EXTINF:-1,  三立新闻
 https://stream1.freetv.fun/san-li-xin-wen-3.m3u8
-#EXTINF:-1 group-title="港台频道", 东森电影
+#EXTINF:-1,  东森电影
 https://stream1.freetv.fun/dong-sen-dian-ying-8.ctv
-#EXTINF:-1 group-title="港台频道", 东森超视
+#EXTINF:-1,  东森超视
 https://stream1.freetv.fun/dong-sen-chao-shi-2.m3u8
-#EXTINF:-1 group-title="港台频道", 翡翠台
+#EXTINF:-1,  翡翠台
 http://r.jdshipin.com/62WM7
-#EXTINF:-1 group-title="港台频道", 翡翠台
+#EXTINF:-1,  翡翠台
 http://r.jdshipin.com/qrfbg
-#EXTINF:-1 group-title="港台频道", TVBS亚洲
+#EXTINF:-1,  TVBS亚洲
 http://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_5.m3u8?zshijd
-#EXTINF:-1 group-title="港台频道", 东森洋片
+#EXTINF:-1,  东森洋片
 https://live.catvod.com/live.php?id=ettvwestern
-#EXTINF:-1 group-title="港台频道", 凤凰卫视
-http://php.jdshipin.com:8880/smt.php?id=phoenixtv_hd
-#EXTINF:-1 group-title="港台频道", 东森超视
+#EXTINF:-1,  东森超视
 https://stream1.freetv.fun/dong-sen-chao-shi-4.m3u8
-#EXTINF:-1 group-title="港台频道", 东森超视
+#EXTINF:-1,  东森超视
 https://stream1.freetv.fun/dong-sen-chao-shi-7.ctv
-#EXTINF:-1 group-title="港台频道", Viutv
-http://php.jdshipin.com:8880/PLTV/iptv.php?id=viutv
-#EXTINF:-1 group-title="电影频道", 绍兴文化影院
+#EXTINF:-1,  绍兴文化影院
 https://stream1.freetv.fun/shao-xing-wen-hua-ying-yuan-4.m3u8
-#EXTINF:-1 group-title="电影频道", 上虞文化影院
+#EXTINF:-1,  上虞文化影院
 https://stream1.freetv.fun/shang-yu-wen-hua-ying-yuan-3.ctv
-#EXTINF:-1 group-title="电影频道", 星空卫视
+#EXTINF:-1,  星空卫视
 https://stream1.freetv.fun/xing-kong-wei-shi-4.ctv
-#EXTINF:-1 group-title="电影频道", CHC家庭影院
+#EXTINF:-1,  CHC家庭影院
 https://stream1.freetv.fun/chcjia-ting-ying-yuan-9.ctv
-#EXTINF:-1 group-title="电影频道", NewTV动作电影
+#EXTINF:-1,  NewTV动作电影
 https://iptv.catvod.com/live.php?id=NewTV%E5%8A%A8%E4%BD%9C%E7%94%B5%E5%BD%B1
-#EXTINF:-1 group-title="电影频道", 湖南电影
+#EXTINF:-1,  湖南电影
 https://stream1.freetv.fun/hu-nan-dian-ying-2.ctv
-#EXTINF:-1 group-title="电影频道", 上虞文化影院
+#EXTINF:-1,  上虞文化影院
 https://stream1.freetv.fun/shang-yu-wen-hua-ying-yuan-4.ctv
-#EXTINF:-1 group-title="电影频道", 星空卫视
+#EXTINF:-1,  星空卫视
 https://stream1.freetv.fun/xing-kong-wei-shi-11.m3u8
-#EXTINF:-1 group-title="电影频道", CHC家庭影院
+#EXTINF:-1,  CHC家庭影院
 https://www.freetv.top/migu/644368373.m3u8?migutoken=b9d9d0ba0208e949cf0736455b86290b2d1d2ff4727f523b7117dde6eb883cb4582c5ce1519685e57d54bfb562057c10a00dde58bb674d8600fd2d918b8cb440294e083e7b8f19e0dbcc9250d8
-#EXTINF:-1 group-title="电影频道", 淘电影
+#EXTINF:-1,  淘电影
 https://stream1.freetv.fun/tao-dian-ying-7.ctv
-#EXTINF:-1 group-title="电影频道", CHC家庭影院
+#EXTINF:-1,  CHC家庭影院
 https://stream1.freetv.fun/chcjia-ting-ying-yuan-15.ctv
-#EXTINF:-1 group-title="电影频道", 经典电影
+#EXTINF:-1,  经典电影
 https://stream1.freetv.fun/jing-dian-dian-ying-8.ctv
-#EXTINF:-1 group-title="电影频道", 经典电影
+#EXTINF:-1,  经典电影
 https://stream1.freetv.fun/jing-dian-dian-ying-9.ctv
-#EXTINF:-1 group-title="电影频道", 上虞文化影院
+#EXTINF:-1,  上虞文化影院
 https://stream1.freetv.fun/shang-yu-wen-hua-ying-yuan-1.m3u8
-#EXTINF:-1 group-title="电影频道", 绍兴文化影院
+#EXTINF:-1,  绍兴文化影院
 https://stream1.freetv.fun/shao-xing-wen-hua-ying-yuan-1.m3u8
-#EXTINF:-1 group-title="电影频道", 淘电影
+#EXTINF:-1,  淘电影
 https://stream1.freetv.fun/tao-dian-ying-6.ctv
-#EXTINF:-1 group-title="电影频道", CHC动作电影
+#EXTINF:-1,  CHC动作电影
 http://38.75.136.137:98/gslb/dsdqpub/chcdz.m3u8?auth=testpub
-#EXTINF:-1 group-title="电影频道", CHC家庭影院
+#EXTINF:-1,  CHC家庭影院
 http://38.75.136.137:98/gslb/dsdqpub/chcjt.m3u8?auth=testpub
-#EXTINF:-1 group-title="电影频道", 淘电影
+#EXTINF:-1,  淘电影
 https://stream1.freetv.fun/tao-dian-ying-8.ctv
-#EXTINF:-1 group-title="电影频道", 星空卫视
+#EXTINF:-1,  星空卫视
 https://stream1.freetv.fun/xing-kong-wei-shi-10.m3u8
-#EXTINF:-1 group-title="电影频道", CHC动作电影
+#EXTINF:-1,  CHC动作电影
 https://iptv.catvod.com/live.php?id=CHC%E5%8A%A8%E4%BD%9C%E7%94%B5%E5%BD%B1&line=2
-#EXTINF:-1 group-title="电影频道", CHC家庭影院
+#EXTINF:-1,  CHC家庭影院
 https://iptv.catvod.com/live.php?id=CHC%E5%AE%B6%E5%BA%AD%E5%BD%B1%E9%99%A2
-#EXTINF:-1 group-title="电影频道", 淘电影
+#EXTINF:-1,  淘电影
 https://stream1.freetv.fun/tao-dian-ying-3.ctv
-#EXTINF:-1 group-title="电影频道", 绍兴文化影院
-https://t.freetv.fun/live/shao-xing-wen-hua-ying-yuan-2.m3u8
-#EXTINF:-1 group-title="电影频道", 经典电影
+#EXTINF:-1,  经典电影
 https://stream1.freetv.fun/jing-dian-dian-ying-15.ctv
-#EXTINF:-1 group-title="电影频道", CHC动作电影
+#EXTINF:-1,  CHC动作电影
 https://iptv.catvod.com/live.php?id=CHC%E5%8A%A8%E4%BD%9C%E7%94%B5%E5%BD%B1&line=1
-#EXTINF:-1 group-title="电影频道", 星空卫视
+#EXTINF:-1,  星空卫视
 https://stream1.freetv.fun/xing-kong-wei-shi-12.m3u8
-#EXTINF:-1 group-title="电影频道", 上虞文化影院
+#EXTINF:-1,  上虞文化影院
 https://stream1.freetv.fun/shang-yu-wen-hua-ying-yuan-2.ctv
-#EXTINF:-1 group-title="电影频道", 绍兴文化影院
+#EXTINF:-1,  绍兴文化影院
 https://stream1.freetv.fun/shao-xing-wen-hua-ying-yuan-3.m3u8
