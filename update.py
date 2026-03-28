@@ -25,9 +25,9 @@ def fetch_raw(en):
         return res['data'] if res.get('success') else None
     except: return None
 
-def deep_ai_encyclopedia(cn, raw):
+def deep_ai_full(cn, raw):
     if not DEEPSEEK_API_KEY: return None
-    prompt = f"为【{cn}】撰写深度百科。原始运势：{json.dumps(raw, ensure_ascii=False)}\n输出JSON格式包含：intro(一句话介绍), base(date,attr,symbol,palace), traits(pros,cons), relations(数组), career(长文本), mythology(长文本), today_brief(简述)"
+    prompt = f"为【{cn}】撰写百科。原始运势：{json.dumps(raw, ensure_ascii=False)}\n输出JSON格式包含：intro(1句), daily(overall,do,dont,tips), base(date,attr,symbol,palace), traits(pros,cons), relations(数组), career(长文本), mythology(长文本)"
     headers = {"Authorization": f"Bearer {DEEPSEEK_API_KEY}", "Content-Type": "application/json"}
     payload = {"model": "deepseek-chat", "messages": [{"role": "user", "content": prompt}], "response_format": {"type": "json_object"}}
     try:
@@ -39,12 +39,12 @@ def main():
     signs = [("aries","白羊座"), ("taurus","金牛座"), ("gemini","双子座"), ("cancer","巨蟹座"), ("leo","狮子座"), ("virgo","处女座"), ("libra","天秤座"), ("scorpio","天蝎座"), ("sagittarius","射手座"), ("capricorn","摩羯座"), ("aquarius","水瓶座"), ("pisces","双鱼座")]
     results = []
     for en, cn in signs:
-        raw = fetch_raw(en); ai = deep_ai_encyclopedia(cn, raw)
+        raw = fetch_raw(en); ai = deep_ai_full(cn, raw)
         if ai:
             results.append({
-                "sign": cn, "avatar": f"{AVATARS[cn]}?auto=format&fit=crop&w=400&q=80", "intro": ai['intro'], "today_brief": ai['today_brief'],
-                "base_info": ai['base'], "traits": ai['traits'], "relationships": ai['relations'],
-                "career": ai['career'], "mythology": ai['mythology']
+                "sign": cn, "avatar": f"{AVATARS[cn]}?auto=format&fit=crop&w=400&q=80", "intro": ai['intro'],
+                "daily_guidance": ai['daily'], "base_info": ai['base'], "traits": ai['traits'],
+                "relationships": ai['relations'], "career": ai['career'], "mythology": ai['mythology']
             })
     if results:
         with open("index.html", "r", encoding="utf-8") as f: html = f.read()
