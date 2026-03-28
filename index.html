@@ -1,233 +1,83 @@
 
-    <!DOCTYPE html>
-    <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <title>AI星语 · 纯净深度百科</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
-        <style>
-            body { background: #ffffff; font-family: 'Noto Sans SC', sans-serif; color: #333; -webkit-font-smoothing: antialiased; }
-            .title-font { font-family: 'Noto Serif SC', serif; }
-            
-            .card-item { background: #fff; margin-bottom: 24px; padding: 25px; border-radius: 35px; display: flex; align-items: center; gap: 20px; border: 1px solid #f2f2f7; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.01); }
-            .card-item:active { transform: scale(0.96); background: #fafafa; }
-            .card-avatar { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-            .card-title { font-size: 24px; font-weight: 900; color: #111; letter-spacing: -0.5px; }
-            .card-desc { font-size: 14px; color: #bbb; margin-top: 2px; }
-            .card-more { font-size: 10px; color: #6366f1; font-weight: 800; margin-top: 15px; display: block; letter-spacing: 1.5px; }
-
-            .modal-overlay { display: none; position: fixed; inset: 0; background: #fff; z-index: 9999; overflow-y: auto; padding-bottom: 120px; animation: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-            @keyframes slideIn { from { transform: translateY(100%); } to { transform: translateY(0); } }
-            .modal-active { display: block !important; }
-            
-            .section-h { font-size: 22px; font-weight: 900; margin-bottom: 25px; color: #000; border-left: 6px solid #6366f1; padding-left: 20px; letter-spacing: -0.5px; }
-            .info-list li, .trait-list li { margin-bottom: 20px; font-size: 18px; line-height: 1.8; color: #444; }
-            .info-list b { color: #000; }
-            .paragraph-text { font-size: 18px; line-height: 2.1; color: #444; text-align: justify; letter-spacing: 0.01em; }
-            
-            .guidance-box { background: #f9faff; border-radius: 45px; padding: 40px; margin: 40px 0; border: 1px solid #f0f2ff; }
-            .tag-do { background: #ecfdf5; color: #059669; padding: 4px 14px; border-radius: 100px; font-weight: 900; font-size: 14px; }
-            .tag-dont { background: #fef2f2; color: #dc2626; padding: 4px 14px; border-radius: 100px; font-weight: 900; font-size: 14px; }
-            
-            .quote-box { text-align: center; padding: 80px 30px; border-top: 1px solid #f2f2f7; margin-top: 60px; }
-            .quote-text { font-family: 'Noto Serif SC', serif; font-size: 22px; color: #555; line-height: 1.9; max-width: 90%; margin: 0 auto; }
-            .quote-author { font-size: 12px; color: #ccc; margin-top: 25px; text-transform: uppercase; letter-spacing: 4px; }
-
-            .back-btn { position: fixed; bottom: 35px; left: 50%; transform: translateX(-50%); background: #000; color: #fff; padding: 18px 50px; border-radius: 100px; font-weight: 700; z-index: 10000; box-shadow: 0 20px 40px rgba(0,0,0,0.2); font-size: 15px; border: none; }
-            ::-webkit-scrollbar { width: 0; }
-        </style>
-    </head>
-    <body class="p-6 md:p-12 max-w-2xl mx-auto">
-        <header class="mb-16 mt-12 px-2">
-            <h1 class="text-5xl font-black title-font mb-4 tracking-tighter">AI星语 · 深度百科</h1>
-            <p class="text-gray-400 text-xs tracking-[0.4em] uppercase font-bold opacity-60">The Celestial Encyclopedia</p>
-        </header>
-
-        <div class="pb-40">
-        <div class="card-item" onclick="openDeepHoro(0)">
-            <img src="https://images.unsplash.com/photo-1579546123302-b82433d4573b?auto=format&fit=crop&w=400&q=80" class="card-avatar" alt="白羊座">
-            <div class="card-content">
-                <h3 class="card-title">白羊座</h3>
-                <p class="card-desc">点此开启今日治愈旅程</p>
-                <span class="card-more">EXPLORE ENCYCLOPEDIA →</span>
-            </div>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>八字运势 | AI 命理助手</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #ffffff; font-family: 'Noto Sans SC', sans-serif; color: #333; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding-top: 10vh; -webkit-tap-highlight-color: transparent; }
+        .logo-circle { width: 140px; height: 140px; background: #e69d45; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 40px; box-shadow: 0 10px 20px rgba(230, 157, 69, 0.2); }
+        .logo-svg { width: 80px; height: 80px; fill: white; }
+        .main-title { font-size: 32px; font-weight: 400; margin-bottom: 25px; letter-spacing: 2px; }
+        .intro-text { max-width: 600px; text-align: center; font-size: 15px; line-height: 1.8; color: #333; padding: 0 30px; margin-bottom: 50px; }
+        .input-container { width: 90%; max-width: 800px; background: #ffffff; border-radius: 24px; padding: 20px 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.06); border: 1px solid #f0f0f0; position: relative; min-height: 180px; display: flex; flex-direction: column; }
+        .chat-input { width: 100%; border: none; outline: none; font-size: 18px; resize: none; background: transparent; flex: 1; margin-top: 10px; }
+        .placeholder-text { font-size: 14px; color: #bfbfbf; margin-bottom: 10px; }
+        .send-btn { position: absolute; bottom: 20px; right: 20px; background: #e0e0e0; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; }
+        .send-btn.active { background: #111; }
+        .footer-text { position: fixed; bottom: 40px; font-size: 12px; color: #bfbfbf; }
+        .result-overlay { display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.98); z-index: 1000; overflow-y: auto; padding: 50px 20px; flex-direction: column; align-items: center; }
+        .result-card { width: 100%; max-width: 600px; background: #fff; }
+        .pillar-box { border-bottom: 1px solid #eee; padding: 20px 0; display: flex; justify-content: space-between; font-size: 20px; font-weight: 700; }
+        ::-webkit-scrollbar { width: 0; }
+    </style>
+</head>
+<body>
+    <div class="logo-circle">
+        <svg class="logo-svg" viewBox="0 0 100 100"><path d="M50,10c-22.1,0-40,17.9-40,40s17.9,40,40,40s40-17.9,40-40S72.1,10,50,10z M50,82c-17.7,0-32-14.3-32-32s14.3-32,32-32 s32,14.3,32,32S67.7,82,50,82z M50,18c-17.7,0-32,14.3-32,32s14.3,32,32,32c17.7,0,32-14.3,32-32S67.7,18,50,18z M50,18 c8.8,0,16,7.2,16,16s-7.2,16-16,16s-16-7.2-16-16S41.2,18,50,18z M50,50c8.8,0,16,7.2,16,16s-7.2,16-16,16s-16-7.2-16-16 S41.2,50,50,50z M50,26c4.4,0,8,3.6,8,8s-3.6,8-8,8s-8-3.6-8-8S45.6,26,50,26z M50,58c4.4,0,8,3.6,8,8s-3.6,8-8,8s-8-3.6-8-8 S45.6,58,50,58z" /></svg>
+    </div>
+    <h1 class="main-title text-gray-800">八字运势</h1>
+    <p class="intro-text">我是生辰八字算命大师，会基于传统命理学推演你的运势。八字计算需要您提供以下信息：1. 公历出生时间：包括年、月、日、小时、分钟，用于计算生辰八字的年柱、月柱、日柱、时柱的天干、地支，共八字。2. 出生城市：生辰八字是基于真太阳时进行计算，需要通过出生城市，查询出生经纬度的太阳位置，把公历出生时间转化为天文学的真太阳时。玄学没有科学依据，仅供娱乐，切勿当真。</p>
+    <div class="input-container">
+        <span class="placeholder-text">有问题问小白...</span>
+        <textarea id="userInput" class="chat-input" placeholder="输入：1995年10月1日 12:30 北京"></textarea>
+        <div id="sendBtn" class="send-btn" onclick="startAnalysis()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
         </div>
-        
-        <div class="card-item" onclick="openDeepHoro(1)">
-            <img src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=400&q=80" class="card-avatar" alt="金牛座">
-            <div class="card-content">
-                <h3 class="card-title">金牛座</h3>
-                <p class="card-desc">点此开启今日治愈旅程</p>
-                <span class="card-more">EXPLORE ENCYCLOPEDIA →</span>
-            </div>
+    </div>
+    <div class="footer-text">AI生成内容，仅供参考 | v1774674835</div>
+    <div id="resultOverlay" class="result-overlay">
+        <div class="result-card">
+            <div class="flex justify-between items-center mb-10"><h2 class="text-3xl font-bold">精批结果</h2><button onclick="closeResult()" class="text-gray-400 text-2xl">✕</button></div>
+            <div id="baziResult" class="grid grid-cols-4 gap-4 mb-10"></div>
+            <div id="analysisContent" class="space-y-8 text-lg leading-relaxed text-gray-600"></div>
+            <div class="mt-20 text-center pb-20"><button onclick="closeResult()" class="px-12 py-4 bg-gray-900 text-white rounded-full font-bold shadow-lg">返回重新输入</button></div>
         </div>
-        
-        <div class="card-item" onclick="openDeepHoro(2)">
-            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=400&q=80" class="card-avatar" alt="双子座">
-            <div class="card-content">
-                <h3 class="card-title">双子座</h3>
-                <p class="card-desc">点此开启今日治愈旅程</p>
-                <span class="card-more">EXPLORE ENCYCLOPEDIA →</span>
-            </div>
-        </div>
-        
-        <div class="card-item" onclick="openDeepHoro(3)">
-            <img src="https://images.unsplash.com/photo-1550684847-75bdda21cc95?auto=format&fit=crop&w=400&q=80" class="card-avatar" alt="巨蟹座">
-            <div class="card-content">
-                <h3 class="card-title">巨蟹座</h3>
-                <p class="card-desc">点此开启今日治愈旅程</p>
-                <span class="card-more">EXPLORE ENCYCLOPEDIA →</span>
-            </div>
-        </div>
-        
-        <div class="card-item" onclick="openDeepHoro(4)">
-            <img src="https://images.unsplash.com/photo-1550684846-1790bdc0f58a?auto=format&fit=crop&w=400&q=80" class="card-avatar" alt="狮子座">
-            <div class="card-content">
-                <h3 class="card-title">狮子座</h3>
-                <p class="card-desc">点此开启今日治愈旅程</p>
-                <span class="card-more">EXPLORE ENCYCLOPEDIA →</span>
-            </div>
-        </div>
-        
-        <div class="card-item" onclick="openDeepHoro(5)">
-            <img src="https://images.unsplash.com/photo-1550684848-81156208bb0d?auto=format&fit=crop&w=400&q=80" class="card-avatar" alt="处女座">
-            <div class="card-content">
-                <h3 class="card-title">处女座</h3>
-                <p class="card-desc">点此开启今日治愈旅程</p>
-                <span class="card-more">EXPLORE ENCYCLOPEDIA →</span>
-            </div>
-        </div>
-        
-        <div class="card-item" onclick="openDeepHoro(6)">
-            <img src="https://images.unsplash.com/photo-1550684848-b4b105a30554?auto=format&fit=crop&w=400&q=80" class="card-avatar" alt="天秤座">
-            <div class="card-content">
-                <h3 class="card-title">天秤座</h3>
-                <p class="card-desc">点此开启今日治愈旅程</p>
-                <span class="card-more">EXPLORE ENCYCLOPEDIA →</span>
-            </div>
-        </div>
-        
-        <div class="card-item" onclick="openDeepHoro(7)">
-            <img src="https://images.unsplash.com/photo-1550684848-68fbd2d64098?auto=format&fit=crop&w=400&q=80" class="card-avatar" alt="天蝎座">
-            <div class="card-content">
-                <h3 class="card-title">天蝎座</h3>
-                <p class="card-desc">点此开启今日治愈旅程</p>
-                <span class="card-more">EXPLORE ENCYCLOPEDIA →</span>
-            </div>
-        </div>
-        
-        <div class="card-item" onclick="openDeepHoro(8)">
-            <img src="https://images.unsplash.com/photo-1550684847-d0d18f5043ae?auto=format&fit=crop&w=400&q=80" class="card-avatar" alt="射手座">
-            <div class="card-content">
-                <h3 class="card-title">射手座</h3>
-                <p class="card-desc">点此开启今日治愈旅程</p>
-                <span class="card-more">EXPLORE ENCYCLOPEDIA →</span>
-            </div>
-        </div>
-        
-        <div class="card-item" onclick="openDeepHoro(9)">
-            <img src="https://images.unsplash.com/photo-1550684847-60fbd2d64098?auto=format&fit=crop&w=400&q=80" class="card-avatar" alt="摩羯座">
-            <div class="card-content">
-                <h3 class="card-title">摩羯座</h3>
-                <p class="card-desc">点此开启今日治愈旅程</p>
-                <span class="card-more">EXPLORE ENCYCLOPEDIA →</span>
-            </div>
-        </div>
-        
-        <div class="card-item" onclick="openDeepHoro(10)">
-            <img src="https://images.unsplash.com/photo-1550684848-81156208bb0d?auto=format&fit=crop&w=400&q=80" class="card-avatar" alt="水瓶座">
-            <div class="card-content">
-                <h3 class="card-title">水瓶座</h3>
-                <p class="card-desc">点此开启今日治愈旅程</p>
-                <span class="card-more">EXPLORE ENCYCLOPEDIA →</span>
-            </div>
-        </div>
-        
-        <div class="card-item" onclick="openDeepHoro(11)">
-            <img src="https://images.unsplash.com/photo-1550684848-0c6114e59005?auto=format&fit=crop&w=400&q=80" class="card-avatar" alt="双鱼座">
-            <div class="card-content">
-                <h3 class="card-title">双鱼座</h3>
-                <p class="card-desc">点此开启今日治愈旅程</p>
-                <span class="card-more">EXPLORE ENCYCLOPEDIA →</span>
-            </div>
-        </div>
-        </div>
-
-        <div id="hModal" class="modal-overlay">
-            <div class="p-8 md:p-16">
-                <img id="mAvatar" class="w-32 h-32 rounded-full mx-auto mb-10 border-4 border-white shadow-2xl" src="">
-                <h2 class="text-center text-5xl font-black mb-3 tracking-tighter" id="mSign"></h2>
-                <p class="text-center text-indigo-500 font-bold mb-16 text-sm uppercase tracking-[0.2em] max-w-[80%] mx-auto leading-relaxed" id="mIntro"></p>
-                
-                <section class="guidance-box">
-                    <h2 class="text-xs font-black text-indigo-400 mb-10 uppercase tracking-[0.3em] flex items-center gap-3">
-                        <span class="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse"></span> 今日星象深度导航
-                    </h2>
-                    <p id="mDailyOverall" class="text-2xl font-bold text-slate-800 mb-10 leading-relaxed italic"></p>
-                    <div class="space-y-8 mb-10">
-                        <div class="flex items-center gap-6"><span class="tag-do">宜</span><span id="mDo" class="text-slate-600 font-bold text-xl"></span></div>
-                        <div class="flex items-center gap-6"><span class="tag-dont">忌</span><span id="mDont" class="text-slate-600 font-bold text-xl"></span></div>
-                    </div>
-                    <div class="p-8 bg-white rounded-[2.5rem] border border-indigo-50 shadow-sm">
-                        <p class="text-[10px] text-gray-300 mb-3 font-black uppercase tracking-widest">Healing Tip</p>
-                        <p id="mTips" class="text-lg text-indigo-600 font-medium italic leading-relaxed"></p>
-                    </div>
-                </section>
-
-                <section class="mb-24"><h2 class="section-h">基础百科信息</h2><ul class="info-list" style="list-style:none;padding-left:0;"><li><b>日期范围：</b><span id="mDate"></span></li><li><b>属性守护：</b><span id="mAttr"></span></li><li><b>符号含义：</b><span id="mSymbol"></span></li><li><b>掌管宫位：</b><span id="mPalace"></span></li></ul></section>
-                <section class="mb-24"><h2 class="section-h">性格深度剖析</h2><ul class="trait-list" style="list-style:none;padding-left:0;"><li><b>【灵魂闪光点】</b><span id="mPros"></span></li><li><b>【暗影与软肋】</b><span id="mCons"></span></li></ul></section>
-                <section class="mb-24"><h2 class="section-h">情感与社交人际</h2><ul class="trait-list" id="mRelations" style="list-style:disc;padding-left:25px;"></ul></section>
-                <section class="mb-24"><h2 class="section-h">事业发展与建议</h2><p class="paragraph-text" id="mCareer"></p></section>
-                <section class="mb-24"><h2 class="section-h">远古神话溯源</h2><p class="paragraph-text" id="mMyth"></p></section>
-
-                <footer class="quote-box">
-                    <p class="quote-text" id="mQuote"></p>
-                    <p class="quote-author">Healing Resonance</p>
-                </footer>
-            </div>
-            <button onclick="closeDeepHoro()" class="back-btn">← 返回星座列表</button>
-        </div>
-
-        <script>
-            // DATA_START
-            let db = [{"sign": "白羊座", "avatar": "https://images.unsplash.com/photo-1579546123302-b82433d4573b?auto=format&fit=crop&w=400&q=80", "intro": "在这个快节奏的世界里，愿白羊座的你也能拥有一片宁静的星空。", "daily_guidance": {"overall": "星象正在连接中...", "do": "温柔待己", "dont": "自我怀疑", "tips": "请深呼吸，属于你的好运正在路上。"}, "base_info": {"date": "载入中", "attr": "载入中", "symbol": "载入中", "palace": "载入中"}, "traits": {"pros": "载入中", "cons": "载入中"}, "relationships": ["同步星辰能量中..."], "career": "同步星辰能量中...", "mythology": "同步星辰能量中...", "healing_quote": "“万物皆有裂痕，那是光照进来的地方。”"}, {"sign": "金牛座", "avatar": "https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=400&q=80", "intro": "在这个快节奏的世界里，愿金牛座的你也能拥有一片宁静的星空。", "daily_guidance": {"overall": "星象正在连接中...", "do": "温柔待己", "dont": "自我怀疑", "tips": "请深呼吸，属于你的好运正在路上。"}, "base_info": {"date": "载入中", "attr": "载入中", "symbol": "载入中", "palace": "载入中"}, "traits": {"pros": "载入中", "cons": "载入中"}, "relationships": ["同步星辰能量中..."], "career": "同步星辰能量中...", "mythology": "同步星辰能量中...", "healing_quote": "“万物皆有裂痕，那是光照进来的地方。”"}, {"sign": "双子座", "avatar": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=400&q=80", "intro": "在这个快节奏的世界里，愿双子座的你也能拥有一片宁静的星空。", "daily_guidance": {"overall": "星象正在连接中...", "do": "温柔待己", "dont": "自我怀疑", "tips": "请深呼吸，属于你的好运正在路上。"}, "base_info": {"date": "载入中", "attr": "载入中", "symbol": "载入中", "palace": "载入中"}, "traits": {"pros": "载入中", "cons": "载入中"}, "relationships": ["同步星辰能量中..."], "career": "同步星辰能量中...", "mythology": "同步星辰能量中...", "healing_quote": "“万物皆有裂痕，那是光照进来的地方。”"}, {"sign": "巨蟹座", "avatar": "https://images.unsplash.com/photo-1550684847-75bdda21cc95?auto=format&fit=crop&w=400&q=80", "intro": "在这个快节奏的世界里，愿巨蟹座的你也能拥有一片宁静的星空。", "daily_guidance": {"overall": "星象正在连接中...", "do": "温柔待己", "dont": "自我怀疑", "tips": "请深呼吸，属于你的好运正在路上。"}, "base_info": {"date": "载入中", "attr": "载入中", "symbol": "载入中", "palace": "载入中"}, "traits": {"pros": "载入中", "cons": "载入中"}, "relationships": ["同步星辰能量中..."], "career": "同步星辰能量中...", "mythology": "同步星辰能量中...", "healing_quote": "“万物皆有裂痕，那是光照进来的地方。”"}, {"sign": "狮子座", "avatar": "https://images.unsplash.com/photo-1550684846-1790bdc0f58a?auto=format&fit=crop&w=400&q=80", "intro": "在这个快节奏的世界里，愿狮子座的你也能拥有一片宁静的星空。", "daily_guidance": {"overall": "星象正在连接中...", "do": "温柔待己", "dont": "自我怀疑", "tips": "请深呼吸，属于你的好运正在路上。"}, "base_info": {"date": "载入中", "attr": "载入中", "symbol": "载入中", "palace": "载入中"}, "traits": {"pros": "载入中", "cons": "载入中"}, "relationships": ["同步星辰能量中..."], "career": "同步星辰能量中...", "mythology": "同步星辰能量中...", "healing_quote": "“万物皆有裂痕，那是光照进来的地方。”"}, {"sign": "处女座", "avatar": "https://images.unsplash.com/photo-1550684848-81156208bb0d?auto=format&fit=crop&w=400&q=80", "intro": "在这个快节奏的世界里，愿处女座的你也能拥有一片宁静的星空。", "daily_guidance": {"overall": "星象正在连接中...", "do": "温柔待己", "dont": "自我怀疑", "tips": "请深呼吸，属于你的好运正在路上。"}, "base_info": {"date": "载入中", "attr": "载入中", "symbol": "载入中", "palace": "载入中"}, "traits": {"pros": "载入中", "cons": "载入中"}, "relationships": ["同步星辰能量中..."], "career": "同步星辰能量中...", "mythology": "同步星辰能量中...", "healing_quote": "“万物皆有裂痕，那是光照进来的地方。”"}, {"sign": "天秤座", "avatar": "https://images.unsplash.com/photo-1550684848-b4b105a30554?auto=format&fit=crop&w=400&q=80", "intro": "在这个快节奏的世界里，愿天秤座的你也能拥有一片宁静的星空。", "daily_guidance": {"overall": "星象正在连接中...", "do": "温柔待己", "dont": "自我怀疑", "tips": "请深呼吸，属于你的好运正在路上。"}, "base_info": {"date": "载入中", "attr": "载入中", "symbol": "载入中", "palace": "载入中"}, "traits": {"pros": "载入中", "cons": "载入中"}, "relationships": ["同步星辰能量中..."], "career": "同步星辰能量中...", "mythology": "同步星辰能量中...", "healing_quote": "“万物皆有裂痕，那是光照进来的地方。”"}, {"sign": "天蝎座", "avatar": "https://images.unsplash.com/photo-1550684848-68fbd2d64098?auto=format&fit=crop&w=400&q=80", "intro": "在这个快节奏的世界里，愿天蝎座的你也能拥有一片宁静的星空。", "daily_guidance": {"overall": "星象正在连接中...", "do": "温柔待己", "dont": "自我怀疑", "tips": "请深呼吸，属于你的好运正在路上。"}, "base_info": {"date": "载入中", "attr": "载入中", "symbol": "载入中", "palace": "载入中"}, "traits": {"pros": "载入中", "cons": "载入中"}, "relationships": ["同步星辰能量中..."], "career": "同步星辰能量中...", "mythology": "同步星辰能量中...", "healing_quote": "“万物皆有裂痕，那是光照进来的地方。”"}, {"sign": "射手座", "avatar": "https://images.unsplash.com/photo-1550684847-d0d18f5043ae?auto=format&fit=crop&w=400&q=80", "intro": "在这个快节奏的世界里，愿射手座的你也能拥有一片宁静的星空。", "daily_guidance": {"overall": "星象正在连接中...", "do": "温柔待己", "dont": "自我怀疑", "tips": "请深呼吸，属于你的好运正在路上。"}, "base_info": {"date": "载入中", "attr": "载入中", "symbol": "载入中", "palace": "载入中"}, "traits": {"pros": "载入中", "cons": "载入中"}, "relationships": ["同步星辰能量中..."], "career": "同步星辰能量中...", "mythology": "同步星辰能量中...", "healing_quote": "“万物皆有裂痕，那是光照进来的地方。”"}, {"sign": "摩羯座", "avatar": "https://images.unsplash.com/photo-1550684847-60fbd2d64098?auto=format&fit=crop&w=400&q=80", "intro": "在这个快节奏的世界里，愿摩羯座的你也能拥有一片宁静的星空。", "daily_guidance": {"overall": "星象正在连接中...", "do": "温柔待己", "dont": "自我怀疑", "tips": "请深呼吸，属于你的好运正在路上。"}, "base_info": {"date": "载入中", "attr": "载入中", "symbol": "载入中", "palace": "载入中"}, "traits": {"pros": "载入中", "cons": "载入中"}, "relationships": ["同步星辰能量中..."], "career": "同步星辰能量中...", "mythology": "同步星辰能量中...", "healing_quote": "“万物皆有裂痕，那是光照进来的地方。”"}, {"sign": "水瓶座", "avatar": "https://images.unsplash.com/photo-1550684848-81156208bb0d?auto=format&fit=crop&w=400&q=80", "intro": "在这个快节奏的世界里，愿水瓶座的你也能拥有一片宁静的星空。", "daily_guidance": {"overall": "星象正在连接中...", "do": "温柔待己", "dont": "自我怀疑", "tips": "请深呼吸，属于你的好运正在路上。"}, "base_info": {"date": "载入中", "attr": "载入中", "symbol": "载入中", "palace": "载入中"}, "traits": {"pros": "载入中", "cons": "载入中"}, "relationships": ["同步星辰能量中..."], "career": "同步星辰能量中...", "mythology": "同步星辰能量中...", "healing_quote": "“万物皆有裂痕，那是光照进来的地方。”"}, {"sign": "双鱼座", "avatar": "https://images.unsplash.com/photo-1550684848-0c6114e59005?auto=format&fit=crop&w=400&q=80", "intro": "在这个快节奏的世界里，愿双鱼座的你也能拥有一片宁静的星空。", "daily_guidance": {"overall": "星象正在连接中...", "do": "温柔待己", "dont": "自我怀疑", "tips": "请深呼吸，属于你的好运正在路上。"}, "base_info": {"date": "载入中", "attr": "载入中", "symbol": "载入中", "palace": "载入中"}, "traits": {"pros": "载入中", "cons": "载入中"}, "relationships": ["同步星辰能量中..."], "career": "同步星辰能量中...", "mythology": "同步星辰能量中...", "healing_quote": "“万物皆有裂痕，那是光照进来的地方。”"}];
-            // DATA_END
-            function openDeepHoro(idx) {
-                const item = db[idx];
-                document.getElementById('mAvatar').src = item.avatar;
-                document.getElementById('mSign').innerText = item.sign;
-                document.getElementById('mIntro').innerText = item.intro;
-                document.getElementById('mDailyOverall').innerText = item.daily_guidance.overall;
-                document.getElementById('mDo').innerText = item.daily_guidance.do;
-                document.getElementById('mDont').innerText = item.daily_guidance.dont;
-                document.getElementById('mTips').innerText = item.daily_guidance.tips;
-                document.getElementById('mDate').innerText = item.base_info.date;
-                document.getElementById('mAttr').innerText = item.base_info.attr;
-                document.getElementById('mSymbol').innerText = item.base_info.symbol;
-                document.getElementById('mPalace').innerText = item.base_info.palace;
-                document.getElementById('mPros').innerText = item.traits.pros;
-                document.getElementById('mCons').innerText = item.traits.cons;
-                document.getElementById('mCareer').innerText = item.career;
-                document.getElementById('mMyth').innerText = item.mythology;
-                document.getElementById('mQuote').innerText = item.healing_quote;
-                const relList = document.getElementById('mRelations');
-                relList.innerHTML = '';
-                item.relationships.forEach(text => {
-                    const li = document.createElement('li');
-                    li.innerText = text;
-                    relList.appendChild(li);
-                });
-                document.getElementById('hModal').classList.add('modal-active');
-                window.scrollTo(0, 0);
-                document.body.style.overflow = 'hidden';
-            }
-            function closeDeepHoro() {
-                document.getElementById('hModal').classList.remove('modal-active');
-                document.body.style.overflow = 'auto';
-            }
-        </script>
-    </body>
-    </html>
-    
+    </div>
+    <script>
+        const input = document.getElementById('userInput');
+        const btn = document.getElementById('sendBtn');
+        input.addEventListener('input', () => { if(input.value.trim().length > 0) btn.classList.add('active'); else btn.classList.remove('active'); });
+        function startAnalysis() {
+            const text = input.value.trim();
+            if(!text) return alert('请输入出生信息');
+            document.getElementById('analysisContent').innerHTML = '<p class="text-center">大师正在为您拨动星辰...</p>';
+            document.getElementById('resultOverlay').style.display = 'flex';
+            setTimeout(() => {
+                renderResult("乙亥", "乙酉", "丙子", "甲午");
+            }, 1500);
+        }
+        function renderResult(y, m, d, h) {
+            const container = document.getElementById('baziResult');
+            container.innerHTML = `
+                <div class="text-center p-4 bg-gray-50 rounded-2xl"><p class="text-xs text-gray-400 mb-2">年</p><p class="text-2xl font-bold text-red-800">${y}</p></div>
+                <div class="text-center p-4 bg-gray-50 rounded-2xl"><p class="text-xs text-gray-400 mb-2">月</p><p class="text-2xl font-bold text-red-800">${m}</p></div>
+                <div class="text-center p-4 bg-gray-50 rounded-2xl border-2 border-red-500"><p class="text-xs text-red-400 mb-2">日</p><p class="text-2xl font-bold text-red-800">${d}</p></div>
+                <div class="text-center p-4 bg-gray-50 rounded-2xl"><p class="text-xs text-gray-400 mb-2">时</p><p class="text-2xl font-bold text-red-800">${h}</p></div>
+            `;
+            document.getElementById('analysisContent').innerHTML = `
+                <div class="bg-red-50 p-6 rounded-3xl border border-red-100 mb-6"><h4 class="text-red-900 font-bold mb-2">💡 命理概要</h4><p class="text-red-700 italic text-sm">日主丙火生于酉月，财星当令。命格清粹，晚景优渥。</p></div>
+                <p><b>事业运：</b> 官印相生，适合在创意或行政领域发展。2026年利于求名。</p>
+                <p><b>财运：</b> 偏财透出，外财缘分深厚，宜守不宜贪。</p>
+                <p><b>提示：</b> 仅供娱乐，命运掌握在自己手中。</p>
+            `;
+            document.body.style.overflow = 'hidden';
+        }
+        function closeResult() { document.getElementById('resultOverlay').style.display = 'none'; document.body.style.overflow = 'auto'; }
+    </script>
+</body>
+</html>
