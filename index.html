@@ -4,356 +4,314 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <title>AI星语 · 沉浸式心灵驿站</title>
+        <title>AI星语 · 深邃星空疗愈站</title>
         <script src="https://cdn.tailwindcss.com"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;400;700&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
         <style>
-            :root { --p-bg: #f8fafc; --p-accent: #6366f1; }
-            body { background: var(--p-bg); font-family: 'Noto Serif SC', serif; min-height: 100vh; -webkit-tap-highlight-color: transparent; overflow-x: hidden; }
+            body { background: #020617; font-family: 'Noto Serif SC', serif; min-height: 100vh; -webkit-tap-highlight-color: transparent; overflow-x: hidden; color: #f8fafc; }
             
-            /* 动态渐变背景 */
-            .bg-animation { position: fixed; inset: 0; z-index: -1; filter: blur(100px); opacity: 0.6; }
-            .blob { position: absolute; width: 600px; height: 600px; border-radius: 50%; }
-            .blob-1 { background: #e0e7ff; top: -10%; left: -10%; animation: float 20s infinite alternate; }
-            .blob-2 { background: #fae8ff; bottom: -10%; right: -10%; animation: float 15s infinite alternate-reverse; }
-            .blob-3 { background: #fefce8; top: 40%; left: 30%; animation: float 25s infinite linear; }
-            
-            @keyframes float { 
-                from { transform: translate(0, 0) rotate(0deg); } 
-                to { transform: translate(100px, 100px) rotate(360deg); } 
+            /* 星空背景 */
+            .star-background {
+                position: fixed; inset: 0; z-index: -1;
+                background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
+            }
+            .star-image {
+                position: fixed; inset: 0; z-index: -1; opacity: 0.4;
+                background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&w=1920&q=80');
+                background-size: cover; background-position: center;
+                mix-blend-mode: screen;
             }
 
-            .glass-card { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
-            .hover-lift:hover { transform: translateY(-12px); box-shadow: 0 40px 80px -20px rgba(0,0,0,0.08); background: rgba(255, 255, 255, 0.85); }
+            .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px); border-radius: 40px; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+            .glass-card:hover { transform: translateY(-10px); box-shadow: 0 40px 100px -20px rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.2); }
             
             .title-font { font-family: 'Zhi Mang Xing', cursive; }
-            .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.2); backdrop-filter: blur(30px); z-index: 999; align-items: center; justify-content: center; opacity: 0; transition: all 0.5s ease; }
+            .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(30px); z-index: 999; align-items: center; justify-content: center; opacity: 0; transition: all 0.5s ease; }
             .modal-active { display: flex !important; opacity: 1; }
-            .progress-bar { height: 5px; background: rgba(0,0,0,0.05); border-radius: 3px; }
-            .progress-fill { height: 100%; background: #6366f1; width: 0; transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1); }
             
-            /* 背景音控制器 */
-            .music-btn { position: fixed; bottom: 40px; right: 40px; z-index: 1000; width: 56px; height: 56px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); cursor: pointer; }
-            .music-playing { animation: spin 4s infinite linear; border: 2px solid #6366f1; }
-            @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+            .progress-bar { height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px; }
+            .progress-fill { height: 100%; background: linear-gradient(90deg, #818cf8, #fb7185); width: 0; transition: width 2s cubic-bezier(0.16, 1, 0.3, 1); }
+            
+            /* 移除音乐按钮相关 */
+            .no-music { display: none; }
         </style>
     </head>
     <body>
-        <!-- 动态背景层 -->
-        <div class="bg-animation">
-            <div class="blob blob-1"></div>
-            <div class="blob blob-2"></div>
-            <div class="blob blob-3"></div>
-        </div>
+        <div class="star-background"></div>
+        <div class="star-image"></div>
 
-        <header class="text-center mb-24 md:mb-36 mt-20 px-6">
-            <h1 class="text-8xl md:text-[10rem] title-font text-gray-800 mb-8 opacity-90 tracking-tighter">AI星语</h1>
-            <p class="text-gray-400 tracking-[0.8em] text-[10px] md:text-sm uppercase font-light">Alchemy of your inner stars</p>
+        <header class="text-center mb-32 md:mb-48 mt-24 px-6">
+            <h1 class="text-8xl md:text-[11rem] title-font text-white mb-8 opacity-90 tracking-tighter drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">AI星语</h1>
+            <p class="text-indigo-300 tracking-[1em] text-[10px] md:text-sm uppercase font-bold opacity-60">The Silent Orbit of Souls</p>
         </header>
 
-        <section class="max-w-5xl mx-auto glass-card p-14 md:p-20 mb-32 text-center relative overflow-hidden">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-indigo-200 to-transparent"></div>
-            <p class="text-3xl md:text-5xl leading-[1.6] text-gray-700 font-light italic">“ 所有未曾起舞的日子，都是对生命的辜负。今天的你，值得一切美好的发生。 ”</p>
+        <section class="max-w-6xl mx-auto p-14 md:p-24 mb-40 text-center relative">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent"></div>
+            <p class="text-3xl md:text-6xl leading-[1.6] text-slate-100 font-extralight italic">“ 所有未曾起舞的日子，都是对生命的辜负。今天的你，值得一切美好的发生。 ”</p>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 max-w-[90rem] mx-auto px-6 pb-48">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-20 max-w-[95rem] mx-auto px-8 pb-60">
             
-        <div class="glass-card group hover-lift overflow-hidden">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000000000?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="白羊座">
-                <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
+        <div class="glass-card group overflow-hidden border border-white/10">
+            <div class="h-60 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1534796636912?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80" alt="白羊座">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block transform group-hover:-translate-y-2 transition-transform duration-300">♈️</span>
-                    <h3 class="text-3xl font-bold text-gray-800 mt-2 tracking-tight">白羊座</h3>
+                    <span class="text-6xl block transform group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">♈️</span>
+                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">白羊座</h3>
                 </div>
             </div>
-            <div class="p-10">
-                <div class="flex justify-between items-center mb-6 text-xs font-bold tracking-[0.2em] uppercase">
-                    <span class="text-indigo-400 bg-indigo-50/50 px-3 py-1 rounded-full">3月28日 · Today</span>
-                    <span class="text-pink-300 italic">突破与重塑</span>
+            <div class="p-10 bg-slate-900/40">
+                <div class="flex justify-between items-center mb-6 text-[10px] font-bold tracking-[0.3em] uppercase">
+                    <span class="text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded">Daily Orbit</span>
+                    <span class="text-amber-200/70 italic">突破与重塑</span>
                 </div>
-                <p class="text-gray-500 leading-relaxed italic text-base mb-8 line-clamp-2">“ 春色三分，二分是你的努力，一分是今天的运气。高效的自己才是最治愈的风景。 ”</p>
-                <div class="flex justify-between items-center border-t border-gray-50 pt-8">
-                    <button onclick="showDeepAnalysis(0)" class="bg-gray-800 text-white text-[11px] font-bold px-6 py-2.5 rounded-full hover:bg-indigo-600 transition-all active:scale-95 shadow-lg">深度全书 →</button>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-pink-300 animate-pulse"></span>
-                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Match: 狮子座</span>
-                    </div>
+                <p class="text-slate-300 leading-relaxed italic text-base mb-8 line-clamp-2">“ 春色三分，二分是你的努力，一分是今天的运气。高效的自己才是最治愈的风景。 ”</p>
+                <div class="flex justify-between items-center border-t border-white/5 pt-8">
+                    <button onclick="showDeepAnalysis(0)" class="text-amber-200 text-xs font-bold tracking-widest hover:text-white transition-all uppercase border-b border-amber-200/30 pb-1">深度解析 / Explore →</button>
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Match: 狮子座</span>
                 </div>
             </div>
         </div>
         
-        <div class="glass-card group hover-lift overflow-hidden">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000010000?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="金牛座">
-                <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
+        <div class="glass-card group overflow-hidden border border-white/10">
+            <div class="h-60 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1534796637012?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80" alt="金牛座">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block transform group-hover:-translate-y-2 transition-transform duration-300">♉️</span>
-                    <h3 class="text-3xl font-bold text-gray-800 mt-2 tracking-tight">金牛座</h3>
+                    <span class="text-6xl block transform group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">♉️</span>
+                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">金牛座</h3>
                 </div>
             </div>
-            <div class="p-10">
-                <div class="flex justify-between items-center mb-6 text-xs font-bold tracking-[0.2em] uppercase">
-                    <span class="text-indigo-400 bg-indigo-50/50 px-3 py-1 rounded-full">3月28日 · Today</span>
-                    <span class="text-pink-300 italic">丰盛与感官</span>
+            <div class="p-10 bg-slate-900/40">
+                <div class="flex justify-between items-center mb-6 text-[10px] font-bold tracking-[0.3em] uppercase">
+                    <span class="text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded">Daily Orbit</span>
+                    <span class="text-amber-200/70 italic">丰盛与感官</span>
                 </div>
-                <p class="text-gray-500 leading-relaxed italic text-base mb-8 line-clamp-2">“ 别急着赶路，今天的惊喜藏在路边盛开的小花里。稳稳的幸福，就是最好的转运符。 ”</p>
-                <div class="flex justify-between items-center border-t border-gray-50 pt-8">
-                    <button onclick="showDeepAnalysis(1)" class="bg-gray-800 text-white text-[11px] font-bold px-6 py-2.5 rounded-full hover:bg-indigo-600 transition-all active:scale-95 shadow-lg">深度全书 →</button>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-pink-300 animate-pulse"></span>
-                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Match: 处女座</span>
-                    </div>
+                <p class="text-slate-300 leading-relaxed italic text-base mb-8 line-clamp-2">“ 别急着赶路，今天的惊喜藏在路边盛开的小花里。稳稳的幸福，就是最好的转运符。 ”</p>
+                <div class="flex justify-between items-center border-t border-white/5 pt-8">
+                    <button onclick="showDeepAnalysis(1)" class="text-amber-200 text-xs font-bold tracking-widest hover:text-white transition-all uppercase border-b border-amber-200/30 pb-1">深度解析 / Explore →</button>
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Match: 处女座</span>
                 </div>
             </div>
         </div>
         
-        <div class="glass-card group hover-lift overflow-hidden">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000020000?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="双子座">
-                <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
+        <div class="glass-card group overflow-hidden border border-white/10">
+            <div class="h-60 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1534796637112?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80" alt="双子座">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block transform group-hover:-translate-y-2 transition-transform duration-300">♊️</span>
-                    <h3 class="text-3xl font-bold text-gray-800 mt-2 tracking-tight">双子座</h3>
+                    <span class="text-6xl block transform group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">♊️</span>
+                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">双子座</h3>
                 </div>
             </div>
-            <div class="p-10">
-                <div class="flex justify-between items-center mb-6 text-xs font-bold tracking-[0.2em] uppercase">
-                    <span class="text-indigo-400 bg-indigo-50/50 px-3 py-1 rounded-full">3月28日 · Today</span>
-                    <span class="text-pink-300 italic">信息与连接</span>
+            <div class="p-10 bg-slate-900/40">
+                <div class="flex justify-between items-center mb-6 text-[10px] font-bold tracking-[0.3em] uppercase">
+                    <span class="text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded">Daily Orbit</span>
+                    <span class="text-amber-200/70 italic">信息与连接</span>
                 </div>
-                <p class="text-gray-500 leading-relaxed italic text-base mb-8 line-clamp-2">“ 思维的跳跃是你的天赋，但今天的宁静是你的礼物。放下手机，那些烦恼其实不值一提。 ”</p>
-                <div class="flex justify-between items-center border-t border-gray-50 pt-8">
-                    <button onclick="showDeepAnalysis(2)" class="bg-gray-800 text-white text-[11px] font-bold px-6 py-2.5 rounded-full hover:bg-indigo-600 transition-all active:scale-95 shadow-lg">深度全书 →</button>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-pink-300 animate-pulse"></span>
-                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Match: 天秤座</span>
-                    </div>
+                <p class="text-slate-300 leading-relaxed italic text-base mb-8 line-clamp-2">“ 思维的跳跃是你的天赋，但今天的宁静是你的礼物。放下手机，那些烦恼其实不值一提。 ”</p>
+                <div class="flex justify-between items-center border-t border-white/5 pt-8">
+                    <button onclick="showDeepAnalysis(2)" class="text-amber-200 text-xs font-bold tracking-widest hover:text-white transition-all uppercase border-b border-amber-200/30 pb-1">深度解析 / Explore →</button>
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Match: 天秤座</span>
                 </div>
             </div>
         </div>
         
-        <div class="glass-card group hover-lift overflow-hidden">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000030000?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="巨蟹座">
-                <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
+        <div class="glass-card group overflow-hidden border border-white/10">
+            <div class="h-60 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1534796637212?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80" alt="巨蟹座">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block transform group-hover:-translate-y-2 transition-transform duration-300">♋️</span>
-                    <h3 class="text-3xl font-bold text-gray-800 mt-2 tracking-tight">巨蟹座</h3>
+                    <span class="text-6xl block transform group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">♋️</span>
+                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">巨蟹座</h3>
                 </div>
             </div>
-            <div class="p-10">
-                <div class="flex justify-between items-center mb-6 text-xs font-bold tracking-[0.2em] uppercase">
-                    <span class="text-indigo-400 bg-indigo-50/50 px-3 py-1 rounded-full">3月28日 · Today</span>
-                    <span class="text-pink-300 italic">滋养与守护</span>
+            <div class="p-10 bg-slate-900/40">
+                <div class="flex justify-between items-center mb-6 text-[10px] font-bold tracking-[0.3em] uppercase">
+                    <span class="text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded">Daily Orbit</span>
+                    <span class="text-amber-200/70 italic">滋养与守护</span>
                 </div>
-                <p class="text-gray-500 leading-relaxed italic text-base mb-8 line-clamp-2">“ 家人的关怀是今日最温暖的港湾。适时地表达爱，你会收获双倍的温柔。 ”</p>
-                <div class="flex justify-between items-center border-t border-gray-50 pt-8">
-                    <button onclick="showDeepAnalysis(3)" class="bg-gray-800 text-white text-[11px] font-bold px-6 py-2.5 rounded-full hover:bg-indigo-600 transition-all active:scale-95 shadow-lg">深度全书 →</button>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-pink-300 animate-pulse"></span>
-                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Match: 天蝎座</span>
-                    </div>
+                <p class="text-slate-300 leading-relaxed italic text-base mb-8 line-clamp-2">“ 家人的关怀是今日最温暖的港湾。适时地表达爱，你会收获双倍的温柔。 ”</p>
+                <div class="flex justify-between items-center border-t border-white/5 pt-8">
+                    <button onclick="showDeepAnalysis(3)" class="text-amber-200 text-xs font-bold tracking-widest hover:text-white transition-all uppercase border-b border-amber-200/30 pb-1">深度解析 / Explore →</button>
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Match: 天蝎座</span>
                 </div>
             </div>
         </div>
         
-        <div class="glass-card group hover-lift overflow-hidden">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000040000?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="狮子座">
-                <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
+        <div class="glass-card group overflow-hidden border border-white/10">
+            <div class="h-60 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1534796637312?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80" alt="狮子座">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block transform group-hover:-translate-y-2 transition-transform duration-300">♌️</span>
-                    <h3 class="text-3xl font-bold text-gray-800 mt-2 tracking-tight">狮子座</h3>
+                    <span class="text-6xl block transform group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">♌️</span>
+                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">狮子座</h3>
                 </div>
             </div>
-            <div class="p-10">
-                <div class="flex justify-between items-center mb-6 text-xs font-bold tracking-[0.2em] uppercase">
-                    <span class="text-indigo-400 bg-indigo-50/50 px-3 py-1 rounded-full">3月28日 · Today</span>
-                    <span class="text-pink-300 italic">荣耀与创造</span>
+            <div class="p-10 bg-slate-900/40">
+                <div class="flex justify-between items-center mb-6 text-[10px] font-bold tracking-[0.3em] uppercase">
+                    <span class="text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded">Daily Orbit</span>
+                    <span class="text-amber-200/70 italic">荣耀与创造</span>
                 </div>
-                <p class="text-gray-500 leading-relaxed italic text-base mb-8 line-clamp-2">“ 舞台已经搭建好，你是今日当之无愧的主角。请大胆展现你的才华。 ”</p>
-                <div class="flex justify-between items-center border-t border-gray-50 pt-8">
-                    <button onclick="showDeepAnalysis(4)" class="bg-gray-800 text-white text-[11px] font-bold px-6 py-2.5 rounded-full hover:bg-indigo-600 transition-all active:scale-95 shadow-lg">深度全书 →</button>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-pink-300 animate-pulse"></span>
-                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Match: 射手座</span>
-                    </div>
+                <p class="text-slate-300 leading-relaxed italic text-base mb-8 line-clamp-2">“ 舞台已经搭建好，你是今日当之无愧的主角。请大胆展现你的才华。 ”</p>
+                <div class="flex justify-between items-center border-t border-white/5 pt-8">
+                    <button onclick="showDeepAnalysis(4)" class="text-amber-200 text-xs font-bold tracking-widest hover:text-white transition-all uppercase border-b border-amber-200/30 pb-1">深度解析 / Explore →</button>
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Match: 射手座</span>
                 </div>
             </div>
         </div>
         
-        <div class="glass-card group hover-lift overflow-hidden">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000050000?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="处女座">
-                <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
+        <div class="glass-card group overflow-hidden border border-white/10">
+            <div class="h-60 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1534796637412?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80" alt="处女座">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block transform group-hover:-translate-y-2 transition-transform duration-300">♍️</span>
-                    <h3 class="text-3xl font-bold text-gray-800 mt-2 tracking-tight">处女座</h3>
+                    <span class="text-6xl block transform group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">♍️</span>
+                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">处女座</h3>
                 </div>
             </div>
-            <div class="p-10">
-                <div class="flex justify-between items-center mb-6 text-xs font-bold tracking-[0.2em] uppercase">
-                    <span class="text-indigo-400 bg-indigo-50/50 px-3 py-1 rounded-full">3月28日 · Today</span>
-                    <span class="text-pink-300 italic">秩序与精进</span>
+            <div class="p-10 bg-slate-900/40">
+                <div class="flex justify-between items-center mb-6 text-[10px] font-bold tracking-[0.3em] uppercase">
+                    <span class="text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded">Daily Orbit</span>
+                    <span class="text-amber-200/70 italic">秩序与精进</span>
                 </div>
-                <p class="text-gray-500 leading-relaxed italic text-base mb-8 line-clamp-2">“ 细节决定成败，但也不要过分苛求自己。完美不在于没有瑕疵，而在于全力以赴。 ”</p>
-                <div class="flex justify-between items-center border-t border-gray-50 pt-8">
-                    <button onclick="showDeepAnalysis(5)" class="bg-gray-800 text-white text-[11px] font-bold px-6 py-2.5 rounded-full hover:bg-indigo-600 transition-all active:scale-95 shadow-lg">深度全书 →</button>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-pink-300 animate-pulse"></span>
-                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Match: 摩羯座</span>
-                    </div>
+                <p class="text-slate-300 leading-relaxed italic text-base mb-8 line-clamp-2">“ 细节决定成败，但也不要过分苛求自己。完美不在于没有瑕疵，而在于全力以赴。 ”</p>
+                <div class="flex justify-between items-center border-t border-white/5 pt-8">
+                    <button onclick="showDeepAnalysis(5)" class="text-amber-200 text-xs font-bold tracking-widest hover:text-white transition-all uppercase border-b border-amber-200/30 pb-1">深度解析 / Explore →</button>
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Match: 摩羯座</span>
                 </div>
             </div>
         </div>
         
-        <div class="glass-card group hover-lift overflow-hidden">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000060000?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="天秤座">
-                <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
+        <div class="glass-card group overflow-hidden border border-white/10">
+            <div class="h-60 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1534796637512?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80" alt="天秤座">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block transform group-hover:-translate-y-2 transition-transform duration-300">♎️</span>
-                    <h3 class="text-3xl font-bold text-gray-800 mt-2 tracking-tight">天秤座</h3>
+                    <span class="text-6xl block transform group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">♎️</span>
+                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">天秤座</h3>
                 </div>
             </div>
-            <div class="p-10">
-                <div class="flex justify-between items-center mb-6 text-xs font-bold tracking-[0.2em] uppercase">
-                    <span class="text-indigo-400 bg-indigo-50/50 px-3 py-1 rounded-full">3月28日 · Today</span>
-                    <span class="text-pink-300 italic">平衡艺术</span>
+            <div class="p-10 bg-slate-900/40">
+                <div class="flex justify-between items-center mb-6 text-[10px] font-bold tracking-[0.3em] uppercase">
+                    <span class="text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded">Daily Orbit</span>
+                    <span class="text-amber-200/70 italic">平衡艺术</span>
                 </div>
-                <p class="text-gray-500 leading-relaxed italic text-base mb-8 line-clamp-2">“ 平衡是一门艺术。今天适合在社交与独处之间找到那个完美的支点。 ”</p>
-                <div class="flex justify-between items-center border-t border-gray-50 pt-8">
-                    <button onclick="showDeepAnalysis(6)" class="bg-gray-800 text-white text-[11px] font-bold px-6 py-2.5 rounded-full hover:bg-indigo-600 transition-all active:scale-95 shadow-lg">深度全书 →</button>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-pink-300 animate-pulse"></span>
-                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Match: 双子座</span>
-                    </div>
+                <p class="text-slate-300 leading-relaxed italic text-base mb-8 line-clamp-2">“ 平衡是一门艺术。今天适合在社交与独处之间找到那个完美的支点。 ”</p>
+                <div class="flex justify-between items-center border-t border-white/5 pt-8">
+                    <button onclick="showDeepAnalysis(6)" class="text-amber-200 text-xs font-bold tracking-widest hover:text-white transition-all uppercase border-b border-amber-200/30 pb-1">深度解析 / Explore →</button>
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Match: 双子座</span>
                 </div>
             </div>
         </div>
         
-        <div class="glass-card group hover-lift overflow-hidden">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000070000?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="天蝎座">
-                <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
+        <div class="glass-card group overflow-hidden border border-white/10">
+            <div class="h-60 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1534796637612?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80" alt="天蝎座">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block transform group-hover:-translate-y-2 transition-transform duration-300">♏️</span>
-                    <h3 class="text-3xl font-bold text-gray-800 mt-2 tracking-tight">天蝎座</h3>
+                    <span class="text-6xl block transform group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">♏️</span>
+                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">天蝎座</h3>
                 </div>
             </div>
-            <div class="p-10">
-                <div class="flex justify-between items-center mb-6 text-xs font-bold tracking-[0.2em] uppercase">
-                    <span class="text-indigo-400 bg-indigo-50/50 px-3 py-1 rounded-full">3月28日 · Today</span>
-                    <span class="text-pink-300 italic">深邃洞察</span>
+            <div class="p-10 bg-slate-900/40">
+                <div class="flex justify-between items-center mb-6 text-[10px] font-bold tracking-[0.3em] uppercase">
+                    <span class="text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded">Daily Orbit</span>
+                    <span class="text-amber-200/70 italic">深邃洞察</span>
                 </div>
-                <p class="text-gray-500 leading-relaxed italic text-base mb-8 line-clamp-2">“ 洞察力是你今日的利刃。看透表象背后的真相，你会做出最正确的决策。 ”</p>
-                <div class="flex justify-between items-center border-t border-gray-50 pt-8">
-                    <button onclick="showDeepAnalysis(7)" class="bg-gray-800 text-white text-[11px] font-bold px-6 py-2.5 rounded-full hover:bg-indigo-600 transition-all active:scale-95 shadow-lg">深度全书 →</button>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-pink-300 animate-pulse"></span>
-                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Match: 双鱼座</span>
-                    </div>
+                <p class="text-slate-300 leading-relaxed italic text-base mb-8 line-clamp-2">“ 洞察力是你今日的利刃。看透表象背后的真相，你会做出最正确的决策。 ”</p>
+                <div class="flex justify-between items-center border-t border-white/5 pt-8">
+                    <button onclick="showDeepAnalysis(7)" class="text-amber-200 text-xs font-bold tracking-widest hover:text-white transition-all uppercase border-b border-amber-200/30 pb-1">深度解析 / Explore →</button>
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Match: 双鱼座</span>
                 </div>
             </div>
         </div>
         
-        <div class="glass-card group hover-lift overflow-hidden">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000080000?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="射手座">
-                <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
+        <div class="glass-card group overflow-hidden border border-white/10">
+            <div class="h-60 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1534796637712?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80" alt="射手座">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block transform group-hover:-translate-y-2 transition-transform duration-300">♐️</span>
-                    <h3 class="text-3xl font-bold text-gray-800 mt-2 tracking-tight">射手座</h3>
+                    <span class="text-6xl block transform group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">♐️</span>
+                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">射手座</h3>
                 </div>
             </div>
-            <div class="p-10">
-                <div class="flex justify-between items-center mb-6 text-xs font-bold tracking-[0.2em] uppercase">
-                    <span class="text-indigo-400 bg-indigo-50/50 px-3 py-1 rounded-full">3月28日 · Today</span>
-                    <span class="text-pink-300 italic">自由冒险</span>
+            <div class="p-10 bg-slate-900/40">
+                <div class="flex justify-between items-center mb-6 text-[10px] font-bold tracking-[0.3em] uppercase">
+                    <span class="text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded">Daily Orbit</span>
+                    <span class="text-amber-200/70 italic">自由冒险</span>
                 </div>
-                <p class="text-gray-500 leading-relaxed italic text-base mb-8 line-clamp-2">“ 自由的灵魂从不被束缚。今天适合开启一段小小的冒险，哪怕只是换一条路回家。 ”</p>
-                <div class="flex justify-between items-center border-t border-gray-50 pt-8">
-                    <button onclick="showDeepAnalysis(8)" class="bg-gray-800 text-white text-[11px] font-bold px-6 py-2.5 rounded-full hover:bg-indigo-600 transition-all active:scale-95 shadow-lg">深度全书 →</button>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-pink-300 animate-pulse"></span>
-                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Match: 狮子座</span>
-                    </div>
+                <p class="text-slate-300 leading-relaxed italic text-base mb-8 line-clamp-2">“ 自由的灵魂从不被束缚。今天适合开启一段小小的冒险，哪怕只是换一条路回家。 ”</p>
+                <div class="flex justify-between items-center border-t border-white/5 pt-8">
+                    <button onclick="showDeepAnalysis(8)" class="text-amber-200 text-xs font-bold tracking-widest hover:text-white transition-all uppercase border-b border-amber-200/30 pb-1">深度解析 / Explore →</button>
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Match: 狮子座</span>
                 </div>
             </div>
         </div>
         
-        <div class="glass-card group hover-lift overflow-hidden">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000090000?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="摩羯座">
-                <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
+        <div class="glass-card group overflow-hidden border border-white/10">
+            <div class="h-60 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1534796637812?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80" alt="摩羯座">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block transform group-hover:-translate-y-2 transition-transform duration-300">♑️</span>
-                    <h3 class="text-3xl font-bold text-gray-800 mt-2 tracking-tight">摩羯座</h3>
+                    <span class="text-6xl block transform group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">♑️</span>
+                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">摩羯座</h3>
                 </div>
             </div>
-            <div class="p-10">
-                <div class="flex justify-between items-center mb-6 text-xs font-bold tracking-[0.2em] uppercase">
-                    <span class="text-indigo-400 bg-indigo-50/50 px-3 py-1 rounded-full">3月28日 · Today</span>
-                    <span class="text-pink-300 italic">坚韧攀登</span>
+            <div class="p-10 bg-slate-900/40">
+                <div class="flex justify-between items-center mb-6 text-[10px] font-bold tracking-[0.3em] uppercase">
+                    <span class="text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded">Daily Orbit</span>
+                    <span class="text-amber-200/70 italic">坚韧攀登</span>
                 </div>
-                <p class="text-gray-500 leading-relaxed italic text-base mb-8 line-clamp-2">“ 攀登者从不回头看山脚。你的坚韧将带你到达前所未有的高度，继续努力。 ”</p>
-                <div class="flex justify-between items-center border-t border-gray-50 pt-8">
-                    <button onclick="showDeepAnalysis(9)" class="bg-gray-800 text-white text-[11px] font-bold px-6 py-2.5 rounded-full hover:bg-indigo-600 transition-all active:scale-95 shadow-lg">深度全书 →</button>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-pink-300 animate-pulse"></span>
-                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Match: 金牛座</span>
-                    </div>
+                <p class="text-slate-300 leading-relaxed italic text-base mb-8 line-clamp-2">“ 攀登者从不回头看山脚。你的坚韧将带你到达前所未有的高度，继续努力。 ”</p>
+                <div class="flex justify-between items-center border-t border-white/5 pt-8">
+                    <button onclick="showDeepAnalysis(9)" class="text-amber-200 text-xs font-bold tracking-widest hover:text-white transition-all uppercase border-b border-amber-200/30 pb-1">深度解析 / Explore →</button>
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Match: 金牛座</span>
                 </div>
             </div>
         </div>
         
-        <div class="glass-card group hover-lift overflow-hidden">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000100000?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="水瓶座">
-                <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
+        <div class="glass-card group overflow-hidden border border-white/10">
+            <div class="h-60 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1534796637912?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80" alt="水瓶座">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block transform group-hover:-translate-y-2 transition-transform duration-300">♒️</span>
-                    <h3 class="text-3xl font-bold text-gray-800 mt-2 tracking-tight">水瓶座</h3>
+                    <span class="text-6xl block transform group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">♒️</span>
+                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">水瓶座</h3>
                 </div>
             </div>
-            <div class="p-10">
-                <div class="flex justify-between items-center mb-6 text-xs font-bold tracking-[0.2em] uppercase">
-                    <span class="text-indigo-400 bg-indigo-50/50 px-3 py-1 rounded-full">3月28日 · Today</span>
-                    <span class="text-pink-300 italic">独特灵魂</span>
+            <div class="p-10 bg-slate-900/40">
+                <div class="flex justify-between items-center mb-6 text-[10px] font-bold tracking-[0.3em] uppercase">
+                    <span class="text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded">Daily Orbit</span>
+                    <span class="text-amber-200/70 italic">独特灵魂</span>
                 </div>
-                <p class="text-gray-500 leading-relaxed italic text-base mb-8 line-clamp-2">“ 独特的灵魂终会相遇。今天你的奇思妙想会得到意想不到的共鸣。 ”</p>
-                <div class="flex justify-between items-center border-t border-gray-50 pt-8">
-                    <button onclick="showDeepAnalysis(10)" class="bg-gray-800 text-white text-[11px] font-bold px-6 py-2.5 rounded-full hover:bg-indigo-600 transition-all active:scale-95 shadow-lg">深度全书 →</button>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-pink-300 animate-pulse"></span>
-                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Match: 天秤座</span>
-                    </div>
+                <p class="text-slate-300 leading-relaxed italic text-base mb-8 line-clamp-2">“ 独特的灵魂终会相遇。今天你的奇思妙想会得到意想不到的共鸣。 ”</p>
+                <div class="flex justify-between items-center border-t border-white/5 pt-8">
+                    <button onclick="showDeepAnalysis(10)" class="text-amber-200 text-xs font-bold tracking-widest hover:text-white transition-all uppercase border-b border-amber-200/30 pb-1">深度解析 / Explore →</button>
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Match: 天秤座</span>
                 </div>
             </div>
         </div>
         
-        <div class="glass-card group hover-lift overflow-hidden">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000110000?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="双鱼座">
-                <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
+        <div class="glass-card group overflow-hidden border border-white/10">
+            <div class="h-60 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1534796638012?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80" alt="双鱼座">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block transform group-hover:-translate-y-2 transition-transform duration-300">♓️</span>
-                    <h3 class="text-3xl font-bold text-gray-800 mt-2 tracking-tight">双鱼座</h3>
+                    <span class="text-6xl block transform group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">♓️</span>
+                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">双鱼座</h3>
                 </div>
             </div>
-            <div class="p-10">
-                <div class="flex justify-between items-center mb-6 text-xs font-bold tracking-[0.2em] uppercase">
-                    <span class="text-indigo-400 bg-indigo-50/50 px-3 py-1 rounded-full">3月28日 · Today</span>
-                    <span class="text-pink-300 italic">梦幻彼岸</span>
+            <div class="p-10 bg-slate-900/40">
+                <div class="flex justify-between items-center mb-6 text-[10px] font-bold tracking-[0.3em] uppercase">
+                    <span class="text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded">Daily Orbit</span>
+                    <span class="text-amber-200/70 italic">梦幻彼岸</span>
                 </div>
-                <p class="text-gray-500 leading-relaxed italic text-base mb-8 line-clamp-2">“ 梦境是现实的倒影。今天请相信你的直觉，它会带你走向最温柔的彼岸。 ”</p>
-                <div class="flex justify-between items-center border-t border-gray-50 pt-8">
-                    <button onclick="showDeepAnalysis(11)" class="bg-gray-800 text-white text-[11px] font-bold px-6 py-2.5 rounded-full hover:bg-indigo-600 transition-all active:scale-95 shadow-lg">深度全书 →</button>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-pink-300 animate-pulse"></span>
-                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Match: 巨蟹座</span>
-                    </div>
+                <p class="text-slate-300 leading-relaxed italic text-base mb-8 line-clamp-2">“ 梦境是现实的倒影。今天请相信你的直觉，它会带你走向最温柔的彼岸。 ”</p>
+                <div class="flex justify-between items-center border-t border-white/5 pt-8">
+                    <button onclick="showDeepAnalysis(11)" class="text-amber-200 text-xs font-bold tracking-widest hover:text-white transition-all uppercase border-b border-amber-200/30 pb-1">深度解析 / Explore →</button>
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Match: 巨蟹座</span>
                 </div>
             </div>
         </div>
@@ -362,67 +320,50 @@
 
         <!-- Pop-up -->
         <div id="horoModal" class="modal-overlay" onclick="closeModal()">
-            <div class="modal-content glass-card p-10 md:p-16 relative w-[95%] max-w-3xl my-auto" onclick="event.stopPropagation()">
-                <button onclick="closeModal()" class="absolute top-8 right-10 text-gray-300 text-4xl hover:text-gray-500 transition font-light">×</button>
+            <div class="modal-content glass-card p-12 md:p-20 relative w-[95%] max-w-4xl border border-white/10" onclick="event.stopPropagation()">
+                <button onclick="closeModal()" class="absolute top-10 right-12 text-slate-500 text-4xl hover:text-white transition font-thin">✕</button>
                 
-                <div class="flex flex-col md:flex-row items-center gap-10 mb-16">
-                    <span id="mIcon" class="text-9xl transform -rotate-12">♈️</span>
+                <div class="flex flex-col md:flex-row items-center gap-14 mb-20">
+                    <span id="mIcon" class="text-[10rem] drop-shadow-[0_0_50px_rgba(255,255,255,0.1)]">♈️</span>
                     <div class="text-center md:text-left">
-                        <h2 id="mSign" class="text-6xl font-bold text-gray-800 tracking-tight">白羊座</h2>
-                        <p id="mTheme" class="text-indigo-500 font-bold tracking-[0.4em] text-xs uppercase mt-4"></p>
+                        <h2 id="mSign" class="text-7xl font-bold text-white tracking-tighter">白羊座</h2>
+                        <p id="mTheme" class="text-indigo-400 font-black tracking-[0.5em] text-sm uppercase mt-6"></p>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-                    <div class="p-4 rounded-3xl text-center border border-indigo-50"><p class="text-[9px] text-gray-400 uppercase mb-2 font-bold">幸运色</p><p id="mColor" class="font-bold text-gray-700 text-sm"></p></div>
-                    <div class="p-4 rounded-3xl text-center border border-indigo-50"><p class="text-[9px] text-gray-400 uppercase mb-2 font-bold">幸运数</p><p id="mNumber" class="font-bold text-gray-700 text-sm"></p></div>
-                    <div class="p-4 rounded-3xl text-center border border-indigo-50"><p class="text-[9px] text-gray-400 uppercase mb-2 font-bold">最佳方位</p><p id="mDirection" class="font-bold text-gray-700 text-sm"></p></div>
-                    <div class="p-4 rounded-3xl text-center border border-indigo-50"><p class="text-[9px] text-gray-400 uppercase mb-2 font-bold">开运好物</p><p id="mItem" class="font-bold text-gray-700 text-xs"></p></div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
+                    <div class="bg-slate-900/50 p-6 rounded-3xl text-center border border-white/5"><p class="text-[10px] text-slate-500 uppercase mb-3 font-bold tracking-widest">幸运色</p><p id="mColor" class="font-bold text-indigo-100 text-base"></p></div>
+                    <div class="bg-slate-900/50 p-6 rounded-3xl text-center border border-white/5"><p class="text-[10px] text-slate-500 uppercase mb-3 font-bold tracking-widest">幸运数</p><p id="mNumber" class="font-bold text-indigo-100 text-base"></p></div>
+                    <div class="bg-slate-900/50 p-6 rounded-3xl text-center border border-white/5"><p class="text-[10px] text-slate-500 uppercase mb-3 font-bold tracking-widest">最佳方位</p><p id="mDirection" class="font-bold text-indigo-100 text-base"></p></div>
+                    <div class="bg-slate-900/50 p-6 rounded-3xl text-center border border-white/5"><p class="text-[10px] text-slate-500 uppercase mb-3 font-bold tracking-widest">开运好物</p><p id="mItem" class="font-bold text-indigo-100 text-sm"></p></div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 mb-16">
-                    <div class="space-y-6">
-                        <div><div class="flex justify-between text-[10px] mb-2 font-bold uppercase tracking-widest text-gray-400"><span>Career / 事业</span><span id="pcVal"></span></div><div class="progress-bar"><div id="pc" class="progress-fill"></div></div></div>
-                        <div><div class="flex justify-between text-[10px] mb-2 font-bold uppercase tracking-widest text-gray-400"><span>Wealth / 财富</span><span id="pwVal"></span></div><div class="progress-bar"><div id="pw" class="progress-fill"></div></div></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-10 mb-20">
+                    <div class="space-y-8">
+                        <div><div class="flex justify-between text-[10px] mb-3 font-black uppercase tracking-widest text-slate-500"><span>Career / 事业</span><span id="pcVal" class="text-indigo-300"></span></div><div class="progress-bar"><div id="pc" class="progress-fill"></div></div></div>
+                        <div><div class="flex justify-between text-[10px] mb-3 font-black uppercase tracking-widest text-slate-500"><span>Wealth / 财富</span><span id="pwVal" class="text-indigo-300"></span></div><div class="progress-bar"><div id="pw" class="progress-fill"></div></div></div>
                     </div>
-                    <div class="space-y-6">
-                        <div><div class="flex justify-between text-[10px] mb-2 font-bold uppercase tracking-widest text-gray-400"><span>Body / 健康</span><span id="phVal"></span></div><div class="progress-bar"><div id="ph" class="progress-fill"></div></div></div>
-                        <div><div class="flex justify-between text-[10px] mb-2 font-bold uppercase tracking-widest text-gray-400"><span>Love / 爱情</span><span id="plVal"></span></div><div class="progress-bar"><div id="pl" class="progress-fill"></div></div></div>
+                    <div class="space-y-8">
+                        <div><div class="flex justify-between text-[10px] mb-3 font-black uppercase tracking-widest text-slate-500"><span>Body / 健康</span><span id="phVal" class="text-indigo-300"></span></div><div class="progress-bar"><div id="ph" class="progress-fill"></div></div></div>
+                        <div><div class="flex justify-between text-[10px] mb-3 font-black uppercase tracking-widest text-slate-500"><span>Love / 爱情</span><span id="plVal" class="text-indigo-300"></span></div><div class="progress-bar"><div id="pl" class="progress-fill"></div></div></div>
                     </div>
                 </div>
 
-                <div class="bg-indigo-500/5 p-10 rounded-[3rem] border border-indigo-500/10">
-                    <h4 class="text-xs font-bold text-indigo-500 mb-4 uppercase tracking-widest">💡 疗愈分析</h4>
-                    <p id="mDetail" class="text-gray-600 leading-relaxed text-sm italic italic">内容加载中...</p>
+                <div class="bg-indigo-950/30 p-12 rounded-[3.5rem] border border-white/5">
+                    <h4 class="text-xs font-black text-indigo-400 mb-6 uppercase tracking-[0.3em]">💡 疗愈指南</h4>
+                    <p id="mDetail" class="text-slate-300 leading-relaxed text-lg font-light italic">内容加载中...</p>
                 </div>
             </div>
         </div>
 
-        <!-- 背景音 -->
-        <div id="musicBtn" class="music-btn" onclick="toggleMusic()">
-            <span id="musicIcon" class="text-xl">🌿</span>
-        </div>
-        <audio id="bgMusic" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+        <footer class="mt-40 text-center text-slate-600 pb-32 border-t border-white/5 pt-24 px-6">
+            <p class="text-xl mb-6 tracking-widest uppercase">© 2026 AI星语 · 疗愈时空</p>
+            <p class="text-xs font-light opacity-50">以星辰为引，予灵魂安宁 | Powered by AI Orbit</p>
+        </footer>
 
         <script>
             const db = [{"sign": "\u767d\u7f8a\u5ea7", "icon": "\u2648\ufe0f", "theme": "\u7a81\u7834\u4e0e\u91cd\u5851", "overall": 88, "love": 75, "career": 92, "wealth": 80, "health": 85, "lucky": {"color": "\u7194\u5ca9\u6a59", "number": "9", "direction": "\u4e1c\u5317", "match": "\u72ee\u5b50\u5ea7", "item": "\u767d\u8272\u6269\u9999\u77f3"}, "text": "\u6625\u8272\u4e09\u5206\uff0c\u4e8c\u5206\u662f\u4f60\u7684\u52aa\u529b\uff0c\u4e00\u5206\u662f\u4eca\u5929\u7684\u8fd0\u6c14\u3002\u9ad8\u6548\u7684\u81ea\u5df1\u624d\u662f\u6700\u6cbb\u6108\u7684\u98ce\u666f\u3002"}, {"sign": "\u91d1\u725b\u5ea7", "icon": "\u2649\ufe0f", "theme": "\u4e30\u76db\u4e0e\u611f\u5b98", "overall": 82, "love": 95, "career": 78, "wealth": 88, "health": 90, "lucky": {"color": "\u677e\u77f3\u7eff", "number": "6", "direction": "\u6b63\u5357", "match": "\u5904\u5973\u5ea7", "item": "\u624b\u5de5\u9676\u5668"}, "text": "\u522b\u6025\u7740\u8d76\u8def\uff0c\u4eca\u5929\u7684\u60ca\u559c\u85cf\u5728\u8def\u8fb9\u76db\u5f00\u7684\u5c0f\u82b1\u91cc\u3002\u7a33\u7a33\u7684\u5e78\u798f\uff0c\u5c31\u662f\u6700\u597d\u7684\u8f6c\u8fd0\u7b26\u3002"}, {"sign": "\u53cc\u5b50\u5ea7", "icon": "\u264a\ufe0f", "theme": "\u4fe1\u606f\u4e0e\u8fde\u63a5", "overall": 85, "love": 70, "career": 90, "wealth": 75, "health": 82, "lucky": {"color": "\u4eae\u9ec4", "number": "5", "direction": "\u897f\u5357", "match": "\u5929\u79e4\u5ea7", "item": "\u65e0\u7ebf\u8033\u673a"}, "text": "\u601d\u7ef4\u7684\u8df3\u8dc3\u662f\u4f60\u7684\u5929\u8d4b\uff0c\u4f46\u4eca\u5929\u7684\u5b81\u9759\u662f\u4f60\u7684\u793c\u7269\u3002\u653e\u4e0b\u624b\u673a\uff0c\u90a3\u4e9b\u70e6\u607c\u5176\u5b9e\u4e0d\u503c\u4e00\u63d0\u3002"}, {"sign": "\u5de8\u87f9\u5ea7", "icon": "\u264b\ufe0f", "theme": "\u6ecb\u517b\u4e0e\u5b88\u62a4", "overall": 80, "love": 92, "career": 75, "wealth": 80, "health": 88, "lucky": {"color": "\u73cd\u73e0\u94f6", "number": "2", "direction": "\u6b63\u5317", "match": "\u5929\u874e\u5ea7", "item": "\u771f\u4e1d\u6795\u5957"}, "text": "\u5bb6\u4eba\u7684\u5173\u6000\u662f\u4eca\u65e5\u6700\u6e29\u6696\u7684\u6e2f\u6e7e\u3002\u9002\u65f6\u5730\u8868\u8fbe\u7231\uff0c\u4f60\u4f1a\u6536\u83b7\u53cc\u500d\u7684\u6e29\u67d4\u3002"}, {"sign": "\u72ee\u5b50\u5ea7", "icon": "\u264c\ufe0f", "theme": "\u8363\u8000\u4e0e\u521b\u9020", "overall": 95, "love": 85, "career": 98, "wealth": 82, "health": 80, "lucky": {"color": "\u5e1d\u738b\u7d2b", "number": "1", "direction": "\u4e1c\u5357", "match": "\u5c04\u624b\u5ea7", "item": "\u91d1\u8272\u9886\u5939"}, "text": "\u821e\u53f0\u5df2\u7ecf\u642d\u5efa\u597d\uff0c\u4f60\u662f\u4eca\u65e5\u5f53\u4e4b\u65e0\u6127\u7684\u4e3b\u89d2\u3002\u8bf7\u5927\u80c6\u5c55\u73b0\u4f60\u7684\u624d\u534e\u3002"}, {"sign": "\u5904\u5973\u5ea7", "icon": "\u264d\ufe0f", "theme": "\u79e9\u5e8f\u4e0e\u7cbe\u8fdb", "overall": 88, "love": 80, "career": 95, "wealth": 78, "health": 85, "lucky": {"color": "\u71d5\u9ea6\u8272", "number": "4", "direction": "\u6b63\u897f", "match": "\u6469\u7faf\u5ea7", "item": "\u590d\u53e4\u6253\u5b57\u673a"}, "text": "\u7ec6\u8282\u51b3\u5b9a\u6210\u8d25\uff0c\u4f46\u4e5f\u4e0d\u8981\u8fc7\u5206\u82db\u6c42\u81ea\u5df1\u3002\u5b8c\u7f8e\u4e0d\u5728\u4e8e\u6ca1\u6709\u7455\u75b5\uff0c\u800c\u5728\u4e8e\u5168\u529b\u4ee5\u8d74\u3002"}, {"sign": "\u5929\u79e4\u5ea7", "icon": "\u264e\ufe0f", "theme": "\u5e73\u8861\u827a\u672f", "overall": 75, "love": 95, "career": 70, "wealth": 70, "health": 90, "lucky": {"color": "\u6de1\u7d2b\u8272", "number": "8", "direction": "\u6b63\u4e1c", "match": "\u53cc\u5b50\u5ea7", "item": "\u827a\u672f\u753b\u518c"}, "text": "\u5e73\u8861\u662f\u4e00\u95e8\u827a\u672f\u3002\u4eca\u5929\u9002\u5408\u5728\u793e\u4ea4\u4e0e\u72ec\u5904\u4e4b\u95f4\u627e\u5230\u90a3\u4e2a\u5b8c\u7f8e\u7684\u652f\u70b9\u3002"}, {"sign": "\u5929\u874e\u5ea7", "icon": "\u264f\ufe0f", "theme": "\u6df1\u9083\u6d1e\u5bdf", "overall": 90, "love": 75, "career": 90, "wealth": 85, "health": 70, "lucky": {"color": "\u5348\u591c\u84dd", "number": "9", "direction": "\u897f\u5317", "match": "\u53cc\u9c7c\u5ea7", "item": "\u9ed1\u5de7\u514b\u529b"}, "text": "\u6d1e\u5bdf\u529b\u662f\u4f60\u4eca\u65e5\u7684\u5229\u5203\u3002\u770b\u900f\u8868\u8c61\u80cc\u540e\u7684\u771f\u76f8\uff0c\u4f60\u4f1a\u505a\u51fa\u6700\u6b63\u786e\u7684\u51b3\u7b56\u3002"}, {"sign": "\u5c04\u624b\u5ea7", "icon": "\u2650\ufe0f", "theme": "\u81ea\u7531\u5192\u9669", "overall": 80, "love": 85, "career": 80, "wealth": 75, "health": 95, "lucky": {"color": "\u706b\u7130\u6a59", "number": "4", "direction": "\u6b63\u5357", "match": "\u72ee\u5b50\u5ea7", "item": "\u8fd0\u52a8\u8033\u673a"}, "text": "\u81ea\u7531\u7684\u7075\u9b42\u4ece\u4e0d\u88ab\u675f\u7f1a\u3002\u4eca\u5929\u9002\u5408\u5f00\u542f\u4e00\u6bb5\u5c0f\u5c0f\u7684\u5192\u9669\uff0c\u54ea\u6015\u53ea\u662f\u6362\u4e00\u6761\u8def\u56de\u5bb6\u3002"}, {"sign": "\u6469\u7faf\u5ea7", "icon": "\u2651\ufe0f", "theme": "\u575a\u97e7\u6500\u767b", "overall": 95, "love": 65, "career": 95, "wealth": 90, "health": 75, "lucky": {"color": "\u5927\u5730\u8910", "number": "0", "direction": "\u4e1c\u5317", "match": "\u91d1\u725b\u5ea7", "item": "\u77f3\u8d28\u6446\u4ef6"}, "text": "\u6500\u767b\u8005\u4ece\u4e0d\u56de\u5934\u770b\u5c71\u811a\u3002\u4f60\u7684\u575a\u97e7\u5c06\u5e26\u4f60\u5230\u8fbe\u524d\u6240\u672a\u6709\u7684\u9ad8\u5ea6\uff0c\u7ee7\u7eed\u52aa\u529b\u3002"}, {"sign": "\u6c34\u74f6\u5ea7", "icon": "\u2652\ufe0f", "theme": "\u72ec\u7279\u7075\u9b42", "overall": 85, "love": 90, "career": 85, "wealth": 70, "health": 80, "lucky": {"color": "\u8367\u5149\u7d2b", "number": "11", "direction": "\u897f\u5357", "match": "\u5929\u79e4\u5ea7", "item": "\u65e0\u7ebf\u5145\u7535\u677f"}, "text": "\u72ec\u7279\u7684\u7075\u9b42\u7ec8\u4f1a\u76f8\u9047\u3002\u4eca\u5929\u4f60\u7684\u5947\u601d\u5999\u60f3\u4f1a\u5f97\u5230\u610f\u60f3\u4e0d\u5230\u7684\u5171\u9e23\u3002"}, {"sign": "\u53cc\u9c7c\u5ea7", "icon": "\u2653\ufe0f", "theme": "\u68a6\u5e7b\u5f7c\u5cb8", "overall": 70, "love": 100, "career": 70, "wealth": 75, "health": 90, "lucky": {"color": "\u73ca\u745a\u7c89", "number": "22", "direction": "\u6b63\u5317", "match": "\u5de8\u87f9\u5ea7", "item": "\u6c34\u6676\u7403"}, "text": "\u68a6\u5883\u662f\u73b0\u5b9e\u7684\u5012\u5f71\u3002\u4eca\u5929\u8bf7\u76f8\u4fe1\u4f60\u7684\u76f4\u89c9\uff0c\u5b83\u4f1a\u5e26\u4f60\u8d70\u5411\u6700\u6e29\u67d4\u7684\u5f7c\u5cb8\u3002"}];
-            const audio = document.getElementById('bgMusic');
-            const musicBtn = document.getElementById('musicBtn');
-            let isPlaying = false;
-
-            function toggleMusic() {
-                if(isPlaying) {
-                    audio.pause();
-                    musicBtn.classList.remove('music-playing');
-                    document.getElementById('musicIcon').innerText = '🌿';
-                } else {
-                    audio.play().catch(e => alert('请先点击屏幕任何地方，然后开启音乐'));
-                    musicBtn.classList.add('music-playing');
-                    document.getElementById('musicIcon').innerText = '🎶';
-                }
-                isPlaying = !isPlaying;
-            }
-
+            
             function showDeepAnalysis(idx) {
                 const item = db[idx];
                 document.getElementById('mSign').innerText = item.sign;
@@ -432,7 +373,7 @@
                 document.getElementById('mNumber').innerText = item.lucky.number;
                 document.getElementById('mDirection').innerText = item.lucky.direction;
                 document.getElementById('mItem').innerText = item.lucky.item;
-                document.getElementById('mDetail').innerText = item.text + " 在星辰的指引下，今日你要格外关注内在能量的流动。";
+                document.getElementById('mDetail').innerText = item.text + " 在星辰的指引下，今日你要格外关注内在能量的流动。静谧的夜空会带给你最深邃的智慧。";
                 
                 document.getElementById('horoModal').classList.add('modal-active');
                 
