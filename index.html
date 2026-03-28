@@ -4,253 +4,209 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <title>AI星语 · 潮流能量站</title>
+        <title>AI星语 · 潮流能量百科</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+SC:wght@400;900&display=swap" rel="stylesheet">
         <style>
-            body { 
-                background: #ffffff; 
-                font-family: 'Noto Sans SC', sans-serif; 
-                min-height: 100vh; 
-                color: #111; 
-                overflow-x: hidden; 
-                -webkit-tap-highlight-color: transparent;
-            }
-            /* 幻彩流动背景 */
-            .gradient-bg {
-                position: fixed; inset: 0; z-index: -1;
-                background: linear-gradient(125deg, #fce7f3 0%, #e0e7ff 50%, #fefce8 100%);
-                filter: contrast(120%);
-            }
-            .gradient-blob {
-                position: absolute; width: 800px; height: 800px; border-radius: 50%;
-                background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%);
-                animation: move 20s infinite alternate;
-            }
-            @keyframes move { from { transform: translate(-20%, -20%); } to { transform: translate(20%, 20%); } }
-
-            .card-container { 
-                background: rgba(255, 255, 255, 0.8); 
-                backdrop-filter: blur(20px); 
-                border-radius: 48px; 
-                border: 2px solid #fff;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.03);
-                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            }
-            .card-container:hover { transform: translateY(-10px); box-shadow: 0 40px 80px rgba(0,0,0,0.1); border-color: #6366f1; }
-            
-            .modal-overlay { 
-                display: none; position: fixed; inset: 0; 
-                background: rgba(255, 255, 255, 0.8); 
-                backdrop-filter: blur(30px); z-index: 9999; 
-                align-items: center; justify-content: center; 
-                opacity: 0; transition: opacity 0.3s ease; 
-            }
+            body { background: #ffffff; font-family: 'Noto Sans SC', sans-serif; min-height: 100vh; color: #111; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+            .gradient-bg { position: fixed; inset: 0; z-index: -1; background: linear-gradient(125deg, #fce7f3 0%, #e0e7ff 50%, #fefce8 100%); }
+            .card-container { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); border-radius: 48px; border: 2px solid #fff; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+            .card-container:hover { transform: translateY(-10px); border-color: #6366f1; }
+            .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(30px); z-index: 9999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
             .modal-active { display: flex !important; opacity: 1; }
-            .modal-content { 
-                transform: scale(0.9) translateY(20px); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
-                width: 95%; max-width: 450px; 
-                background: #fff; border-radius: 50px; 
-                box-shadow: 0 50px 100px rgba(0,0,0,0.1);
-                border: 1px solid #eee;
-            }
-            .modal-active .modal-content { transform: scale(1) translateY(0); }
-            
-            .badge { 
-                display: inline-block; padding: 6px 16px; border-radius: 100px; 
-                font-size: 12px; font-weight: 900; text-transform: uppercase;
-                letter-spacing: 1px; margin-right: 8px; margin-bottom: 8px;
-            }
-            .deep-text { font-size: 1.25rem; line-height: 1.8; color: #333; font-weight: 500; }
+            .modal-content { transform: scale(0.9); transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); width: 95%; max-width: 450px; max-height: 85vh; background: #fff; border-radius: 50px; box-shadow: 0 50px 100px rgba(0,0,0,0.1); border: 1px solid #eee; display: flex; flex-direction: column; overflow: hidden; }
+            .modal-active .modal-content { transform: scale(1); }
+            .modal-body { overflow-y: auto; padding: 40px; flex: 1; }
+            .badge { display: inline-block; padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 900; text-transform: uppercase; margin-right: 8px; margin-bottom: 8px; }
+            .deep-text { font-size: 1.2rem; line-height: 1.8; color: #333; font-weight: 500; margin-bottom: 20px; }
+            .section-title { font-size: 10px; font-weight: 900; color: #aaa; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
             ::-webkit-scrollbar { width: 0; }
         </style>
     </head>
     <body class="p-6 md:p-16">
-        <div class="gradient-bg"><div class="gradient-blob"></div></div>
-        
+        <div class="gradient-bg"></div>
         <header class="text-center mb-20 mt-10">
             <h1 style="font-family: 'Archivo Black', sans-serif;" class="text-7xl md:text-9xl text-gray-900 tracking-tighter uppercase mb-4">AI STARS</h1>
-            <div class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-full font-black text-xs tracking-widest uppercase">Healing & Energy Station</div>
+            <div class="inline-block bg-black text-white px-6 py-2 rounded-full font-black text-xs tracking-widest uppercase">Depth & Energy Edition</div>
         </header>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto pb-48">
             
         <div class="card-container group">
             <div class="h-40 flex items-center justify-center relative overflow-hidden rounded-t-[40px]">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent z-10"></div>
-                <span class="text-8xl transform group-hover:scale-110 transition-transform duration-500 z-20">♈️</span>
+                <span class="text-8xl transform group-hover:scale-110 transition-all duration-500 z-20">♈️</span>
             </div>
             <div class="p-8">
                 <h3 class="text-3xl font-black text-gray-900 mb-2 tracking-tighter uppercase">白羊座</h3>
-                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。 ”</p>
-                <button onclick="openDeepHoro(0)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">VIEW DEEP ANALYSIS →</button>
+                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。 ”</p>
+                <button onclick="openDeepHoro(0)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">READ FULL STORY →</button>
             </div>
         </div>
         
         <div class="card-container group">
             <div class="h-40 flex items-center justify-center relative overflow-hidden rounded-t-[40px]">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent z-10"></div>
-                <span class="text-8xl transform group-hover:scale-110 transition-transform duration-500 z-20">♉️</span>
+                <span class="text-8xl transform group-hover:scale-110 transition-all duration-500 z-20">♉️</span>
             </div>
             <div class="p-8">
                 <h3 class="text-3xl font-black text-gray-900 mb-2 tracking-tighter uppercase">金牛座</h3>
-                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。 ”</p>
-                <button onclick="openDeepHoro(1)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">VIEW DEEP ANALYSIS →</button>
+                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。 ”</p>
+                <button onclick="openDeepHoro(1)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">READ FULL STORY →</button>
             </div>
         </div>
         
         <div class="card-container group">
             <div class="h-40 flex items-center justify-center relative overflow-hidden rounded-t-[40px]">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent z-10"></div>
-                <span class="text-8xl transform group-hover:scale-110 transition-transform duration-500 z-20">♊️</span>
+                <span class="text-8xl transform group-hover:scale-110 transition-all duration-500 z-20">♊️</span>
             </div>
             <div class="p-8">
                 <h3 class="text-3xl font-black text-gray-900 mb-2 tracking-tighter uppercase">双子座</h3>
-                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。 ”</p>
-                <button onclick="openDeepHoro(2)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">VIEW DEEP ANALYSIS →</button>
+                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。 ”</p>
+                <button onclick="openDeepHoro(2)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">READ FULL STORY →</button>
             </div>
         </div>
         
         <div class="card-container group">
             <div class="h-40 flex items-center justify-center relative overflow-hidden rounded-t-[40px]">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent z-10"></div>
-                <span class="text-8xl transform group-hover:scale-110 transition-transform duration-500 z-20">♋️</span>
+                <span class="text-8xl transform group-hover:scale-110 transition-all duration-500 z-20">♋️</span>
             </div>
             <div class="p-8">
                 <h3 class="text-3xl font-black text-gray-900 mb-2 tracking-tighter uppercase">巨蟹座</h3>
-                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。 ”</p>
-                <button onclick="openDeepHoro(3)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">VIEW DEEP ANALYSIS →</button>
+                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。 ”</p>
+                <button onclick="openDeepHoro(3)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">READ FULL STORY →</button>
             </div>
         </div>
         
         <div class="card-container group">
             <div class="h-40 flex items-center justify-center relative overflow-hidden rounded-t-[40px]">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent z-10"></div>
-                <span class="text-8xl transform group-hover:scale-110 transition-transform duration-500 z-20">♌️</span>
+                <span class="text-8xl transform group-hover:scale-110 transition-all duration-500 z-20">♌️</span>
             </div>
             <div class="p-8">
                 <h3 class="text-3xl font-black text-gray-900 mb-2 tracking-tighter uppercase">狮子座</h3>
-                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。 ”</p>
-                <button onclick="openDeepHoro(4)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">VIEW DEEP ANALYSIS →</button>
+                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。 ”</p>
+                <button onclick="openDeepHoro(4)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">READ FULL STORY →</button>
             </div>
         </div>
         
         <div class="card-container group">
             <div class="h-40 flex items-center justify-center relative overflow-hidden rounded-t-[40px]">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent z-10"></div>
-                <span class="text-8xl transform group-hover:scale-110 transition-transform duration-500 z-20">♍️</span>
+                <span class="text-8xl transform group-hover:scale-110 transition-all duration-500 z-20">♍️</span>
             </div>
             <div class="p-8">
                 <h3 class="text-3xl font-black text-gray-900 mb-2 tracking-tighter uppercase">处女座</h3>
-                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。 ”</p>
-                <button onclick="openDeepHoro(5)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">VIEW DEEP ANALYSIS →</button>
+                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。 ”</p>
+                <button onclick="openDeepHoro(5)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">READ FULL STORY →</button>
             </div>
         </div>
         
         <div class="card-container group">
             <div class="h-40 flex items-center justify-center relative overflow-hidden rounded-t-[40px]">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent z-10"></div>
-                <span class="text-8xl transform group-hover:scale-110 transition-transform duration-500 z-20">♎️</span>
+                <span class="text-8xl transform group-hover:scale-110 transition-all duration-500 z-20">♎️</span>
             </div>
             <div class="p-8">
                 <h3 class="text-3xl font-black text-gray-900 mb-2 tracking-tighter uppercase">天秤座</h3>
-                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。 ”</p>
-                <button onclick="openDeepHoro(6)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">VIEW DEEP ANALYSIS →</button>
+                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。 ”</p>
+                <button onclick="openDeepHoro(6)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">READ FULL STORY →</button>
             </div>
         </div>
         
         <div class="card-container group">
             <div class="h-40 flex items-center justify-center relative overflow-hidden rounded-t-[40px]">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent z-10"></div>
-                <span class="text-8xl transform group-hover:scale-110 transition-transform duration-500 z-20">♏️</span>
+                <span class="text-8xl transform group-hover:scale-110 transition-all duration-500 z-20">♏️</span>
             </div>
             <div class="p-8">
                 <h3 class="text-3xl font-black text-gray-900 mb-2 tracking-tighter uppercase">天蝎座</h3>
-                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。 ”</p>
-                <button onclick="openDeepHoro(7)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">VIEW DEEP ANALYSIS →</button>
+                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。 ”</p>
+                <button onclick="openDeepHoro(7)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">READ FULL STORY →</button>
             </div>
         </div>
         
         <div class="card-container group">
             <div class="h-40 flex items-center justify-center relative overflow-hidden rounded-t-[40px]">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent z-10"></div>
-                <span class="text-8xl transform group-hover:scale-110 transition-transform duration-500 z-20">♐️</span>
+                <span class="text-8xl transform group-hover:scale-110 transition-all duration-500 z-20">♐️</span>
             </div>
             <div class="p-8">
                 <h3 class="text-3xl font-black text-gray-900 mb-2 tracking-tighter uppercase">射手座</h3>
-                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。 ”</p>
-                <button onclick="openDeepHoro(8)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">VIEW DEEP ANALYSIS →</button>
+                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。 ”</p>
+                <button onclick="openDeepHoro(8)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">READ FULL STORY →</button>
             </div>
         </div>
         
         <div class="card-container group">
             <div class="h-40 flex items-center justify-center relative overflow-hidden rounded-t-[40px]">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent z-10"></div>
-                <span class="text-8xl transform group-hover:scale-110 transition-transform duration-500 z-20">♑️</span>
+                <span class="text-8xl transform group-hover:scale-110 transition-all duration-500 z-20">♑️</span>
             </div>
             <div class="p-8">
                 <h3 class="text-3xl font-black text-gray-900 mb-2 tracking-tighter uppercase">摩羯座</h3>
-                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。 ”</p>
-                <button onclick="openDeepHoro(9)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">VIEW DEEP ANALYSIS →</button>
+                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。 ”</p>
+                <button onclick="openDeepHoro(9)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">READ FULL STORY →</button>
             </div>
         </div>
         
         <div class="card-container group">
             <div class="h-40 flex items-center justify-center relative overflow-hidden rounded-t-[40px]">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent z-10"></div>
-                <span class="text-8xl transform group-hover:scale-110 transition-transform duration-500 z-20">♒️</span>
+                <span class="text-8xl transform group-hover:scale-110 transition-all duration-500 z-20">♒️</span>
             </div>
             <div class="p-8">
                 <h3 class="text-3xl font-black text-gray-900 mb-2 tracking-tighter uppercase">水瓶座</h3>
-                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。 ”</p>
-                <button onclick="openDeepHoro(10)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">VIEW DEEP ANALYSIS →</button>
+                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。 ”</p>
+                <button onclick="openDeepHoro(10)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">READ FULL STORY →</button>
             </div>
         </div>
         
         <div class="card-container group">
             <div class="h-40 flex items-center justify-center relative overflow-hidden rounded-t-[40px]">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent z-10"></div>
-                <span class="text-8xl transform group-hover:scale-110 transition-transform duration-500 z-20">♓️</span>
+                <span class="text-8xl transform group-hover:scale-110 transition-all duration-500 z-20">♓️</span>
             </div>
             <div class="p-8">
                 <h3 class="text-3xl font-black text-gray-900 mb-2 tracking-tighter uppercase">双鱼座</h3>
-                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。 ”</p>
-                <button onclick="openDeepHoro(11)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">VIEW DEEP ANALYSIS →</button>
+                <p class="text-gray-500 text-base leading-relaxed line-clamp-2 mb-6 italic">“ 今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。 ”</p>
+                <button onclick="openDeepHoro(11)" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl cursor-pointer">READ FULL STORY →</button>
             </div>
         </div>
         
         </div>
 
         <div id="hModal" class="modal-overlay" onclick="closeDeepHoro()">
-            <div class="modal-content p-10 md:p-14 relative" onclick="event.stopPropagation()">
-                <button onclick="closeDeepHoro()" class="absolute top-8 right-10 text-gray-400 text-4xl hover:text-gray-900 transition">✕</button>
+            <div class="modal-content relative" onclick="event.stopPropagation()">
+                <button onclick="closeDeepHoro()" class="absolute top-8 right-10 text-gray-300 text-4xl hover:text-gray-900 transition z-50">✕</button>
                 
-                <div class="mb-10 text-center">
-                    <span id="mIcon" class="text-9xl mb-4 block"></span>
-                    <h2 class="text-5xl font-black text-gray-900 tracking-tighter uppercase" id="mSign"></h2>
-                    <p id="mTheme" class="text-indigo-600 font-black tracking-widest text-xs uppercase mt-2"></p>
-                </div>
-
-                <div class="space-y-10">
-                    <div>
-                        <h4 class="text-[10px] font-black text-gray-400 mb-4 uppercase tracking-[0.3em]">Character Traits / 性格特质</h4>
-                        <div id="mPersBadges"></div>
+                <div class="modal-body">
+                    <div class="mb-12 text-center">
+                        <span id="mIcon" class="text-9xl mb-4 block"></span>
+                        <h2 class="text-5xl font-black text-gray-900 tracking-tighter uppercase" id="mSign"></h2>
+                        <p id="mTheme" class="text-indigo-600 font-black tracking-widest text-xs uppercase mt-2"></p>
                     </div>
 
-                    <div>
-                        <h4 class="text-[10px] font-black text-pink-500 mb-4 uppercase tracking-[0.3em]">Shadow Side / 暗影面</h4>
-                        <div id="mWeakBadges"></div>
-                    </div>
+                    <div class="space-y-12">
+                        <section>
+                            <h4 class="section-title">Character Traits / 性格特质</h4>
+                            <div id="mPersBadges"></div>
+                        </section>
 
-                    <div class="pt-6 border-t-2 border-gray-50">
-                        <h4 class="text-[10px] font-black text-gray-400 mb-4 uppercase tracking-[0.3em]">Deep Guidance / 深度解析</h4>
-                        <p id="mToday" class="deep-text italic"></p>
-                    </div>
+                        <section>
+                            <h4 class="section-title text-pink-500">Shadow Side / 暗影面</h4>
+                            <div id="mWeakBadges"></div>
+                        </section>
 
-                    <div class="grid grid-cols-3 gap-4 pt-6">
-                        <div class="text-center"><span class="text-[9px] font-black text-gray-300 block mb-1 uppercase">Luck Color</span><span id="mColor" class="text-sm font-black text-gray-900"></span></div>
-                        <div class="text-center"><span class="text-[9px] font-black text-gray-300 block mb-1 uppercase">Luck Num</span><span id="mNumber" class="text-sm font-black text-gray-900"></span></div>
-                        <div class="text-center"><span class="text-[9px] font-black text-gray-300 block mb-1 uppercase">Best Match</span><span id="mMatch" class="text-sm font-black text-gray-900"></span></div>
+                        <section class="pt-8 border-t border-gray-50">
+                            <h4 class="section-title">Daily Guidance / 今日详述</h4>
+                            <p id="mToday" class="deep-text italic text-gray-800"></p>
+                        </section>
+
+                        <section>
+                            <h4 class="section-title text-amber-500">2026 Macro View / 年度展望</h4>
+                            <p id="mYearly" class="deep-text text-gray-600 font-light"></p>
+                        </section>
+
+                        <div class="grid grid-cols-3 gap-4 pt-8 border-t border-gray-50">
+                            <div class="text-center"><span class="text-[9px] font-black text-gray-300 block mb-1 uppercase">Luck Color</span><span id="mColor" class="text-sm font-black text-gray-900"></span></div>
+                            <div class="text-center"><span class="text-[9px] font-black text-gray-300 block mb-1 uppercase">Luck Num</span><span id="mNumber" class="text-sm font-black text-gray-900"></span></div>
+                            <div class="text-center"><span class="text-[9px] font-black text-gray-300 block mb-1 uppercase">Match</span><span id="mMatch" class="text-sm font-black text-gray-900"></span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-12">
+                        <button onclick="closeDeepHoro()" class="text-[10px] font-black text-gray-300 border-b border-gray-100 pb-1">CLOSE WINDOW</button>
                     </div>
                 </div>
             </div>
@@ -258,7 +214,7 @@
 
         <script>
             // DATA_START
-            const db = [{"sign": "白羊座", "icon": "♈️", "theme": "多巴胺能量", "today_analysis": "今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。", "personality": "自信, 敢为, 热情, 极客", "weakness": "冲动, 偶尔毒舌, 缺乏耐性", "lucky": {"color": "荧光绿", "number": "01", "match": "天秤座", "item": "潮牌挂件"}}, {"sign": "金牛座", "icon": "♉️", "theme": "多巴胺能量", "today_analysis": "今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。", "personality": "自信, 敢为, 热情, 极客", "weakness": "冲动, 偶尔毒舌, 缺乏耐性", "lucky": {"color": "荧光绿", "number": "01", "match": "天秤座", "item": "潮牌挂件"}}, {"sign": "双子座", "icon": "♊️", "theme": "多巴胺能量", "today_analysis": "今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。", "personality": "自信, 敢为, 热情, 极客", "weakness": "冲动, 偶尔毒舌, 缺乏耐性", "lucky": {"color": "荧光绿", "number": "01", "match": "天秤座", "item": "潮牌挂件"}}, {"sign": "巨蟹座", "icon": "♋️", "theme": "多巴胺能量", "today_analysis": "今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。", "personality": "自信, 敢为, 热情, 极客", "weakness": "冲动, 偶尔毒舌, 缺乏耐性", "lucky": {"color": "荧光绿", "number": "01", "match": "天秤座", "item": "潮牌挂件"}}, {"sign": "狮子座", "icon": "♌️", "theme": "多巴胺能量", "today_analysis": "今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。", "personality": "自信, 敢为, 热情, 极客", "weakness": "冲动, 偶尔毒舌, 缺乏耐性", "lucky": {"color": "荧光绿", "number": "01", "match": "天秤座", "item": "潮牌挂件"}}, {"sign": "处女座", "icon": "♍️", "theme": "多巴胺能量", "today_analysis": "今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。", "personality": "自信, 敢为, 热情, 极客", "weakness": "冲动, 偶尔毒舌, 缺乏耐性", "lucky": {"color": "荧光绿", "number": "01", "match": "天秤座", "item": "潮牌挂件"}}, {"sign": "天秤座", "icon": "♎️", "theme": "多巴胺能量", "today_analysis": "今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。", "personality": "自信, 敢为, 热情, 极客", "weakness": "冲动, 偶尔毒舌, 缺乏耐性", "lucky": {"color": "荧光绿", "number": "01", "match": "天秤座", "item": "潮牌挂件"}}, {"sign": "天蝎座", "icon": "♏️", "theme": "多巴胺能量", "today_analysis": "今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。", "personality": "自信, 敢为, 热情, 极客", "weakness": "冲动, 偶尔毒舌, 缺乏耐性", "lucky": {"color": "荧光绿", "number": "01", "match": "天秤座", "item": "潮牌挂件"}}, {"sign": "射手座", "icon": "♐️", "theme": "多巴胺能量", "today_analysis": "今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。", "personality": "自信, 敢为, 热情, 极客", "weakness": "冲动, 偶尔毒舌, 缺乏耐性", "lucky": {"color": "荧光绿", "number": "01", "match": "天秤座", "item": "潮牌挂件"}}, {"sign": "摩羯座", "icon": "♑️", "theme": "多巴胺能量", "today_analysis": "今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。", "personality": "自信, 敢为, 热情, 极客", "weakness": "冲动, 偶尔毒舌, 缺乏耐性", "lucky": {"color": "荧光绿", "number": "01", "match": "天秤座", "item": "潮牌挂件"}}, {"sign": "水瓶座", "icon": "♒️", "theme": "多巴胺能量", "today_analysis": "今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。", "personality": "自信, 敢为, 热情, 极客", "weakness": "冲动, 偶尔毒舌, 缺乏耐性", "lucky": {"color": "荧光绿", "number": "01", "match": "天秤座", "item": "潮牌挂件"}}, {"sign": "双鱼座", "icon": "♓️", "theme": "多巴胺能量", "today_analysis": "今日你的能量场正在发生奇妙的化学反应。点击详情，开启属于你的潮流指引。", "personality": "自信, 敢为, 热情, 极客", "weakness": "冲动, 偶尔毒舌, 缺乏耐性", "lucky": {"color": "荧光绿", "number": "01", "match": "天秤座", "item": "潮牌挂件"}}];
+            const db = [{"sign": "白羊座", "icon": "♈️", "theme": "潮流能量", "today_analysis": "今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。", "yearly_analysis": "2026年将是你的转型之年。木星的运行轨迹预示着你将在事业和个人成长上迎来双重爆发。上半年适合沉淀与规划，下半年则是全力冲刺的最佳时机。", "personality": "自信, 敢为, 热情, 极客精神, 领导力", "weakness": "冲动, 偶尔毒舌, 缺乏耐性, 过于自我", "lucky": {"color": "电光蓝", "number": "07", "match": "狮子座", "item": "潮牌挂件"}}, {"sign": "金牛座", "icon": "♉️", "theme": "潮流能量", "today_analysis": "今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。", "yearly_analysis": "2026年将是你的转型之年。木星的运行轨迹预示着你将在事业和个人成长上迎来双重爆发。上半年适合沉淀与规划，下半年则是全力冲刺的最佳时机。", "personality": "自信, 敢为, 热情, 极客精神, 领导力", "weakness": "冲动, 偶尔毒舌, 缺乏耐性, 过于自我", "lucky": {"color": "电光蓝", "number": "07", "match": "狮子座", "item": "潮牌挂件"}}, {"sign": "双子座", "icon": "♊️", "theme": "潮流能量", "today_analysis": "今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。", "yearly_analysis": "2026年将是你的转型之年。木星的运行轨迹预示着你将在事业和个人成长上迎来双重爆发。上半年适合沉淀与规划，下半年则是全力冲刺的最佳时机。", "personality": "自信, 敢为, 热情, 极客精神, 领导力", "weakness": "冲动, 偶尔毒舌, 缺乏耐性, 过于自我", "lucky": {"color": "电光蓝", "number": "07", "match": "狮子座", "item": "潮牌挂件"}}, {"sign": "巨蟹座", "icon": "♋️", "theme": "潮流能量", "today_analysis": "今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。", "yearly_analysis": "2026年将是你的转型之年。木星的运行轨迹预示着你将在事业和个人成长上迎来双重爆发。上半年适合沉淀与规划，下半年则是全力冲刺的最佳时机。", "personality": "自信, 敢为, 热情, 极客精神, 领导力", "weakness": "冲动, 偶尔毒舌, 缺乏耐性, 过于自我", "lucky": {"color": "电光蓝", "number": "07", "match": "狮子座", "item": "潮牌挂件"}}, {"sign": "狮子座", "icon": "♌️", "theme": "潮流能量", "today_analysis": "今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。", "yearly_analysis": "2026年将是你的转型之年。木星的运行轨迹预示着你将在事业和个人成长上迎来双重爆发。上半年适合沉淀与规划，下半年则是全力冲刺的最佳时机。", "personality": "自信, 敢为, 热情, 极客精神, 领导力", "weakness": "冲动, 偶尔毒舌, 缺乏耐性, 过于自我", "lucky": {"color": "电光蓝", "number": "07", "match": "狮子座", "item": "潮牌挂件"}}, {"sign": "处女座", "icon": "♍️", "theme": "潮流能量", "today_analysis": "今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。", "yearly_analysis": "2026年将是你的转型之年。木星的运行轨迹预示着你将在事业和个人成长上迎来双重爆发。上半年适合沉淀与规划，下半年则是全力冲刺的最佳时机。", "personality": "自信, 敢为, 热情, 极客精神, 领导力", "weakness": "冲动, 偶尔毒舌, 缺乏耐性, 过于自我", "lucky": {"color": "电光蓝", "number": "07", "match": "狮子座", "item": "潮牌挂件"}}, {"sign": "天秤座", "icon": "♎️", "theme": "潮流能量", "today_analysis": "今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。", "yearly_analysis": "2026年将是你的转型之年。木星的运行轨迹预示着你将在事业和个人成长上迎来双重爆发。上半年适合沉淀与规划，下半年则是全力冲刺的最佳时机。", "personality": "自信, 敢为, 热情, 极客精神, 领导力", "weakness": "冲动, 偶尔毒舌, 缺乏耐性, 过于自我", "lucky": {"color": "电光蓝", "number": "07", "match": "狮子座", "item": "潮牌挂件"}}, {"sign": "天蝎座", "icon": "♏️", "theme": "潮流能量", "today_analysis": "今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。", "yearly_analysis": "2026年将是你的转型之年。木星的运行轨迹预示着你将在事业和个人成长上迎来双重爆发。上半年适合沉淀与规划，下半年则是全力冲刺的最佳时机。", "personality": "自信, 敢为, 热情, 极客精神, 领导力", "weakness": "冲动, 偶尔毒舌, 缺乏耐性, 过于自我", "lucky": {"color": "电光蓝", "number": "07", "match": "狮子座", "item": "潮牌挂件"}}, {"sign": "射手座", "icon": "♐️", "theme": "潮流能量", "today_analysis": "今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。", "yearly_analysis": "2026年将是你的转型之年。木星的运行轨迹预示着你将在事业和个人成长上迎来双重爆发。上半年适合沉淀与规划，下半年则是全力冲刺的最佳时机。", "personality": "自信, 敢为, 热情, 极客精神, 领导力", "weakness": "冲动, 偶尔毒舌, 缺乏耐性, 过于自我", "lucky": {"color": "电光蓝", "number": "07", "match": "狮子座", "item": "潮牌挂件"}}, {"sign": "摩羯座", "icon": "♑️", "theme": "潮流能量", "today_analysis": "今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。", "yearly_analysis": "2026年将是你的转型之年。木星的运行轨迹预示着你将在事业和个人成长上迎来双重爆发。上半年适合沉淀与规划，下半年则是全力冲刺的最佳时机。", "personality": "自信, 敢为, 热情, 极客精神, 领导力", "weakness": "冲动, 偶尔毒舌, 缺乏耐性, 过于自我", "lucky": {"color": "电光蓝", "number": "07", "match": "狮子座", "item": "潮牌挂件"}}, {"sign": "水瓶座", "icon": "♒️", "theme": "潮流能量", "today_analysis": "今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。", "yearly_analysis": "2026年将是你的转型之年。木星的运行轨迹预示着你将在事业和个人成长上迎来双重爆发。上半年适合沉淀与规划，下半年则是全力冲刺的最佳时机。", "personality": "自信, 敢为, 热情, 极客精神, 领导力", "weakness": "冲动, 偶尔毒舌, 缺乏耐性, 过于自我", "lucky": {"color": "电光蓝", "number": "07", "match": "狮子座", "item": "潮牌挂件"}}, {"sign": "双鱼座", "icon": "♓️", "theme": "潮流能量", "today_analysis": "今日你的星象磁场正处于活跃期。点击详情，开启属于你的深度指引。", "yearly_analysis": "2026年将是你的转型之年。木星的运行轨迹预示着你将在事业和个人成长上迎来双重爆发。上半年适合沉淀与规划，下半年则是全力冲刺的最佳时机。", "personality": "自信, 敢为, 热情, 极客精神, 领导力", "weakness": "冲动, 偶尔毒舌, 缺乏耐性, 过于自我", "lucky": {"color": "电光蓝", "number": "07", "match": "狮子座", "item": "潮牌挂件"}}];
             // DATA_END
             function openDeepHoro(idx) {
                 const item = db[idx];
@@ -266,11 +222,11 @@
                 document.getElementById('mIcon').innerText = item.icon;
                 document.getElementById('mTheme').innerText = item.theme;
                 document.getElementById('mToday').innerText = item.today_analysis;
+                document.getElementById('mYearly').innerText = item.yearly_analysis;
                 document.getElementById('mColor').innerText = item.lucky.color;
                 document.getElementById('mNumber').innerText = item.lucky.number;
                 document.getElementById('mMatch').innerText = item.lucky.match;
                 
-                // 处理标签
                 const renderBadges = (id, str, colorClass) => {
                     const container = document.getElementById(id);
                     container.innerHTML = '';
@@ -281,8 +237,8 @@
                         container.appendChild(span);
                     });
                 };
-                renderBadges('mPersBadges', item.personality, 'bg-indigo-100 text-indigo-600');
-                renderBadges('mWeakBadges', item.weakness, 'bg-pink-100 text-pink-600');
+                renderBadges('mPersBadges', item.personality, 'bg-indigo-50 text-indigo-600');
+                renderBadges('mWeakBadges', item.weakness, 'bg-pink-50 text-pink-600');
 
                 document.getElementById('hModal').classList.add('modal-active');
                 document.body.style.overflow = 'hidden';
