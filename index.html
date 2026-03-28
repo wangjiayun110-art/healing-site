@@ -3,223 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>AI 星语工具箱 | 免费在线 AI 工具集合</title>
+    <title>AI 星语工具箱 | 全功能在线工具</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         body { background: #f8f9fa; font-family: 'Noto Sans SC', sans-serif; color: #111; }
-        .tool-card { 
-            background: #fff; border-radius: 28px; padding: 35px; 
-            border: 1px solid #f0f0f0; transition: all 0.3s ease;
-            cursor: pointer; position: relative; overflow: hidden;
-        }
-        .tool-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: #e0e0e0; }
-        .tool-card:active { transform: scale(0.98); }
+        .tool-card { background: #fff; border-radius: 28px; padding: 35px; border: 1px solid #f0f0f0; transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden; }
+        .tool-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
         .tool-icon { font-size: 48px; margin-bottom: 20px; display: block; }
         .tool-title { font-size: 20px; font-weight: 900; margin-bottom: 8px; }
         .tool-desc { font-size: 13px; color: #999; line-height: 1.6; }
-        .badge-hot { position: absolute; top: 20px; right: 20px; background: #ef4444; color: #fff; font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 100px; }
-        .badge-new { position: absolute; top: 20px; right: 20px; background: #6366f1; color: #fff; font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 100px; }
-        .badge-free { position: absolute; top: 20px; right: 20px; background: #10b981; color: #fff; font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 100px; }
-
-        /* 图片压缩工具页 */
+        .badge { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 100px; }
+        .badge-hot { background: #ef4444; } .badge-new { background: #6366f1; } .badge-free { background: #10b981; }
         .tool-page { display: none; position: fixed; inset: 0; background: #fff; z-index: 1000; overflow-y: auto; padding: 40px 20px; }
-        .tool-page.active { display: block; }
-        .drop-zone { border: 3px dashed #e0e0e0; border-radius: 24px; padding: 60px 20px; text-align: center; transition: all 0.3s; }
-        .drop-zone:hover { border-color: #6366f1; background: #f8f8ff; }
-        .result-img { max-width: 100%; border-radius: 16px; margin-top: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .tool-page.active { display: block; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .drop-zone { border: 3px dashed #e0e0e0; border-radius: 24px; padding: 60px 20px; text-align: center; }
+        .result-img { max-width: 100%; border-radius: 16px; margin-top: 20px; }
+        .btn { padding: 15px 30px; border-radius: 100px; font-weight: 900; text-align: center; cursor: pointer; transition: all 0.3s; }
+        .btn-primary { background: #111; color: #fff; }
     </style>
 </head>
 <body class="p-6 md:p-12 max-w-5xl mx-auto">
-
-    <!-- Header -->
     <header class="mb-16 mt-8">
         <h1 class="text-4xl md:text-5xl font-black tracking-tighter mb-4">AI 星语工具箱</h1>
-        <p class="text-gray-400 text-sm tracking-widest uppercase">Free AI Tools Collection · 免费在线工具合集</p>
+        <p class="text-gray-400 text-sm tracking-widest uppercase">全功能 AI 工具合集</p>
     </header>
-
-    <!-- 搜索栏 -->
-    <div class="mb-12">
-        <input type="text" id="searchInput" placeholder="搜索工具..." class="w-full p-5 bg-white border border-gray-100 rounded-2xl text-lg focus:outline-none focus:border-indigo-300 shadow-sm" oninput="filterTools()">
-    </div>
-
-    <!-- 工具卡片网格 -->
+    <div class="mb-12"><input type="text" id="searchInput" placeholder="搜索工具..." class="w-full p-5 bg-white border border-gray-100 rounded-2xl text-lg shadow-sm" oninput="filterTools()"></div>
     <div id="toolGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pb-32">
-
-        <!-- 1. 图片压缩 -->
-        <div class="tool-card" data-name="图片压缩" onclick="openTool('compress')">
-            <span class="badge-hot">HOT</span>
-            <span class="tool-icon">📐</span>
-            <h3 class="tool-title">图片压缩</h3>
-            <p class="tool-desc">智能压缩图片体积，画质几乎无损</p>
-        </div>
-
-        <!-- 2. 图片去背景 -->
-        <div class="tool-card" data-name="图片去背景 抠图" onclick="openTool('removebg')">
-            <span class="badge-hot">HOT</span>
-            <span class="tool-icon">🖼️</span>
-            <h3 class="tool-title">AI 去背景</h3>
-            <p class="tool-desc">一键抠图，智能去除图片背景</p>
-        </div>
-
-        <!-- 3. 格式转换 -->
-        <div class="tool-card" data-name="格式转换 PNG JPG WebP" onclick="openTool('convert')">
-            <span class="badge-free">FREE</span>
-            <span class="tool-icon">🔄</span>
-            <h3 class="tool-title">格式转换</h3>
-            <p class="tool-desc">PNG/JPG/WebP 格式一键互转</p>
-        </div>
-
-        <!-- 4. 二维码生成 -->
-        <div class="tool-card" data-name="二维码生成器" onclick="openTool('qrcode')">
-            <span class="badge-free">FREE</span>
-            <span class="tool-icon">📱</span>
-            <h3 class="tool-title">二维码生成</h3>
-            <p class="tool-desc">输入文字或网址，秒生二维码</p>
-        </div>
-
-        <!-- 5. AI 写文案 -->
-        <div class="tool-card" data-name="AI写文案 AI写作" onclick="openTool('aiwrite')">
-            <span class="badge-new">NEW</span>
-            <span class="tool-icon">📝</span>
-            <h3 class="tool-title">AI 写文案</h3>
-            <p class="tool-desc">输入关键词，AI 为你生成爆款文案</p>
-        </div>
-
-        <!-- 6. AI 证件照 -->
-        <div class="tool-card" data-name="AI证件照 换底色" onclick="openTool('idphoto')">
-            <span class="badge-new">NEW</span>
-            <span class="tool-icon">🎨</span>
-            <h3 class="tool-title">AI 证件照</h3>
-            <p class="tool-desc">一键生成蓝底/白底/红底证件照</p>
-        </div>
-
-        <!-- 7. 八字精批 -->
-        <div class="tool-card" data-name="八字精批 算命 命理" onclick="openTool('bazi')">
-            <span class="badge-hot">HOT</span>
-            <span class="tool-icon">🔮</span>
-            <h3 class="tool-title">八字精批</h3>
-            <p class="tool-desc">输入生辰，AI 大师深度精批命理</p>
-        </div>
-
-        <!-- 8. 视频转GIF -->
-        <div class="tool-card" data-name="视频转GIF 表情包" onclick="openTool('gif')">
-            <span class="badge-free">FREE</span>
-            <span class="tool-icon">🎵</span>
-            <h3 class="tool-title">视频转 GIF</h3>
-            <p class="tool-desc">将视频片段转为精美 GIF 表情包</p>
-        </div>
+        <!-- TOOL CARDS -->
+        <div class="tool-card" data-name="图片压缩" onclick="openTool('compress')"><span class="badge badge-hot">HOT</span><span class="tool-icon">📐</span><h3 class="tool-title">图片压缩</h3><p class="tool-desc">智能压缩图片体积</p></div>
+        <div class="tool-card" data-name="图片去背景 抠图" onclick="openTool('removebg')"><span class="badge badge-hot">HOT</span><span class="tool-icon">🖼️</span><h3 class="tool-title">AI 去背景</h3><p class="tool-desc">一键抠图去除背景</p></div>
+        <div class="tool-card" data-name="格式转换 PNG JPG" onclick="openTool('convert')"><span class="badge badge-free">FREE</span><span class="tool-icon">🔄</span><h3 class="tool-title">格式转换</h3><p class="tool-desc">PNG/JPG/WebP互转</p></div>
+        <div class="tool-card" data-name="二维码生成器" onclick="openTool('qrcode')"><span class="badge badge-free">FREE</span><span class="tool-icon">📱</span><h3 class="tool-title">二维码生成</h3><p class="tool-desc">输入文字秒生二维码</p></div>
+        <div class="tool-card" data-name="AI写文案 AI写作" onclick="openTool('aiwrite')"><span class="badge badge-new">NEW</span><span class="tool-icon">📝</span><h3 class="tool-title">AI 写文案</h3><p class="tool-desc">生成爆款文案</p></div>
+        <div class="tool-card" data-name="AI证件照" onclick="openTool('idphoto')"><span class="badge badge-new">NEW</span><span class="tool-icon">🎨</span><h3 class="tool-title">AI 证件照</h3><p class="tool-desc">一键更换照片底色</p></div>
+        <div class="tool-card" data-name="八字精批 算命" onclick="openTool('bazi')"><span class="badge badge-hot">HOT</span><span class="tool-icon">🔮</span><h3 class="tool-title">八字精批</h3><p class="tool-desc">AI 大师深度解读</p></div>
+        <div class="tool-card" data-name="视频转GIF" onclick="openTool('gif')"><span class="badge badge-free">FREE</span><span class="tool-icon">🎵</span><h3 class="tool-title">视频转 GIF</h3><p class="tool-desc">截取片段制作表情包</p></div>
     </div>
-
-    <!-- ========== 图片压缩工具页 ========== -->
-    <div id="page-compress" class="tool-page">
-        <div class="max-w-xl mx-auto">
-            <button onclick="closeTool()" class="text-gray-400 mb-8 font-bold">← 返回工具箱</button>
-            <h2 class="text-3xl font-black mb-4">📐 智能图片压缩</h2>
-            <p class="text-gray-400 mb-10 text-sm">上传图片，浏览器端智能压缩，画质几乎无损。文件不会上传到任何服务器。</p>
-            
-            <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
-                <input type="file" id="fileInput" accept="image/*" class="hidden" onchange="compressImage(this)">
-                <p class="text-gray-400 text-lg">点击选择图片或拖拽到此处</p>
-                <p class="text-gray-300 text-xs mt-2">支持 JPG / PNG / WebP</p>
-            </div>
-            
-            <div id="compressResult" class="mt-8" style="display:none">
-                <div class="flex justify-between items-center mb-4">
-                    <span id="compressInfo" class="text-sm text-gray-500"></span>
-                    <a id="downloadBtn" class="bg-black text-white px-8 py-3 rounded-full font-bold text-sm">下载压缩后的图片</a>
-                </div>
-                <img id="previewImg" class="result-img">
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== 二维码生成工具页 ========== -->
-    <div id="page-qrcode" class="tool-page">
-        <div class="max-w-xl mx-auto">
-            <button onclick="closeTool()" class="text-gray-400 mb-8 font-bold">← 返回工具箱</button>
-            <h2 class="text-3xl font-black mb-4">📱 二维码生成器</h2>
-            <p class="text-gray-400 mb-10 text-sm">输入文字或网址，立即生成二维码。</p>
-            <input type="text" id="qrInput" placeholder="输入文字或网址..." class="w-full p-5 border border-gray-200 rounded-2xl text-lg mb-6 focus:outline-none focus:border-indigo-300">
-            <button onclick="generateQR()" class="w-full py-4 bg-black text-white rounded-2xl font-bold">生成二维码</button>
-            <div id="qrResult" class="mt-8 text-center"></div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-lg border-t border-gray-50 py-4 text-center">
-        <p class="text-xs text-gray-300">© 2026 AI 星语工具箱 | zhiyu.790221.xyz</p>
-    </footer>
-
-    <!-- 二维码库 -->
+    
+    <!-- TOOL PAGES -->
+    <div id="page-compress" class="tool-page"><div class="max-w-xl mx-auto"><button onclick="closeTool()" class="text-gray-400 mb-8 font-bold">← 返回</button><h2 class="text-3xl font-black mb-10">📐 智能图片压缩</h2><div class="drop-zone" onclick="document.getElementById('fileInput').click()"><input type="file" id="fileInput" class="hidden" onchange="compressImage(this)"><p>点击或拖拽图片到此处</p></div><div id="compressResult" class="mt-8" style="display:none"><p id="compressInfo" class="text-sm mb-4"></p><a id="downloadBtn" class="btn btn-primary">下载</a><img id="previewImg" class="result-img"></div></div></div>
+    <div id="page-removebg" class="tool-page"><div class="max-w-xl mx-auto"><button onclick="closeTool()" class="text-gray-400 mb-8 font-bold">← 返回</button><h2 class="text-3xl font-black mb-10">🖼️ AI 去背景</h2><div class="drop-zone" onclick="document.getElementById('bgInput').click()"><input type="file" id="bgInput" class="hidden" onchange="removeBg(this)"><p>点击上传图片</p></div><div id="removebgResult" class="mt-8 text-center" style="display:none"><canvas id="bgCanvas" class="result-img mx-auto"></canvas><a id="bgDownload" class="inline-block mt-6 btn btn-primary">下载</a></div></div></div>
+    <div id="page-convert" class="tool-page"><div class="max-w-xl mx-auto"><button onclick="closeTool()" class="text-gray-400 mb-8 font-bold">← 返回</button><h2 class="text-3xl font-black mb-10">🔄 图片格式转换</h2><div class="drop-zone" onclick="document.getElementById('convertInput').click()"><input type="file" id="convertInput" class="hidden" onchange="previewConvert(this)"><p>点击选择图片</p></div><div id="convertOptions" class="mt-8" style="display:none"><div class="flex gap-4 mb-6"><button onclick="doConvert('png')" class="flex-1 py-3 bg-indigo-600 text-white rounded-xl font-bold">转PNG</button><button onclick="doConvert('jpeg')" class="flex-1 py-3 bg-orange-500 text-white rounded-xl font-bold">转JPG</button><button onclick="doConvert('webp')" class="flex-1 py-3 bg-green-600 text-white rounded-xl font-bold">转WebP</button></div><div id="convertResult" class="text-center" style="display:none"><img id="convertPreview" class="result-img mx-auto"><a id="convertDownload" class="inline-block mt-6 btn btn-primary">下载</a></div></div></div></div>
+    <div id="page-qrcode" class="tool-page"><div class="max-w-xl mx-auto"><button onclick="closeTool()" class="text-gray-400 mb-8 font-bold">← 返回</button><h2 class="text-3xl font-black mb-10">📱 二维码生成器</h2><input type="text" id="qrInput" placeholder="输入文字或网址..." class="w-full p-5 border border-gray-200 rounded-2xl text-lg mb-6"><button onclick="generateQR()" class="w-full py-4 btn btn-primary">生成二维码</button><div id="qrResult" class="mt-8 text-center"></div></div></div>
+    <div id="page-aiwrite" class="tool-page"><div class="max-w-xl mx-auto"><button onclick="closeTool()" class="text-gray-400 mb-8 font-bold">← 返回</button><h2 class="text-3xl font-black mb-10">📝 AI 写文案</h2><select id="aiWriteType" class="w-full p-4 border border-gray-200 rounded-2xl mb-4 text-lg"><option>小红书</option><option>朋友圈</option><option>抖音</option></select><textarea id="aiWriteInput" class="w-full p-5 border rounded-2xl mb-6 text-lg" rows="3" placeholder="输入主题，如：夏日防晒霜"></textarea><button onclick="generateCopy()" class="w-full py-4 btn btn-primary">AI 一键生成</button><div id="aiWriteResult" class="mt-8 p-6 bg-gray-50 rounded-2xl" style="display:none"><p id="aiWriteOutput" class="text-lg leading-relaxed whitespace-pre-wrap"></p><button onclick="copyText()" class="mt-6 w-full py-3 bg-indigo-600 text-white rounded-xl font-bold">一键复制</button></div></div></div>
+    <div id="page-idphoto" class="tool-page"><div class="max-w-xl mx-auto"><button onclick="closeTool()" class="text-gray-400 mb-8 font-bold">← 返回</button><h2 class="text-3xl font-black mb-10">🎨 AI 证件照</h2><div class="drop-zone" onclick="document.getElementById('idInput').click()"><input type="file" id="idInput" class="hidden" onchange="previewID(this)"><p>点击上传人像照片</p></div><div id="idOptions" class="mt-8" style="display:none"><div class="flex gap-4 mb-6"><button onclick="changeIDBg('#0066cc')" class="flex-1 py-3 bg-blue-600 text-white rounded-xl font-bold">蓝底</button><button onclick="changeIDBg('#ffffff')" class="flex-1 py-3 bg-white text-black border-2 rounded-xl font-bold">白底</button><button onclick="changeIDBg('#cc0000')" class="flex-1 py-3 bg-red-600 text-white rounded-xl font-bold">红底</button></div><canvas id="idCanvas" class="result-img mx-auto"></canvas><a id="idDownload" class="inline-block mt-6 btn btn-primary">下载</a></div></div></div>
+    <div id="page-bazi" class="tool-page"><div class="max-w-xl mx-auto"><button onclick="closeTool()" class="text-gray-400 mb-8 font-bold">← 返回</button><h2 class="text-3xl font-black mb-10">🔮 八字精批</h2><textarea id="baziInput" class="w-full p-5 border rounded-2xl mb-6 text-lg" rows="3" placeholder="示例：1995年10月1日 12:30 上海"></textarea><button onclick="analyzeBazi()" class="w-full py-4 btn btn-primary">开始精批</button><div id="baziResult" class="mt-8 p-6 bg-amber-50 rounded-2xl" style="display:none"><p id="baziOutput" class="leading-relaxed whitespace-pre-wrap"></p></div></div></div>
+    <div id="page-gif" class="tool-page"><div class="max-w-xl mx-auto"><button onclick="closeTool()" class="text-gray-400 mb-8 font-bold">← 返回</button><h2 class="text-3xl font-black mb-10">🎵 视频转 GIF</h2><div class="drop-zone" onclick="document.getElementById('gifInput').click()"><input type="file" id="gifInput" class="hidden" onchange="previewGif(this)"><p>点击选择视频</p></div><div id="gifResult" class="mt-8 text-center" style="display:none"><video id="gifVideo" class="result-img mx-auto" controls muted></video><p class="text-sm mt-4">GIF 生成功能开发中</p></div></div></div>
+    
+    <footer class="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-lg border-t py-4 text-center"><p class="text-xs text-gray-300">© 2026 AI 星语工具箱</p></footer>
     <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
-
     <script>
-        // 搜索过滤
-        function filterTools() {
-            const q = document.getElementById('searchInput').value.toUpperCase();
-            document.querySelectorAll('.tool-card').forEach(card => {
-                card.style.display = card.dataset.name.toUpperCase().includes(q) ? '' : 'none';
-            });
-        }
-
-        // 打开/关闭工具页
-        function openTool(name) {
-            const page = document.getElementById('page-' + name);
-            if (page) {
-                page.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            } else {
-                alert('该工具即将上线，敬请期待！');
-            }
-        }
-        function closeTool() {
-            document.querySelectorAll('.tool-page').forEach(p => p.classList.remove('active'));
-            document.body.style.overflow = 'auto';
-        }
-
-        // 图片压缩逻辑 (纯前端，Canvas 实现)
-        function compressImage(input) {
-            const file = input.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    // 限制最大宽度为 1920
-                    const maxW = 1920;
-                    const scale = img.width > maxW ? maxW / img.width : 1;
-                    canvas.width = img.width * scale;
-                    canvas.height = img.height * scale;
-                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                    // 压缩为 JPEG 质量 0.7
-                    const compressed = canvas.toDataURL('image/jpeg', 0.7);
-                    
-                    document.getElementById('previewImg').src = compressed;
-                    document.getElementById('downloadBtn').href = compressed;
-                    document.getElementById('downloadBtn').download = 'compressed_' + file.name;
-                    
-                    const origSize = (file.size / 1024).toFixed(1);
-                    const newSize = (compressed.length * 0.75 / 1024).toFixed(1);
-                    document.getElementById('compressInfo').innerText = `原始: ${origSize}KB → 压缩后: ${newSize}KB (节省 ${Math.round((1 - newSize/origSize) * 100)}%)`;
-                    document.getElementById('compressResult').style.display = 'block';
-                };
-                img.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-
-        // 二维码生成逻辑
-        function generateQR() {
-            const text = document.getElementById('qrInput').value;
-            if (!text) return;
-            const qr = qrcode(0, 'M');
-            qr.addData(text);
-            qr.make();
-            document.getElementById('qrResult').innerHTML = qr.createImgTag(8, 16);
-        }
+        function filterTools(){const q=document.getElementById("searchInput").value.toUpperCase();document.querySelectorAll(".tool-card").forEach(c=>{c.style.display=c.dataset.name.toUpperCase().includes(q)?"":"none"})}function openTool(n){const e=document.getElementById("page-"+n);e?(e.classList.add("active"),document.body.style.overflow="hidden"):alert("该工具即将上线，敬请期待！")}function closeTool(){document.querySelectorAll(".tool-page").forEach(n=>n.classList.remove("active")),document.body.style.overflow="auto"}function compressImage(n){const e=n.files[0];if(!e)return;const t=new FileReader;t.onload=function(n){const o=new Image;o.onload=function(){const n=document.createElement("canvas"),t=n.getContext("2d"),c=o.width>1920?1920/o.width:1;n.width=o.width*c,n.height=o.height*c,t.drawImage(o,0,0,n.width,n.height);const i=n.toDataURL("image/jpeg",.7);document.getElementById("previewImg").src=i,document.getElementById("downloadBtn").href=i,document.getElementById("downloadBtn").download="c_"+e.name;const a=(e.size/1024).toFixed(1),d=(.75*i.length/1024).toFixed(1);document.getElementById("compressInfo").innerText=`原始: ${a}KB -> 压缩后: ${d}KB (省 ${Math.round(100*(1-d/a))}%)`,document.getElementById("compressResult").style.display="block"},o.src=n.target.result},t.readAsDataURL(e)}function generateQR(){const n=document.getElementById("qrInput").value;if(!n)return;const e=qrcode(0,"M");e.addData(n),e.make(),document.getElementById("qrResult").innerHTML=e.createImgTag(8,16)}function removeBg(n){const e=n.files[0];if(!e)return;const t=new FileReader;t.onload=function(n){const o=new Image;o.onload=function(){const n=document.getElementById("bgCanvas"),t=n.getContext("2d");n.width=o.width,n.height=o.height,t.drawImage(o,0,0);const c=t.getImageData(0,0,n.width,n.height),i=c.data;for(let n=0;n<i.length;n+=4)i[n]>200&&i[n+1]>200&&i[n+2]>200&&(i[n+3]=0);t.putImageData(c,0,0),document.getElementById("bgDownload").href=n.toDataURL("image/png"),document.getElementById("bgDownload").download="nobg_"+e.name,document.getElementById("removebgResult").style.display="block"},o.src=n.target.result},t.readAsDataURL(e)}let convertImgSrc=null;function previewConvert(n){const e=n.files[0];if(!e)return;const t=new FileReader;t.onload=function(n){convertImgSrc=n.target.result,document.getElementById("convertOptions").style.display="block"},t.readAsDataURL(e)}function doConvert(n){const e=new Image;e.onload=function(){const t=document.createElement("canvas");t.width=e.width,t.height=e.height,t.getContext("2d").drawImage(e,0,0);const o=t.toDataURL("image/"+n,.92);document.getElementById("convertPreview").src=o,document.getElementById("convertDownload").href=o,document.getElementById("convertDownload").download="c."+("jpeg"===n?"jpg":n),document.getElementById("convertResult").style.display="block"},e.src=convertImgSrc}function generateCopy(){const n=document.getElementById("aiWriteType").value,e=document.getElementById("aiWriteInput").value;if(!e)return;const t={"小红书":`🌟 ${e} | 亲测超好用！\\n\\n姐妹们！今天必须给你们安利这个${e}！\\n\\n✅ 效果：肉眼可见的提升\\n✅ 性价比：学生党也能无压力入手\\n\\n#${e} #好物推荐`,"朋友圈":`📍 今日分享：${e}\\n\\n生活需要一点仪式感✨\\n${e}带给我的不仅是品质的提升，更是一种对生活的热爱。\\n\\n#日常记录 #品质生活`,"抖音":`【${e}】看完这条你会感谢我！\\n\\n#${e} #干货分享 #涨知识`,"广告":`🏆 ${e}\\n\\n「 不是所有的选择都叫${e} 」\\n\\n限时优惠 | 前100名立减50%`};document.getElementById("aiWriteOutput").innerText=t[n]||t.小红书,document.getElementById("aiWriteResult").style.display="block"}function copyText(){navigator.clipboard.writeText(document.getElementById("aiWriteOutput").innerText).then(()=>alert("文案已复制！"))}let idImgSrc=null;function previewID(n){const e=n.files[0];if(!e)return;const t=new FileReader;t.onload=function(n){idImgSrc=n.target.result,document.getElementById("idOptions").style.display="block",changeIDBg("#0066cc")},t.readAsDataURL(e)}function changeIDBg(n){const e=new Image;e.onload=function(){const t=document.getElementById("idCanvas"),o=t.getContext("2d"),c=413,i=579;t.width=c,t.height=i,o.fillStyle=n,o.fillRect(0,0,c,i);const a=Math.min(c/e.width,i/e.height),d=(c-e.width*a)/2,l=(i-e.height*a)/2;o.drawImage(e,d,l,e.width*a,e.height*a),document.getElementById("idDownload").href=t.toDataURL("image/png"),document.getElementById("idDownload").download="id.png"},e.src=idImgSrc}function analyzeBazi(){const n=document.getElementById("baziInput").value;if(!n)return;const e=["命格概要：您的八字呈现出“水木相生”的格局，命中带有极强的学习天赋和创造力。五行木气偏旺，建议多接触金属性的事物来平衡。事业上2026年是您的转折年，利于学习和积累。","大师批语：您属“丙火”命格，性格热情奔放。局中“食神生财”格局明显，利于创业和自由职业。今年流年与命局形成“三合”，是难得的好运之年。幸运色：红色。","AI解读：日主强，性格坚韧，但需注意沟通方式。财运稳定，偏财运在下半年有所提升。感情方面桃花运旺盛，单身者有望在秋季遇到心仪的对象。"];document.getElementById("baziOutput").innerText=e[Math.floor(Math.random()*e.length)]+"\n\n⚠️ 仅供娱乐参考。",document.getElementById("baziResult").style.display="block"}function previewGif(n){const e=n.files[0];if(!e)return;const t=URL.createObjectURL(e);document.getElementById("gifVideo").src=t,document.getElementById("gifResult").style.display="block"}
     </script>
 </body>
 </html>
