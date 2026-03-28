@@ -1,83 +1,93 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>八字运势 | AI 命理助手</title>
+    <title>AI星语 | 深度八字精批</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #ffffff; font-family: 'Noto Sans SC', sans-serif; color: #333; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding-top: 10vh; -webkit-tap-highlight-color: transparent; }
+        body { background-color: #ffffff; font-family: 'Noto Sans SC', sans-serif; color: #333; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding-top: 10vh; }
         .logo-circle { width: 140px; height: 140px; background: #e69d45; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 40px; box-shadow: 0 10px 20px rgba(230, 157, 69, 0.2); }
-        .logo-svg { width: 80px; height: 80px; fill: white; }
         .main-title { font-size: 32px; font-weight: 400; margin-bottom: 25px; letter-spacing: 2px; }
         .intro-text { max-width: 600px; text-align: center; font-size: 15px; line-height: 1.8; color: #333; padding: 0 30px; margin-bottom: 50px; }
-        .input-container { width: 90%; max-width: 800px; background: #ffffff; border-radius: 24px; padding: 20px 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.06); border: 1px solid #f0f0f0; position: relative; min-height: 180px; display: flex; flex-direction: column; }
-        .chat-input { width: 100%; border: none; outline: none; font-size: 18px; resize: none; background: transparent; flex: 1; margin-top: 10px; }
-        .placeholder-text { font-size: 14px; color: #bfbfbf; margin-bottom: 10px; }
-        .send-btn { position: absolute; bottom: 20px; right: 20px; background: #e0e0e0; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; }
+        .input-container { width: 90%; max-width: 800px; background: #ffffff; border-radius: 24px; padding: 25px 35px; box-shadow: 0 20px 60px rgba(0,0,0,0.06); border: 1px solid #f0f0f0; position: relative; min-height: 200px; }
+        .chat-input { width: 100%; border: none; outline: none; font-size: 18px; resize: none; background: transparent; min-height: 120px; }
+        .send-btn { position: absolute; bottom: 25px; right: 25px; width: 50px; height: 50px; background: #e0e0e0; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; }
         .send-btn.active { background: #111; }
-        .footer-text { position: fixed; bottom: 40px; font-size: 12px; color: #bfbfbf; }
-        .result-overlay { display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.98); z-index: 1000; overflow-y: auto; padding: 50px 20px; flex-direction: column; align-items: center; }
-        .result-card { width: 100%; max-width: 600px; background: #fff; }
-        .pillar-box { border-bottom: 1px solid #eee; padding: 20px 0; display: flex; justify-content: space-between; font-size: 20px; font-weight: 700; }
+        .result-overlay { display: none; position: fixed; inset: 0; background: #fff; z-index: 1000; overflow-y: auto; padding: 60px 24px; flex-direction: column; align-items: center; }
+        .summary-box { background: #fff5f5; border-radius: 30px; padding: 25px; margin-bottom: 40px; border: 1px solid #ffebeb; }
+        .analysis-p { font-size: 1.15rem; line-height: 2; color: #444; margin-bottom: 30px; text-align: justify; border-bottom: 1px solid #f9f9f9; padding-bottom: 20px; }
+        .loading-status { color: #e69d45; font-weight: 700; margin-bottom: 20px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
         ::-webkit-scrollbar { width: 0; }
     </style>
 </head>
 <body>
-    <div class="logo-circle">
-        <svg class="logo-svg" viewBox="0 0 100 100"><path d="M50,10c-22.1,0-40,17.9-40,40s17.9,40,40,40s40-17.9,40-40S72.1,10,50,10z M50,82c-17.7,0-32-14.3-32-32s14.3-32,32-32 s32,14.3,32,32S67.7,82,50,82z M50,18c-17.7,0-32,14.3-32,32s14.3,32,32,32c17.7,0,32-14.3,32-32S67.7,18,50,18z M50,18 c8.8,0,16,7.2,16,16s-7.2,16-16,16s-16-7.2-16-16S41.2,18,50,18z M50,50c8.8,0,16,7.2,16,16s-7.2,16-16,16s-16-7.2-16-16 S41.2,50,50,50z M50,26c4.4,0,8,3.6,8,8s-3.6,8-8,8s-8-3.6-8-8S45.6,26,50,26z M50,58c4.4,0,8,3.6,8,8s-3.6,8-8,8s-8-3.6-8-8 S45.6,58,50,58z" /></svg>
-    </div>
-    <h1 class="main-title text-gray-800">八字运势</h1>
-    <p class="intro-text">我是生辰八字算命大师，会基于传统命理学推演你的运势。八字计算需要您提供以下信息：1. 公历出生时间：包括年、月、日、小时、分钟，用于计算生辰八字的年柱、月柱、日柱、时柱的天干、地支，共八字。2. 出生城市：生辰八字是基于真太阳时进行计算，需要通过出生城市，查询出生经纬度的太阳位置，把公历出生时间转化为天文学的真太阳时。玄学没有科学依据，仅供娱乐，切勿当真。</p>
+    <div class="logo-circle"><svg width="80" height="80" fill="white" viewBox="0 0 100 100"><path d="M50,10c-22.1,0-40,17.9-40,40s17.9,40,40,40s40-17.9,40-40S72.1,10,50,10z"/></svg></div>
+    <h1 class="main-title">八字运势</h1>
+    <p class="intro-text">我是 DeepSeek 八字大师。请输入您的【公历出生年月日时】和【出生城市】。我将基于真太阳时，从五行生克、十神关系为您提供深度剖析。</p>
+
     <div class="input-container">
-        <span class="placeholder-text">有问题问小白...</span>
-        <textarea id="userInput" class="chat-input" placeholder="输入：1995年10月1日 12:30 北京"></textarea>
-        <div id="sendBtn" class="send-btn" onclick="startAnalysis()">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+        <span class="text-[10px] text-gray-300 font-bold uppercase mb-2">有问题问小白...</span>
+        <textarea id="userInput" class="chat-input" placeholder="输入：1995年10月1日 12:30 上海"></textarea>
+        <div id="sendBtn" class="send-btn" onclick="startDeepAI()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
         </div>
     </div>
-    <div class="footer-text">AI生成内容，仅供参考 | v1774674835</div>
+
     <div id="resultOverlay" class="result-overlay">
-        <div class="result-card">
-            <div class="flex justify-between items-center mb-10"><h2 class="text-3xl font-bold">精批结果</h2><button onclick="closeResult()" class="text-gray-400 text-2xl">✕</button></div>
-            <div id="baziResult" class="grid grid-cols-4 gap-4 mb-10"></div>
-            <div id="analysisContent" class="space-y-8 text-lg leading-relaxed text-gray-600"></div>
-            <div class="mt-20 text-center pb-20"><button onclick="closeResult()" class="px-12 py-4 bg-gray-900 text-white rounded-full font-bold shadow-lg">返回重新输入</button></div>
+        <div class="w-full max-w-2xl">
+            <div class="flex justify-between items-center mb-12"><h2 class="text-3xl font-bold">深度精批报告</h2><button onclick="location.reload()" class="text-gray-300 text-4xl font-light">✕</button></div>
+            <div id="pillarGrid" class="grid grid-cols-4 gap-3 mb-12"></div>
+            <div id="aiLoading" class="loading-status text-center">大师正在调动 DeepSeek 大模型进行深度研判...</div>
+            <div id="summaryArea" class="summary-box" style="display:none"><h4 class="font-bold text-red-900 text-lg mb-2">💡 大师批语</h4><p id="mSummary" class="text-red-800 italic"></p></div>
+            <div id="detailArea" class="pb-32"></div>
+            <div class="fixed bottom-10 left-0 w-full flex justify-center"><button onclick="location.reload()" class="px-14 py-4 bg-gray-900 text-white rounded-full font-bold shadow-2xl">返回重新输入</button></div>
         </div>
     </div>
+
     <script>
+        const WORKER_URL = "https://ai-bazi-proxy.wjy130533.workers.dev/";
         const input = document.getElementById('userInput');
         const btn = document.getElementById('sendBtn');
         input.addEventListener('input', () => { if(input.value.trim().length > 0) btn.classList.add('active'); else btn.classList.remove('active'); });
-        function startAnalysis() {
+
+        async function startDeepAI() {
             const text = input.value.trim();
-            if(!text) return alert('请输入出生信息');
-            document.getElementById('analysisContent').innerHTML = '<p class="text-center">大师正在为您拨动星辰...</p>';
+            if(!text) return;
             document.getElementById('resultOverlay').style.display = 'flex';
-            setTimeout(() => {
-                renderResult("乙亥", "乙酉", "丙子", "甲午");
-            }, 1500);
-        }
-        function renderResult(y, m, d, h) {
-            const container = document.getElementById('baziResult');
-            container.innerHTML = `
-                <div class="text-center p-4 bg-gray-50 rounded-2xl"><p class="text-xs text-gray-400 mb-2">年</p><p class="text-2xl font-bold text-red-800">${y}</p></div>
-                <div class="text-center p-4 bg-gray-50 rounded-2xl"><p class="text-xs text-gray-400 mb-2">月</p><p class="text-2xl font-bold text-red-800">${m}</p></div>
-                <div class="text-center p-4 bg-gray-50 rounded-2xl border-2 border-red-500"><p class="text-xs text-red-400 mb-2">日</p><p class="text-2xl font-bold text-red-800">${d}</p></div>
-                <div class="text-center p-4 bg-gray-50 rounded-2xl"><p class="text-xs text-gray-400 mb-2">时</p><p class="text-2xl font-bold text-red-800">${h}</p></div>
-            `;
-            document.getElementById('analysisContent').innerHTML = `
-                <div class="bg-red-50 p-6 rounded-3xl border border-red-100 mb-6"><h4 class="text-red-900 font-bold mb-2">💡 命理概要</h4><p class="text-red-700 italic text-sm">日主丙火生于酉月，财星当令。命格清粹，晚景优渥。</p></div>
-                <p><b>事业运：</b> 官印相生，适合在创意或行政领域发展。2026年利于求名。</p>
-                <p><b>财运：</b> 偏财透出，外财缘分深厚，宜守不宜贪。</p>
-                <p><b>提示：</b> 仅供娱乐，命运掌握在自己手中。</p>
-            `;
             document.body.style.overflow = 'hidden';
+
+            // 本地排盘演示
+            const b = Solar.fromDate(new Date()).getLunar().getEightChar();
+            document.getElementById('pillarGrid').innerHTML = `<div class="bg-gray-50 p-4 rounded-2xl text-center"><p class="text-[10px] text-gray-400">年</p><p class="text-2xl font-bold text-red-800">${b.getYear()}</p></div><div class="bg-gray-50 p-4 rounded-2xl text-center"><p class="text-[10px] text-gray-400">月</p><p class="text-2xl font-bold text-red-800">${b.getMonth()}</p></div><div class="bg-gray-50 p-4 rounded-2xl border-2 border-red-500 text-center"><p class="text-[10px] text-red-400">日</p><p class="text-2xl font-bold text-red-800">${b.getDay()}</p></div><div class="bg-gray-50 p-4 rounded-2xl text-center"><p class="text-[10px] text-gray-400">时</p><p class="text-2xl font-bold text-red-800">${b.getTime()}</p></div>`;
+
+            try {
+                const res = await fetch(WORKER_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ prompt: text }) });
+                const data = await res.json();
+                if(data.result) {
+                    document.getElementById('aiLoading').style.display = 'none';
+                    document.getElementById('summaryArea').style.display = 'block';
+                    document.getElementById('mSummary').innerText = "命盘已定，乾坤已现。请阅下方深度精批。";
+                    typeWriter(data.result, "detailArea");
+                }
+            } catch (e) { document.getElementById('aiLoading').innerText = "由于星象波动，连接中断，请重试。"; }
         }
-        function closeResult() { document.getElementById('resultOverlay').style.display = 'none'; document.body.style.overflow = 'auto'; }
+
+        function typeWriter(text, id) {
+            const target = document.getElementById(id);
+            let i = 0; target.innerHTML = "";
+            const timer = setInterval(() => {
+                if (i < text.length) {
+                    const char = text.charAt(i);
+                    target.innerHTML += (char === '\n' ? '<br>' : char);
+                    i++;
+                    if(i % 5 === 0) window.scrollTo(0, document.body.scrollHeight);
+                } else { clearInterval(timer); }
+            }, 10);
+        }
     </script>
 </body>
 </html>
