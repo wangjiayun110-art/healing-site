@@ -9,298 +9,63 @@
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;400;700&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
         <style>
             body { background: #020617; font-family: 'Noto Serif SC', serif; min-height: 100vh; color: #f8fafc; overflow-x: hidden; }
-            .star-bg { position: fixed; inset: 0; z-index: -1; background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&w=1920&q=80'); background-size: cover; opacity: 0.3; }
-            .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px); border-radius: 40px; transition: all 0.5s ease; }
+            
+            /* 新背景：静谧雪山星空 */
+            .star-bg { 
+                position: fixed; inset: 0; z-index: -1; 
+                background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80'); 
+                background-size: cover; background-position: center; opacity: 0.4;
+                filter: brightness(0.8);
+            }
+            
+            .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(25px); border-radius: 48px; transition: all 0.6s ease; }
             .title-font { font-family: 'Zhi Mang Xing', cursive; }
-            .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(2, 6, 23, 0.9); backdrop-filter: blur(20px); z-index: 999; align-items: flex-end; md:align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+            
+            .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(40px); z-index: 999; align-items: flex-end; md:align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s ease; }
             .modal-active { display: flex !important; opacity: 1; }
-            .modal-content { transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-height: 85vh; overflow-y: auto; width: 100%; md:width: 90%; md:max-width: 600px; border-radius: 40px 40px 0 0; md:border-radius: 40px; }
+            
+            .modal-content { 
+                transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+                max-height: 90vh; overflow-y: auto; width: 100%; md:width: 90%; md:max-width: 700px; 
+                border-radius: 48px 48px 0 0; md:border-radius: 48px; 
+                box-shadow: 0 -20px 60px rgba(0,0,0,0.5);
+            }
             .modal-active .modal-content { transform: translateY(0); }
+            
+            /* 文字排版优化 */
+            .deep-text { font-size: 1.125rem; line-height: 2; letter-spacing: 0.02em; }
             ::-webkit-scrollbar { width: 0; }
         </style>
     </head>
-    <body class="p-4 md:p-16">
+    <body class="p-6 md:p-20">
         <div class="star-bg"></div>
 
-        <header class="text-center mb-24 md:mb-40 mt-16 px-6">
-            <h1 class="text-7xl md:text-9xl title-font text-white mb-6 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">AI星语</h1>
-            <p class="text-indigo-400 tracking-[0.6em] text-[10px] md:text-sm uppercase font-bold opacity-60">Encyclopedia of the Soul</p>
+        <header class="text-center mb-32 md:mb-56 mt-20 px-8">
+            <h1 class="text-8xl md:text-[12rem] title-font text-white mb-8 drop-shadow-[0_0_50px_rgba(255,255,255,0.3)] tracking-tighter">AI星语</h1>
+            <p class="text-indigo-300 tracking-[1em] text-[10px] md:text-base uppercase font-black opacity-70">Encyclopedia of Infinite Healing</p>
         </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 max-w-7xl mx-auto pb-48 px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-20 max-w-[100rem] mx-auto pb-64 px-4">
             
-        <div class="glass-card group overflow-hidden border border-white/5">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1534796636912?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" alt="白羊座">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-6 left-8">
-                    <span class="text-6xl block drop-shadow-2xl">♈️</span>
-                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">白羊座</h3>
+        <div class="glass-card group overflow-hidden border border-white/10 shadow-2xl">
+            <div class="h-64 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1500000000000?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover opacity-70 transition-transform duration-1000 group-hover:scale-110" alt="白羊座">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                <div class="absolute bottom-8 left-10">
+                    <span class="text-7xl block drop-shadow-2xl mb-2">♈️</span>
+                    <h3 class="text-4xl font-bold text-white tracking-tighter">白羊座</h3>
                 </div>
             </div>
-            <div class="p-8 bg-slate-900/40">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-[10px] font-bold text-indigo-400 tracking-[0.2em] uppercase">Today's Pulse</span>
-                    <span class="text-[10px] text-amber-200/50 italic">勇气与新生</span>
+            <div class="p-10 bg-slate-900/60">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="text-xs font-black text-indigo-400 tracking-[0.3em] uppercase">Daily Oracle</span>
+                    <span class="text-xs text-amber-200/60 italic font-medium">勇气与新生</span>
                 </div>
-                <p class="text-slate-400 leading-relaxed text-sm mb-8 line-clamp-3 font-light">
-                    今日白羊座的能量在‘创造宫’汇聚。你会感到一种强烈的冲动去打破现状，无论是职场上一个大胆的提议，还是生活中一个积压已久的决定，今日都是最佳的切入点。水星的相位提醒你，言语的温和将是你最大的武器。下午三点左右，一个意外的消息可能会带来关于合作的新灵感，请保持感官的完全开放。
+                <p class="text-slate-300 leading-relaxed text-lg mb-10 line-clamp-3 font-light">
+                    “ 今日白羊座的能量在‘创造宫’汇聚。你会感到一种强烈的冲动去打破现状，无论是职场上一个大胆的提议，还是生活中一个积压已久的决定，今日都是最佳的切入点。水星的相位提醒你，言语的温和将是你最大的武器。下午三点左右，一个意外的消息可能会带来关于合作的新灵感，请保持感官的完全开放。 ”
                 </p>
-                <div class="flex justify-between items-center border-t border-white/5 pt-6">
-                    <button onclick="openDeepHoro(0)" class="text-white text-xs font-bold tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/30 pb-1 cursor-pointer">深度全书 / Analysis →</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="glass-card group overflow-hidden border border-white/5">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1534796637412?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" alt="金牛座">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-6 left-8">
-                    <span class="text-6xl block drop-shadow-2xl">♉️</span>
-                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">金牛座</h3>
-                </div>
-            </div>
-            <div class="p-8 bg-slate-900/40">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-[10px] font-bold text-indigo-400 tracking-[0.2em] uppercase">Today's Pulse</span>
-                    <span class="text-[10px] text-amber-200/50 italic">稳健与收获</span>
-                </div>
-                <p class="text-slate-400 leading-relaxed text-sm mb-8 line-clamp-3 font-light">
-                    今日金牛座的主轴是‘感官的丰盛’。你会对周围的环境变得极其敏感，无论是阳光的温度还是咖啡的香气，都能成为你能量的补给站。在处理事务时，请相信你那出了名的直觉。如果感到疲惫，请适时退回到你的个人舒适圈，那里的宁静会帮你完成今日的能量对冲。
-                </p>
-                <div class="flex justify-between items-center border-t border-white/5 pt-6">
-                    <button onclick="openDeepHoro(1)" class="text-white text-xs font-bold tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/30 pb-1 cursor-pointer">深度全书 / Analysis →</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="glass-card group overflow-hidden border border-white/5">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1534796637912?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" alt="双子座">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-6 left-8">
-                    <span class="text-6xl block drop-shadow-2xl">♊️</span>
-                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">双子座</h3>
-                </div>
-            </div>
-            <div class="p-8 bg-slate-900/40">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-[10px] font-bold text-indigo-400 tracking-[0.2em] uppercase">Today's Pulse</span>
-                    <span class="text-[10px] text-amber-200/50 italic">灵感与连接</span>
-                </div>
-                <p class="text-slate-400 leading-relaxed text-sm mb-8 line-clamp-3 font-light">
-                    今日双子座的社交能量爆棚。你会发现自己成为了信息的中心，各种讯息会不约而同地向你汇集。在这种纷繁中，你需要学会‘过滤’。不要急于回应每一个请求，留一点时间给你的潜意识。下午的一个偶遇可能会开启一段意想不到的商务或情感缘分，请展现你最自信的一面。
-                </p>
-                <div class="flex justify-between items-center border-t border-white/5 pt-6">
-                    <button onclick="openDeepHoro(2)" class="text-white text-xs font-bold tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/30 pb-1 cursor-pointer">深度全书 / Analysis →</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="glass-card group overflow-hidden border border-white/5">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1534796638412?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" alt="巨蟹座">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-6 left-8">
-                    <span class="text-6xl block drop-shadow-2xl">♋️</span>
-                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">巨蟹座</h3>
-                </div>
-            </div>
-            <div class="p-8 bg-slate-900/40">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-[10px] font-bold text-indigo-400 tracking-[0.2em] uppercase">Today's Pulse</span>
-                    <span class="text-[10px] text-amber-200/50 italic">内在觉醒</span>
-                </div>
-                <p class="text-slate-400 leading-relaxed text-sm mb-8 line-clamp-3 font-light">
-                    今日巨蟹座的能量场呈现出一种‘向内探索’的趋势。外界的嘈杂仿佛都被一层无形的屏幕隔离，正是这种宁静，让你能清晰地听到内心的真实渴望。在工作与生活的间隙，尝试进行五分钟的深呼吸，你会发现，所有的答案其实早已存在于你的潜意识之中。
-                </p>
-                <div class="flex justify-between items-center border-t border-white/5 pt-6">
-                    <button onclick="openDeepHoro(3)" class="text-white text-xs font-bold tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/30 pb-1 cursor-pointer">深度全书 / Analysis →</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="glass-card group overflow-hidden border border-white/5">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1534796638912?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" alt="狮子座">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-6 left-8">
-                    <span class="text-6xl block drop-shadow-2xl">♌️</span>
-                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">狮子座</h3>
-                </div>
-            </div>
-            <div class="p-8 bg-slate-900/40">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-[10px] font-bold text-indigo-400 tracking-[0.2em] uppercase">Today's Pulse</span>
-                    <span class="text-[10px] text-amber-200/50 italic">内在觉醒</span>
-                </div>
-                <p class="text-slate-400 leading-relaxed text-sm mb-8 line-clamp-3 font-light">
-                    今日狮子座的能量场呈现出一种‘向内探索’的趋势。外界的嘈杂仿佛都被一层无形的屏幕隔离，正是这种宁静，让你能清晰地听到内心的真实渴望。在工作与生活的间隙，尝试进行五分钟的深呼吸，你会发现，所有的答案其实早已存在于你的潜意识之中。
-                </p>
-                <div class="flex justify-between items-center border-t border-white/5 pt-6">
-                    <button onclick="openDeepHoro(4)" class="text-white text-xs font-bold tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/30 pb-1 cursor-pointer">深度全书 / Analysis →</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="glass-card group overflow-hidden border border-white/5">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1534796639412?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" alt="处女座">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-6 left-8">
-                    <span class="text-6xl block drop-shadow-2xl">♍️</span>
-                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">处女座</h3>
-                </div>
-            </div>
-            <div class="p-8 bg-slate-900/40">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-[10px] font-bold text-indigo-400 tracking-[0.2em] uppercase">Today's Pulse</span>
-                    <span class="text-[10px] text-amber-200/50 italic">内在觉醒</span>
-                </div>
-                <p class="text-slate-400 leading-relaxed text-sm mb-8 line-clamp-3 font-light">
-                    今日处女座的能量场呈现出一种‘向内探索’的趋势。外界的嘈杂仿佛都被一层无形的屏幕隔离，正是这种宁静，让你能清晰地听到内心的真实渴望。在工作与生活的间隙，尝试进行五分钟的深呼吸，你会发现，所有的答案其实早已存在于你的潜意识之中。
-                </p>
-                <div class="flex justify-between items-center border-t border-white/5 pt-6">
-                    <button onclick="openDeepHoro(5)" class="text-white text-xs font-bold tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/30 pb-1 cursor-pointer">深度全书 / Analysis →</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="glass-card group overflow-hidden border border-white/5">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1534796639912?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" alt="天秤座">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-6 left-8">
-                    <span class="text-6xl block drop-shadow-2xl">♎️</span>
-                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">天秤座</h3>
-                </div>
-            </div>
-            <div class="p-8 bg-slate-900/40">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-[10px] font-bold text-indigo-400 tracking-[0.2em] uppercase">Today's Pulse</span>
-                    <span class="text-[10px] text-amber-200/50 italic">内在觉醒</span>
-                </div>
-                <p class="text-slate-400 leading-relaxed text-sm mb-8 line-clamp-3 font-light">
-                    今日天秤座的能量场呈现出一种‘向内探索’的趋势。外界的嘈杂仿佛都被一层无形的屏幕隔离，正是这种宁静，让你能清晰地听到内心的真实渴望。在工作与生活的间隙，尝试进行五分钟的深呼吸，你会发现，所有的答案其实早已存在于你的潜意识之中。
-                </p>
-                <div class="flex justify-between items-center border-t border-white/5 pt-6">
-                    <button onclick="openDeepHoro(6)" class="text-white text-xs font-bold tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/30 pb-1 cursor-pointer">深度全书 / Analysis →</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="glass-card group overflow-hidden border border-white/5">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1534796640412?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" alt="天蝎座">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-6 left-8">
-                    <span class="text-6xl block drop-shadow-2xl">♏️</span>
-                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">天蝎座</h3>
-                </div>
-            </div>
-            <div class="p-8 bg-slate-900/40">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-[10px] font-bold text-indigo-400 tracking-[0.2em] uppercase">Today's Pulse</span>
-                    <span class="text-[10px] text-amber-200/50 italic">内在觉醒</span>
-                </div>
-                <p class="text-slate-400 leading-relaxed text-sm mb-8 line-clamp-3 font-light">
-                    今日天蝎座的能量场呈现出一种‘向内探索’的趋势。外界的嘈杂仿佛都被一层无形的屏幕隔离，正是这种宁静，让你能清晰地听到内心的真实渴望。在工作与生活的间隙，尝试进行五分钟的深呼吸，你会发现，所有的答案其实早已存在于你的潜意识之中。
-                </p>
-                <div class="flex justify-between items-center border-t border-white/5 pt-6">
-                    <button onclick="openDeepHoro(7)" class="text-white text-xs font-bold tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/30 pb-1 cursor-pointer">深度全书 / Analysis →</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="glass-card group overflow-hidden border border-white/5">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1534796640912?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" alt="射手座">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-6 left-8">
-                    <span class="text-6xl block drop-shadow-2xl">♐️</span>
-                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">射手座</h3>
-                </div>
-            </div>
-            <div class="p-8 bg-slate-900/40">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-[10px] font-bold text-indigo-400 tracking-[0.2em] uppercase">Today's Pulse</span>
-                    <span class="text-[10px] text-amber-200/50 italic">内在觉醒</span>
-                </div>
-                <p class="text-slate-400 leading-relaxed text-sm mb-8 line-clamp-3 font-light">
-                    今日射手座的能量场呈现出一种‘向内探索’的趋势。外界的嘈杂仿佛都被一层无形的屏幕隔离，正是这种宁静，让你能清晰地听到内心的真实渴望。在工作与生活的间隙，尝试进行五分钟的深呼吸，你会发现，所有的答案其实早已存在于你的潜意识之中。
-                </p>
-                <div class="flex justify-between items-center border-t border-white/5 pt-6">
-                    <button onclick="openDeepHoro(8)" class="text-white text-xs font-bold tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/30 pb-1 cursor-pointer">深度全书 / Analysis →</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="glass-card group overflow-hidden border border-white/5">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1534796641412?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" alt="摩羯座">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-6 left-8">
-                    <span class="text-6xl block drop-shadow-2xl">♑️</span>
-                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">摩羯座</h3>
-                </div>
-            </div>
-            <div class="p-8 bg-slate-900/40">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-[10px] font-bold text-indigo-400 tracking-[0.2em] uppercase">Today's Pulse</span>
-                    <span class="text-[10px] text-amber-200/50 italic">内在觉醒</span>
-                </div>
-                <p class="text-slate-400 leading-relaxed text-sm mb-8 line-clamp-3 font-light">
-                    今日摩羯座的能量场呈现出一种‘向内探索’的趋势。外界的嘈杂仿佛都被一层无形的屏幕隔离，正是这种宁静，让你能清晰地听到内心的真实渴望。在工作与生活的间隙，尝试进行五分钟的深呼吸，你会发现，所有的答案其实早已存在于你的潜意识之中。
-                </p>
-                <div class="flex justify-between items-center border-t border-white/5 pt-6">
-                    <button onclick="openDeepHoro(9)" class="text-white text-xs font-bold tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/30 pb-1 cursor-pointer">深度全书 / Analysis →</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="glass-card group overflow-hidden border border-white/5">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1534796641912?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" alt="水瓶座">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-6 left-8">
-                    <span class="text-6xl block drop-shadow-2xl">♒️</span>
-                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">水瓶座</h3>
-                </div>
-            </div>
-            <div class="p-8 bg-slate-900/40">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-[10px] font-bold text-indigo-400 tracking-[0.2em] uppercase">Today's Pulse</span>
-                    <span class="text-[10px] text-amber-200/50 italic">内在觉醒</span>
-                </div>
-                <p class="text-slate-400 leading-relaxed text-sm mb-8 line-clamp-3 font-light">
-                    今日水瓶座的能量场呈现出一种‘向内探索’的趋势。外界的嘈杂仿佛都被一层无形的屏幕隔离，正是这种宁静，让你能清晰地听到内心的真实渴望。在工作与生活的间隙，尝试进行五分钟的深呼吸，你会发现，所有的答案其实早已存在于你的潜意识之中。
-                </p>
-                <div class="flex justify-between items-center border-t border-white/5 pt-6">
-                    <button onclick="openDeepHoro(10)" class="text-white text-xs font-bold tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/30 pb-1 cursor-pointer">深度全书 / Analysis →</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="glass-card group overflow-hidden border border-white/5">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1534796642412?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" alt="双鱼座">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-6 left-8">
-                    <span class="text-6xl block drop-shadow-2xl">♓️</span>
-                    <h3 class="text-3xl font-bold text-white mt-2 tracking-tight">双鱼座</h3>
-                </div>
-            </div>
-            <div class="p-8 bg-slate-900/40">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-[10px] font-bold text-indigo-400 tracking-[0.2em] uppercase">Today's Pulse</span>
-                    <span class="text-[10px] text-amber-200/50 italic">内在觉醒</span>
-                </div>
-                <p class="text-slate-400 leading-relaxed text-sm mb-8 line-clamp-3 font-light">
-                    今日双鱼座的能量场呈现出一种‘向内探索’的趋势。外界的嘈杂仿佛都被一层无形的屏幕隔离，正是这种宁静，让你能清晰地听到内心的真实渴望。在工作与生活的间隙，尝试进行五分钟的深呼吸，你会发现，所有的答案其实早已存在于你的潜意识之中。
-                </p>
-                <div class="flex justify-between items-center border-t border-white/5 pt-6">
-                    <button onclick="openDeepHoro(11)" class="text-white text-xs font-bold tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/30 pb-1 cursor-pointer">深度全书 / Analysis →</button>
+                <div class="flex justify-between items-center border-t border-white/5 pt-8">
+                    <button onclick="openDeepHoro(0)" class="text-white text-sm font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b-2 border-indigo-500/50 pb-2 cursor-pointer">深度解析 / Explore →</button>
                 </div>
             </div>
         </div>
@@ -309,58 +74,57 @@
 
         <!-- Pop-up -->
         <div id="hModal" class="modal-overlay" onclick="closeDeepHoro()">
-            <div class="modal-content glass-card p-8 md:p-12 relative border border-white/10" onclick="event.stopPropagation()">
-                <div class="w-12 h-1 bg-white/10 rounded-full mx-auto mb-8 md:hidden"></div>
-                <button onclick="closeDeepHoro()" class="hidden md:block absolute top-8 right-10 text-slate-500 text-3xl hover:text-white transition">✕</button>
+            <div class="modal-content glass-card p-10 md:p-20 relative border border-white/10" onclick="event.stopPropagation()">
+                <div class="w-16 h-1.5 bg-white/20 rounded-full mx-auto mb-10 md:hidden"></div>
+                <button onclick="closeDeepHoro()" class="hidden md:block absolute top-10 right-12 text-slate-500 text-5xl hover:text-white transition font-thin">✕</button>
                 
-                <div class="flex items-center gap-6 mb-12">
-                    <span id="mIcon" class="text-7xl">♈️</span>
+                <div class="flex items-center gap-10 mb-16">
+                    <span id="mIcon" class="text-9xl drop-shadow-2xl">♈️</span>
                     <div>
-                        <h2 id="mSign" class="text-4xl font-bold text-white tracking-tight"></h2>
-                        <p id="mTheme" class="text-indigo-400 font-bold tracking-[0.3em] text-[10px] uppercase mt-2"></p>
+                        <h2 id="mSign" class="text-5xl md:text-6xl font-black text-white tracking-tighter"></h2>
+                        <p id="mTheme" class="text-indigo-400 font-black tracking-[0.4em] text-xs uppercase mt-4 opacity-80"></p>
                     </div>
                 </div>
 
-                <!-- 深度文本解析区 -->
-                <div class="space-y-12">
+                <div class="space-y-16 pb-20">
                     <section>
-                        <h4 class="text-xs font-black text-indigo-400 mb-4 uppercase tracking-[0.2em] flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span> 今日星象详述
+                        <h4 class="text-sm font-black text-indigo-300 mb-6 uppercase tracking-[0.3em] flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse"></span> 今日星象详述
                         </h4>
-                        <p id="mToday" class="text-slate-300 leading-relaxed text-base font-light italic"></p>
+                        <p id="mToday" class="deep-text text-slate-200 font-light italic"></p>
                     </section>
 
-                    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 py-8 border-y border-white/5">
-                        <div>
-                            <h4 class="text-[10px] font-bold text-pink-400 mb-3 uppercase tracking-widest">💓 情感流向</h4>
-                            <p id="mLove" class="text-slate-400 text-sm leading-relaxed"></p>
+                    <section class="space-y-10 py-12 border-y border-white/5">
+                        <div class="bg-slate-900/30 p-8 rounded-[2.5rem] border border-white/5">
+                            <h4 class="text-xs font-black text-pink-400 mb-4 uppercase tracking-widest">💓 情感流向 / Love</h4>
+                            <p id="mLove" class="text-slate-300 text-lg leading-relaxed font-light"></p>
                         </div>
-                        <div>
-                            <h4 class="text-[10px] font-bold text-indigo-400 mb-3 uppercase tracking-widest">💼 事业进阶</h4>
-                            <p id="mCareer" class="text-slate-400 text-sm leading-relaxed"></p>
+                        <div class="bg-slate-900/30 p-8 rounded-[2.5rem] border border-white/5">
+                            <h4 class="text-xs font-black text-indigo-400 mb-4 uppercase tracking-widest">💼 事业进阶 / Career</h4>
+                            <p id="mCareer" class="text-slate-300 text-lg leading-relaxed font-light"></p>
                         </div>
                     </section>
 
                     <section>
-                        <h4 class="text-xs font-black text-amber-200 mb-4 uppercase tracking-[0.2em] flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-amber-400"></span> 2026 年度宏观展望
+                        <h4 class="text-sm font-black text-amber-200 mb-6 uppercase tracking-[0.3em] flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span> 2026 年度宏观展望
                         </h4>
-                        <div class="bg-amber-900/10 p-6 rounded-3xl border border-amber-900/20">
-                            <p id="mYearly" class="text-slate-300 leading-relaxed text-sm font-light italic"></p>
+                        <div class="bg-amber-900/10 p-10 rounded-[3rem] border border-amber-900/20">
+                            <p id="mYearly" class="deep-text text-slate-200 font-light italic leading-loose"></p>
                         </div>
                     </section>
 
-                    <section class="flex flex-wrap gap-4 pt-4 pb-12">
-                        <div class="bg-slate-900/50 px-5 py-3 rounded-2xl border border-white/5"><span class="text-[9px] text-slate-500 block mb-1">幸运色</span><span id="mColor" class="text-xs font-bold text-slate-300"></span></div>
-                        <div class="bg-slate-900/50 px-5 py-3 rounded-2xl border border-white/5"><span class="text-[9px] text-slate-500 block mb-1">幸运数</span><span id="mNumber" class="text-xs font-bold text-slate-300"></span></div>
-                        <div class="bg-slate-900/50 px-5 py-3 rounded-2xl border border-white/5"><span class="text-[9px] text-slate-500 block mb-1">契合</span><span id="mMatch" class="text-xs font-bold text-slate-300"></span></div>
+                    <section class="flex flex-wrap gap-6">
+                        <div class="bg-slate-950/50 px-8 py-5 rounded-3xl border border-white/5"><span class="text-[10px] text-slate-500 block mb-2 uppercase tracking-widest">幸运色</span><span id="mColor" class="text-lg font-bold text-indigo-200"></span></div>
+                        <div class="bg-slate-950/50 px-8 py-5 rounded-3xl border border-white/5"><span class="text-[10px] text-slate-500 block mb-2 uppercase tracking-widest">幸运数</span><span id="mNumber" class="text-lg font-bold text-indigo-200"></span></div>
+                        <div class="bg-slate-950/50 px-8 py-5 rounded-3xl border border-white/5"><span class="text-[10px] text-slate-500 block mb-2 uppercase tracking-widest">契合</span><span id="mMatch" class="text-lg font-bold text-indigo-200"></span></div>
                     </section>
                 </div>
             </div>
         </div>
 
         <script>
-            const db = [{"sign": "\u767d\u7f8a\u5ea7", "icon": "\u2648\ufe0f", "theme": "\u52c7\u6c14\u4e0e\u65b0\u751f", "today_analysis": "\u4eca\u65e5\u767d\u7f8a\u5ea7\u7684\u80fd\u91cf\u5728\u2018\u521b\u9020\u5bab\u2019\u6c47\u805a\u3002\u4f60\u4f1a\u611f\u5230\u4e00\u79cd\u5f3a\u70c8\u7684\u51b2\u52a8\u53bb\u6253\u7834\u73b0\u72b6\uff0c\u65e0\u8bba\u662f\u804c\u573a\u4e0a\u4e00\u4e2a\u5927\u80c6\u7684\u63d0\u8bae\uff0c\u8fd8\u662f\u751f\u6d3b\u4e2d\u4e00\u4e2a\u79ef\u538b\u5df2\u4e45\u7684\u51b3\u5b9a\uff0c\u4eca\u65e5\u90fd\u662f\u6700\u4f73\u7684\u5207\u5165\u70b9\u3002\u6c34\u661f\u7684\u76f8\u4f4d\u63d0\u9192\u4f60\uff0c\u8a00\u8bed\u7684\u6e29\u548c\u5c06\u662f\u4f60\u6700\u5927\u7684\u6b66\u5668\u3002\u4e0b\u5348\u4e09\u70b9\u5de6\u53f3\uff0c\u4e00\u4e2a\u610f\u5916\u7684\u6d88\u606f\u53ef\u80fd\u4f1a\u5e26\u6765\u5173\u4e8e\u5408\u4f5c\u7684\u65b0\u7075\u611f\uff0c\u8bf7\u4fdd\u6301\u611f\u5b98\u7684\u5b8c\u5168\u5f00\u653e\u3002", "yearly_analysis": "2026\u5e74\u5bf9\u767d\u7f8a\u5ea7\u800c\u8a00\u662f\u2018\u91cd\u5851\u81ea\u6211\u2019\u7684\u5173\u952e\u5e74\u3002\u6728\u661f\u5728\u4f60\u7684\u547d\u5bab\u505c\u7559\uff0c\u4e3a\u4f60\u5e26\u6765\u4e86\u524d\u6240\u672a\u6709\u7684\u6269\u5f20\u673a\u9047\u3002\u4e0a\u534a\u5e74\uff0c\u4f60\u53ef\u80fd\u4f1a\u7ecf\u5386\u804c\u573a\u73af\u5883\u7684\u5267\u70c8\u53d8\u52a8\uff0c\u8fd9\u5b9e\u9645\u4e0a\u662f\u5728\u4e3a\u4f60\u672a\u6765\u7684\u5341\u5e74\u94fa\u8def\u3002\u4e0b\u534a\u5e74\uff0c\u91cd\u5fc3\u5c06\u8f6c\u5411\u5185\u5728\u6210\u957f\u4e0e\u5bb6\u5ead\u5173\u7cfb\u7684\u4fee\u590d\u3002\u8fd9\u4e00\u5e74\uff0c\u4f60\u7684\u5173\u952e\u8bcd\u662f\u2018\u575a\u97e7\u2019\uff0c\u5728\u6bcf\u4e00\u6b21\u60f3\u8981\u653e\u5f03\u7684\u65f6\u5019\uff0c\u8bf7\u8bb0\u4f4f\uff0c\u90a3\u662f\u7834\u8327\u6210\u8776\u524d\u6700\u6df1\u7684\u9ed1\u6697\u3002", "details": {"love": "\u4eca\u65e5\u60c5\u611f\u78c1\u573a\u67d4\u548c\u3002\u5355\u8eab\u8005\u5728\u5de5\u4f5c\u5f80\u6765\u4e2d\u53ef\u80fd\u4f1a\u9047\u5230\u5fd7\u540c\u9053\u5408\u7684\u4f19\u4f34\uff1b\u6709\u4f34\u8005\u9002\u5408\u8fdb\u884c\u4e00\u6b21\u5173\u4e8e\u672a\u6765\u7684\u6df1\u5ea6\u8c08\u8bdd\uff0c\u5766\u8bda\u662f\u6700\u597d\u7684\u589e\u8fdb\u5242\u3002", "career": "\u804c\u573a\u6267\u884c\u529b\u6ee1\u683c\u3002\u867d\u7136\u4f1a\u6709\u7410\u788e\u7684\u4efb\u52a1\u6253\u6270\uff0c\u4f46\u4f60\u7684\u5927\u5c40\u89c2\u80fd\u8ba9\u4f60\u5728\u4e71\u5c40\u4e2d\u627e\u5230\u6700\u4f18\u8def\u5f84\u3002\u4eca\u65e5\u9002\u5408\u5904\u7406\u5408\u540c\u6216\u8fdb\u884c\u957f\u8fdc\u89c4\u5212\u3002", "wealth": "\u8d22\u8fd0\u5448\u73b0\u7a33\u6b65\u4e0a\u5347\u8d8b\u52bf\u3002\u9002\u5408\u5173\u6ce8\u957f\u671f\u7684\u7a33\u5065\u6295\u8d44\uff0c\u800c\u975e\u77ed\u671f\u7684\u6295\u673a\u3002\u4eca\u65e5\u5728\u793e\u4ea4\u4e0a\u7684\u82b1\u8d39\u4f1a\u4e3a\u4f60\u6362\u6765\u6709\u4ef7\u503c\u7684\u4fe1\u606f\u3002"}, "lucky": {"color": "\u706b\u7ea2\u8272", "number": "9", "match": "\u72ee\u5b50\u5ea7", "item": "\u767d\u8272\u6269\u9999\u77f3"}}, {"sign": "\u91d1\u725b\u5ea7", "icon": "\u2649\ufe0f", "theme": "\u7a33\u5065\u4e0e\u6536\u83b7", "today_analysis": "\u4eca\u65e5\u91d1\u725b\u5ea7\u7684\u4e3b\u8f74\u662f\u2018\u611f\u5b98\u7684\u4e30\u76db\u2019\u3002\u4f60\u4f1a\u5bf9\u5468\u56f4\u7684\u73af\u5883\u53d8\u5f97\u6781\u5176\u654f\u611f\uff0c\u65e0\u8bba\u662f\u9633\u5149\u7684\u6e29\u5ea6\u8fd8\u662f\u5496\u5561\u7684\u9999\u6c14\uff0c\u90fd\u80fd\u6210\u4e3a\u4f60\u80fd\u91cf\u7684\u8865\u7ed9\u7ad9\u3002\u5728\u5904\u7406\u4e8b\u52a1\u65f6\uff0c\u8bf7\u76f8\u4fe1\u4f60\u90a3\u51fa\u4e86\u540d\u7684\u76f4\u89c9\u3002\u5982\u679c\u611f\u5230\u75b2\u60eb\uff0c\u8bf7\u9002\u65f6\u9000\u56de\u5230\u4f60\u7684\u4e2a\u4eba\u8212\u9002\u5708\uff0c\u90a3\u91cc\u7684\u5b81\u9759\u4f1a\u5e2e\u4f60\u5b8c\u6210\u4eca\u65e5\u7684\u80fd\u91cf\u5bf9\u51b2\u3002", "yearly_analysis": "\u8fd9\u4e00\u5e74\u662f\u91d1\u725b\u5ea7\u7684\u2018\u8d22\u5bcc\u91cd\u6784\u5e74\u2019\u3002\u968f\u7740\u5929\u738b\u661f\u5728\u4f60\u661f\u7fa4\u4e2d\u7684\u6df1\u5ea6\u8fd0\u4f5c\uff0c\u4f60\u53ef\u80fd\u4f1a\u6539\u53d8\u4f20\u7edf\u7684\u8d5a\u94b1\u65b9\u5f0f\uff0c\u751a\u81f3\u6b65\u5165\u4e00\u4e2a\u5168\u65b0\u7684\u9886\u57df\u3002\u4e0a\u534a\u5e74\u4f1a\u6709\u51e0\u6b21\u5c0f\u89c4\u6a21\u7684\u8d22\u52a1\u6ce2\u52a8\uff0c\u4f46\u90a3\u662f\u5728\u63d0\u9192\u4f60\u4f18\u5316\u8d44\u4ea7\u914d\u7f6e\u3002\u4e0b\u534a\u5e74\uff0c\u4f60\u7684\u793e\u4ea4\u5708\u5c42\u5c06\u8fce\u6765\u5927\u6d17\u724c\uff0c\u9ad8\u8d28\u91cf\u7684\u4eba\u8109\u5c06\u6210\u4e3a\u4f60\u4e8b\u4e1a\u8fdb\u9636\u7684\u6700\u5f3a\u52a9\u63a8\u529b\u3002\u8bf7\u4fdd\u6301\u5bf9\u65b0\u6280\u672f\u7684\u654f\u611f\u5ea6\u3002", "details": {"love": "\u611f\u60c5\u4e16\u754c\u8d8b\u4e8e\u7a33\u5b9a\u3002\u4eca\u65e5\u9002\u5408\u4e0e\u7231\u4eba\u5171\u5ea6\u4e00\u6bb5\u5b89\u9759\u7684\u65f6\u5149\uff0c\u8fd9\u79cd\u2018\u65e0\u58f0\u80dc\u6709\u58f0\u2019\u7684\u9ed8\u5951\u662f\u4f60\u4eec\u5173\u7cfb\u7684\u6839\u57fa\u3002\u5355\u8eab\u8005\u5b9c\u9759\u4e0d\u5b9c\u52a8\u3002", "career": "\u804c\u573a\u538b\u529b\u6709\u6240\u7f13\u89e3\u3002\u4e4b\u524d\u79ef\u538b\u7684\u5de5\u4f5c\u4eca\u65e5\u80fd\u5f97\u5230\u6709\u6548\u89e3\u51b3\u3002\u9002\u5408\u8fdb\u884c\u56e2\u961f\u5185\u90e8\u7684\u6c9f\u901a\uff0c\u4f60\u7684\u7a33\u5b9a\u6027\u662f\u540c\u4e8b\u773c\u4e2d\u7684\u5b9a\u5fc3\u4e38\u3002", "wealth": "\u8d22\u8fd0\u65fa\u76db\uff0c\u5c24\u5176\u662f\u4e4b\u524d\u7684\u957f\u671f\u6295\u8d44\u4eca\u65e5\u53ef\u80fd\u4f1a\u770b\u5230\u56de\u62a5\u3002\u4e0d\u5efa\u8bae\u501f\u94b1\u7ed9\u4ed6\u4eba\uff0c\u4fdd\u62a4\u597d\u4f60\u7684\u73b0\u91d1\u6d41\u3002"}, "lucky": {"color": "\u8349\u672c\u7eff", "number": "6", "match": "\u5904\u5973\u5ea7", "item": "\u624b\u5de5\u9676\u5668"}}, {"sign": "\u53cc\u5b50\u5ea7", "icon": "\u264a\ufe0f", "theme": "\u7075\u611f\u4e0e\u8fde\u63a5", "today_analysis": "\u4eca\u65e5\u53cc\u5b50\u5ea7\u7684\u793e\u4ea4\u80fd\u91cf\u7206\u68da\u3002\u4f60\u4f1a\u53d1\u73b0\u81ea\u5df1\u6210\u4e3a\u4e86\u4fe1\u606f\u7684\u4e2d\u5fc3\uff0c\u5404\u79cd\u8baf\u606f\u4f1a\u4e0d\u7ea6\u800c\u540c\u5730\u5411\u4f60\u6c47\u96c6\u3002\u5728\u8fd9\u79cd\u7eb7\u7e41\u4e2d\uff0c\u4f60\u9700\u8981\u5b66\u4f1a\u2018\u8fc7\u6ee4\u2019\u3002\u4e0d\u8981\u6025\u4e8e\u56de\u5e94\u6bcf\u4e00\u4e2a\u8bf7\u6c42\uff0c\u7559\u4e00\u70b9\u65f6\u95f4\u7ed9\u4f60\u7684\u6f5c\u610f\u8bc6\u3002\u4e0b\u5348\u7684\u4e00\u4e2a\u5076\u9047\u53ef\u80fd\u4f1a\u5f00\u542f\u4e00\u6bb5\u610f\u60f3\u4e0d\u5230\u7684\u5546\u52a1\u6216\u60c5\u611f\u7f18\u5206\uff0c\u8bf7\u5c55\u73b0\u4f60\u6700\u81ea\u4fe1\u7684\u4e00\u9762\u3002", "yearly_analysis": "2026\u5e74\u662f\u53cc\u5b50\u5ea7\u7684\u2018\u77e5\u8bc6\u53d8\u73b0\u5e74\u2019\u3002\u8fc7\u53bb\u51e0\u5e74\u79ef\u7d2f\u7684\u6280\u80fd\u548c\u7ecf\u9a8c\u5c06\u5728\u4eca\u5e74\u8fce\u6765\u7206\u53d1\u3002\u4e0a\u534a\u5e74\uff0c\u4f60\u4f1a\u9762\u4e34\u591a\u6b21\u8de8\u9886\u57df\u5b66\u4e60\u7684\u673a\u4f1a\uff0c\u8fd9\u4e0d\u4ec5\u4f1a\u62d3\u5bbd\u4f60\u7684\u4e8b\u4e1a\u7248\u56fe\uff0c\u66f4\u4f1a\u91cd\u5851\u4f60\u7684\u601d\u7ef4\u903b\u8f91\u3002\u4e0b\u534a\u5e74\uff0c\u91cd\u5fc3\u5c06\u56de\u5f52\u81ea\u6211\u8868\u8fbe\uff0c\u4f60\u53ef\u80fd\u4f1a\u5728\u67d0\u4e2a\u9886\u57df\u83b7\u5f97\u5e7f\u6cdb\u7684\u793e\u4f1a\u8ba4\u53ef\u3002\u8fd9\u4e00\u5e74\uff0c\u8bf7\u52a1\u5fc5\u7ba1\u4f4f\u4f60\u7684\u2018\u591a\u53d8\u2019\uff0c\u6df1\u8015\u4e00\u4e2a\u9886\u57df\u4f1a\u8ba9\u4f60\u6536\u83b7\u60ca\u4eba\u7684\u56de\u62a5\u3002", "details": {"love": "\u611f\u60c5\u751f\u6d3b\u591a\u59ff\u591a\u5f69\u3002\u5355\u8eab\u8005\u53ef\u80fd\u4f1a\u9677\u5165\u4e00\u6bb5\u5145\u6ee1\u667a\u529b\u706b\u82b1\u7684\u66a7\u6627\uff1b\u6709\u4f34\u8005\u5219\u9700\u6ce8\u610f\u5728\u5fd9\u788c\u4e2d\u4e0d\u8981\u51b7\u843d\u4e86\u5bf9\u65b9\uff0c\u54ea\u6015\u662f\u4e00\u53e5\u7b80\u5355\u7684\u65e9\u5b89\u4e5f\u5f88\u6709\u529b\u91cf\u3002", "career": "\u6587\u6848\u3001\u521b\u610f\u3001\u6c9f\u901a\u662f\u4eca\u65e5\u7684\u5173\u952e\u8bcd\u3002\u4f60\u7684\u5934\u8111\u7075\u6d3b\u6027\u4f1a\u5e2e\u4f60\u907f\u5f00\u4e00\u4e2a\u804c\u573a\u5c0f\u9677\u9631\u3002\u9002\u5408\u8fdb\u884c\u591a\u4efb\u52a1\u5904\u7406\uff0c\u4f60\u7684\u6548\u7387\u4f1a\u8ba9\u4f17\u4eba\u60ca\u53f9\u3002", "wealth": "\u8d22\u8fd0\u5e73\u7a33\uff0c\u652f\u51fa\u4e3b\u8981\u96c6\u4e2d\u5728\u5b66\u4e60\u548c\u77ed\u9014\u65c5\u884c\u4e0a\u3002\u8fd9\u4e9b\u82b1\u8d39\u4f1a\u8f6c\u5316\u4e3a\u672a\u6765\u7684\u751f\u4ea7\u529b\uff0c\u65e0\u9700\u8fc7\u5206\u7cbe\u6253\u7ec6\u7b97\u3002"}, "lucky": {"color": "\u4eae\u9ec4\u8272", "number": "5", "match": "\u6c34\u74f6\u5ea7", "item": "\u590d\u53e4\u7b14\u8bb0\u7c3f"}}, {"sign": "\u5de8\u87f9\u5ea7", "icon": "\u264b\ufe0f", "theme": "\u5185\u5728\u89c9\u9192", "today_analysis": "\u4eca\u65e5\u5de8\u87f9\u5ea7\u7684\u80fd\u91cf\u573a\u5448\u73b0\u51fa\u4e00\u79cd\u2018\u5411\u5185\u63a2\u7d22\u2019\u7684\u8d8b\u52bf\u3002\u5916\u754c\u7684\u5608\u6742\u4eff\u4f5b\u90fd\u88ab\u4e00\u5c42\u65e0\u5f62\u7684\u5c4f\u5e55\u9694\u79bb\uff0c\u6b63\u662f\u8fd9\u79cd\u5b81\u9759\uff0c\u8ba9\u4f60\u80fd\u6e05\u6670\u5730\u542c\u5230\u5185\u5fc3\u7684\u771f\u5b9e\u6e34\u671b\u3002\u5728\u5de5\u4f5c\u4e0e\u751f\u6d3b\u7684\u95f4\u9699\uff0c\u5c1d\u8bd5\u8fdb\u884c\u4e94\u5206\u949f\u7684\u6df1\u547c\u5438\uff0c\u4f60\u4f1a\u53d1\u73b0\uff0c\u6240\u6709\u7684\u7b54\u6848\u5176\u5b9e\u65e9\u5df2\u5b58\u5728\u4e8e\u4f60\u7684\u6f5c\u610f\u8bc6\u4e4b\u4e2d\u3002", "yearly_analysis": "2026\u5e74\u5bf9\u5de8\u87f9\u5ea7\u800c\u8a00\u662f\u2018\u5173\u7cfb\u91cd\u7ec4\u5e74\u2019\u3002\u4f60\u5c06\u5b66\u4f1a\u5982\u4f55\u5728\u4fdd\u6301\u72ec\u7acb\u7684\u540c\u65f6\uff0c\u4e0e\u8fd9\u4e2a\u4e16\u754c\u5efa\u7acb\u66f4\u6df1\u5c42\u7684\u8fde\u63a5\u3002\u4e0a\u534a\u5e74\u4f1a\u6709\u4e00\u4e9b\u65e7\u6709\u7684\u5173\u7cfb\u9762\u4e34\u7ec8\u7ed3\uff0c\u8fd9\u5b9e\u9645\u4e0a\u662f\u5728\u4e3a\u4f60\u817e\u51fa\u7a7a\u95f4\uff0c\u53bb\u8fce\u63a5\u90a3\u4e2a\u771f\u6b63\u80fd\u4e0e\u4f60\u7075\u9b42\u5951\u5408\u7684\u65b0\u5708\u5c42\u3002\u4e8b\u4e1a\u4e0a\uff0c\u4fdd\u6301\u4f4e\u8c03\u4e14\u6301\u7eed\u7684\u52aa\u529b\uff0c\u5e74\u5e95\u5c06\u6709\u4ee4\u4eba\u77a9\u76ee\u7684\u6536\u83b7\u3002", "details": {"love": "\u611f\u60c5\u65b9\u9762\u5efa\u8bae\u987a\u5176\u81ea\u7136\u3002\u4e0d\u8981\u8fc7\u5206\u6267\u7740\u4e8e\u7ed3\u679c\uff0c\u4eab\u53d7\u5f53\u4e0b\u7684\u4ea4\u6d41\u4e0e\u5171\u9e23\u3002\u4eca\u65e5\u9002\u5408\u5728\u6e29\u99a8\u7684\u73af\u5883\u4e2d\u8fdb\u884c\u6df1\u5ea6\u5bf9\u8bdd\u3002", "career": "\u804c\u573a\u5e73\u7a33\uff0c\u9002\u5408\u5904\u7406\u4e00\u4e9b\u9700\u8981\u9ad8\u5ea6\u8010\u5fc3\u548c\u7ec6\u81f4\u5ea6\u7684\u57fa\u7840\u5de5\u4f5c\u3002\u4f60\u7684\u8e0f\u5b9e\u4f1a\u4e3a\u4f60\u8d62\u5f97\u957f\u8f88\u6216\u4e0a\u53f8\u7684\u4fe1\u4efb\u3002", "wealth": "\u8d22\u8fd0\u7ec6\u6c34\u957f\u6d41\u3002\u4eca\u65e5\u9002\u5408\u5236\u5b9a\u4e0b\u4e00\u5b63\u5ea6\u7684\u8d22\u52a1\u8ba1\u5212\u3002\u907f\u514d\u51b2\u52a8\u8d2d\u7269\uff0c\u5c24\u5176\u662f\u90a3\u4e9b\u4e3a\u4e86\u7f13\u89e3\u538b\u529b\u7684\u60c5\u7eea\u6027\u6d88\u8d39\u3002"}, "lucky": {"color": "\u6de1\u84dd\u8272", "number": "8", "match": "\u5929\u874e\u5ea7", "item": "\u6c34\u6676\u7403"}}, {"sign": "\u72ee\u5b50\u5ea7", "icon": "\u264c\ufe0f", "theme": "\u5185\u5728\u89c9\u9192", "today_analysis": "\u4eca\u65e5\u72ee\u5b50\u5ea7\u7684\u80fd\u91cf\u573a\u5448\u73b0\u51fa\u4e00\u79cd\u2018\u5411\u5185\u63a2\u7d22\u2019\u7684\u8d8b\u52bf\u3002\u5916\u754c\u7684\u5608\u6742\u4eff\u4f5b\u90fd\u88ab\u4e00\u5c42\u65e0\u5f62\u7684\u5c4f\u5e55\u9694\u79bb\uff0c\u6b63\u662f\u8fd9\u79cd\u5b81\u9759\uff0c\u8ba9\u4f60\u80fd\u6e05\u6670\u5730\u542c\u5230\u5185\u5fc3\u7684\u771f\u5b9e\u6e34\u671b\u3002\u5728\u5de5\u4f5c\u4e0e\u751f\u6d3b\u7684\u95f4\u9699\uff0c\u5c1d\u8bd5\u8fdb\u884c\u4e94\u5206\u949f\u7684\u6df1\u547c\u5438\uff0c\u4f60\u4f1a\u53d1\u73b0\uff0c\u6240\u6709\u7684\u7b54\u6848\u5176\u5b9e\u65e9\u5df2\u5b58\u5728\u4e8e\u4f60\u7684\u6f5c\u610f\u8bc6\u4e4b\u4e2d\u3002", "yearly_analysis": "2026\u5e74\u5bf9\u72ee\u5b50\u5ea7\u800c\u8a00\u662f\u2018\u5173\u7cfb\u91cd\u7ec4\u5e74\u2019\u3002\u4f60\u5c06\u5b66\u4f1a\u5982\u4f55\u5728\u4fdd\u6301\u72ec\u7acb\u7684\u540c\u65f6\uff0c\u4e0e\u8fd9\u4e2a\u4e16\u754c\u5efa\u7acb\u66f4\u6df1\u5c42\u7684\u8fde\u63a5\u3002\u4e0a\u534a\u5e74\u4f1a\u6709\u4e00\u4e9b\u65e7\u6709\u7684\u5173\u7cfb\u9762\u4e34\u7ec8\u7ed3\uff0c\u8fd9\u5b9e\u9645\u4e0a\u662f\u5728\u4e3a\u4f60\u817e\u51fa\u7a7a\u95f4\uff0c\u53bb\u8fce\u63a5\u90a3\u4e2a\u771f\u6b63\u80fd\u4e0e\u4f60\u7075\u9b42\u5951\u5408\u7684\u65b0\u5708\u5c42\u3002\u4e8b\u4e1a\u4e0a\uff0c\u4fdd\u6301\u4f4e\u8c03\u4e14\u6301\u7eed\u7684\u52aa\u529b\uff0c\u5e74\u5e95\u5c06\u6709\u4ee4\u4eba\u77a9\u76ee\u7684\u6536\u83b7\u3002", "details": {"love": "\u611f\u60c5\u65b9\u9762\u5efa\u8bae\u987a\u5176\u81ea\u7136\u3002\u4e0d\u8981\u8fc7\u5206\u6267\u7740\u4e8e\u7ed3\u679c\uff0c\u4eab\u53d7\u5f53\u4e0b\u7684\u4ea4\u6d41\u4e0e\u5171\u9e23\u3002\u4eca\u65e5\u9002\u5408\u5728\u6e29\u99a8\u7684\u73af\u5883\u4e2d\u8fdb\u884c\u6df1\u5ea6\u5bf9\u8bdd\u3002", "career": "\u804c\u573a\u5e73\u7a33\uff0c\u9002\u5408\u5904\u7406\u4e00\u4e9b\u9700\u8981\u9ad8\u5ea6\u8010\u5fc3\u548c\u7ec6\u81f4\u5ea6\u7684\u57fa\u7840\u5de5\u4f5c\u3002\u4f60\u7684\u8e0f\u5b9e\u4f1a\u4e3a\u4f60\u8d62\u5f97\u957f\u8f88\u6216\u4e0a\u53f8\u7684\u4fe1\u4efb\u3002", "wealth": "\u8d22\u8fd0\u7ec6\u6c34\u957f\u6d41\u3002\u4eca\u65e5\u9002\u5408\u5236\u5b9a\u4e0b\u4e00\u5b63\u5ea6\u7684\u8d22\u52a1\u8ba1\u5212\u3002\u907f\u514d\u51b2\u52a8\u8d2d\u7269\uff0c\u5c24\u5176\u662f\u90a3\u4e9b\u4e3a\u4e86\u7f13\u89e3\u538b\u529b\u7684\u60c5\u7eea\u6027\u6d88\u8d39\u3002"}, "lucky": {"color": "\u6de1\u84dd\u8272", "number": "8", "match": "\u5929\u874e\u5ea7", "item": "\u6c34\u6676\u7403"}}, {"sign": "\u5904\u5973\u5ea7", "icon": "\u264d\ufe0f", "theme": "\u5185\u5728\u89c9\u9192", "today_analysis": "\u4eca\u65e5\u5904\u5973\u5ea7\u7684\u80fd\u91cf\u573a\u5448\u73b0\u51fa\u4e00\u79cd\u2018\u5411\u5185\u63a2\u7d22\u2019\u7684\u8d8b\u52bf\u3002\u5916\u754c\u7684\u5608\u6742\u4eff\u4f5b\u90fd\u88ab\u4e00\u5c42\u65e0\u5f62\u7684\u5c4f\u5e55\u9694\u79bb\uff0c\u6b63\u662f\u8fd9\u79cd\u5b81\u9759\uff0c\u8ba9\u4f60\u80fd\u6e05\u6670\u5730\u542c\u5230\u5185\u5fc3\u7684\u771f\u5b9e\u6e34\u671b\u3002\u5728\u5de5\u4f5c\u4e0e\u751f\u6d3b\u7684\u95f4\u9699\uff0c\u5c1d\u8bd5\u8fdb\u884c\u4e94\u5206\u949f\u7684\u6df1\u547c\u5438\uff0c\u4f60\u4f1a\u53d1\u73b0\uff0c\u6240\u6709\u7684\u7b54\u6848\u5176\u5b9e\u65e9\u5df2\u5b58\u5728\u4e8e\u4f60\u7684\u6f5c\u610f\u8bc6\u4e4b\u4e2d\u3002", "yearly_analysis": "2026\u5e74\u5bf9\u5904\u5973\u5ea7\u800c\u8a00\u662f\u2018\u5173\u7cfb\u91cd\u7ec4\u5e74\u2019\u3002\u4f60\u5c06\u5b66\u4f1a\u5982\u4f55\u5728\u4fdd\u6301\u72ec\u7acb\u7684\u540c\u65f6\uff0c\u4e0e\u8fd9\u4e2a\u4e16\u754c\u5efa\u7acb\u66f4\u6df1\u5c42\u7684\u8fde\u63a5\u3002\u4e0a\u534a\u5e74\u4f1a\u6709\u4e00\u4e9b\u65e7\u6709\u7684\u5173\u7cfb\u9762\u4e34\u7ec8\u7ed3\uff0c\u8fd9\u5b9e\u9645\u4e0a\u662f\u5728\u4e3a\u4f60\u817e\u51fa\u7a7a\u95f4\uff0c\u53bb\u8fce\u63a5\u90a3\u4e2a\u771f\u6b63\u80fd\u4e0e\u4f60\u7075\u9b42\u5951\u5408\u7684\u65b0\u5708\u5c42\u3002\u4e8b\u4e1a\u4e0a\uff0c\u4fdd\u6301\u4f4e\u8c03\u4e14\u6301\u7eed\u7684\u52aa\u529b\uff0c\u5e74\u5e95\u5c06\u6709\u4ee4\u4eba\u77a9\u76ee\u7684\u6536\u83b7\u3002", "details": {"love": "\u611f\u60c5\u65b9\u9762\u5efa\u8bae\u987a\u5176\u81ea\u7136\u3002\u4e0d\u8981\u8fc7\u5206\u6267\u7740\u4e8e\u7ed3\u679c\uff0c\u4eab\u53d7\u5f53\u4e0b\u7684\u4ea4\u6d41\u4e0e\u5171\u9e23\u3002\u4eca\u65e5\u9002\u5408\u5728\u6e29\u99a8\u7684\u73af\u5883\u4e2d\u8fdb\u884c\u6df1\u5ea6\u5bf9\u8bdd\u3002", "career": "\u804c\u573a\u5e73\u7a33\uff0c\u9002\u5408\u5904\u7406\u4e00\u4e9b\u9700\u8981\u9ad8\u5ea6\u8010\u5fc3\u548c\u7ec6\u81f4\u5ea6\u7684\u57fa\u7840\u5de5\u4f5c\u3002\u4f60\u7684\u8e0f\u5b9e\u4f1a\u4e3a\u4f60\u8d62\u5f97\u957f\u8f88\u6216\u4e0a\u53f8\u7684\u4fe1\u4efb\u3002", "wealth": "\u8d22\u8fd0\u7ec6\u6c34\u957f\u6d41\u3002\u4eca\u65e5\u9002\u5408\u5236\u5b9a\u4e0b\u4e00\u5b63\u5ea6\u7684\u8d22\u52a1\u8ba1\u5212\u3002\u907f\u514d\u51b2\u52a8\u8d2d\u7269\uff0c\u5c24\u5176\u662f\u90a3\u4e9b\u4e3a\u4e86\u7f13\u89e3\u538b\u529b\u7684\u60c5\u7eea\u6027\u6d88\u8d39\u3002"}, "lucky": {"color": "\u6de1\u84dd\u8272", "number": "8", "match": "\u5929\u874e\u5ea7", "item": "\u6c34\u6676\u7403"}}, {"sign": "\u5929\u79e4\u5ea7", "icon": "\u264e\ufe0f", "theme": "\u5185\u5728\u89c9\u9192", "today_analysis": "\u4eca\u65e5\u5929\u79e4\u5ea7\u7684\u80fd\u91cf\u573a\u5448\u73b0\u51fa\u4e00\u79cd\u2018\u5411\u5185\u63a2\u7d22\u2019\u7684\u8d8b\u52bf\u3002\u5916\u754c\u7684\u5608\u6742\u4eff\u4f5b\u90fd\u88ab\u4e00\u5c42\u65e0\u5f62\u7684\u5c4f\u5e55\u9694\u79bb\uff0c\u6b63\u662f\u8fd9\u79cd\u5b81\u9759\uff0c\u8ba9\u4f60\u80fd\u6e05\u6670\u5730\u542c\u5230\u5185\u5fc3\u7684\u771f\u5b9e\u6e34\u671b\u3002\u5728\u5de5\u4f5c\u4e0e\u751f\u6d3b\u7684\u95f4\u9699\uff0c\u5c1d\u8bd5\u8fdb\u884c\u4e94\u5206\u949f\u7684\u6df1\u547c\u5438\uff0c\u4f60\u4f1a\u53d1\u73b0\uff0c\u6240\u6709\u7684\u7b54\u6848\u5176\u5b9e\u65e9\u5df2\u5b58\u5728\u4e8e\u4f60\u7684\u6f5c\u610f\u8bc6\u4e4b\u4e2d\u3002", "yearly_analysis": "2026\u5e74\u5bf9\u5929\u79e4\u5ea7\u800c\u8a00\u662f\u2018\u5173\u7cfb\u91cd\u7ec4\u5e74\u2019\u3002\u4f60\u5c06\u5b66\u4f1a\u5982\u4f55\u5728\u4fdd\u6301\u72ec\u7acb\u7684\u540c\u65f6\uff0c\u4e0e\u8fd9\u4e2a\u4e16\u754c\u5efa\u7acb\u66f4\u6df1\u5c42\u7684\u8fde\u63a5\u3002\u4e0a\u534a\u5e74\u4f1a\u6709\u4e00\u4e9b\u65e7\u6709\u7684\u5173\u7cfb\u9762\u4e34\u7ec8\u7ed3\uff0c\u8fd9\u5b9e\u9645\u4e0a\u662f\u5728\u4e3a\u4f60\u817e\u51fa\u7a7a\u95f4\uff0c\u53bb\u8fce\u63a5\u90a3\u4e2a\u771f\u6b63\u80fd\u4e0e\u4f60\u7075\u9b42\u5951\u5408\u7684\u65b0\u5708\u5c42\u3002\u4e8b\u4e1a\u4e0a\uff0c\u4fdd\u6301\u4f4e\u8c03\u4e14\u6301\u7eed\u7684\u52aa\u529b\uff0c\u5e74\u5e95\u5c06\u6709\u4ee4\u4eba\u77a9\u76ee\u7684\u6536\u83b7\u3002", "details": {"love": "\u611f\u60c5\u65b9\u9762\u5efa\u8bae\u987a\u5176\u81ea\u7136\u3002\u4e0d\u8981\u8fc7\u5206\u6267\u7740\u4e8e\u7ed3\u679c\uff0c\u4eab\u53d7\u5f53\u4e0b\u7684\u4ea4\u6d41\u4e0e\u5171\u9e23\u3002\u4eca\u65e5\u9002\u5408\u5728\u6e29\u99a8\u7684\u73af\u5883\u4e2d\u8fdb\u884c\u6df1\u5ea6\u5bf9\u8bdd\u3002", "career": "\u804c\u573a\u5e73\u7a33\uff0c\u9002\u5408\u5904\u7406\u4e00\u4e9b\u9700\u8981\u9ad8\u5ea6\u8010\u5fc3\u548c\u7ec6\u81f4\u5ea6\u7684\u57fa\u7840\u5de5\u4f5c\u3002\u4f60\u7684\u8e0f\u5b9e\u4f1a\u4e3a\u4f60\u8d62\u5f97\u957f\u8f88\u6216\u4e0a\u53f8\u7684\u4fe1\u4efb\u3002", "wealth": "\u8d22\u8fd0\u7ec6\u6c34\u957f\u6d41\u3002\u4eca\u65e5\u9002\u5408\u5236\u5b9a\u4e0b\u4e00\u5b63\u5ea6\u7684\u8d22\u52a1\u8ba1\u5212\u3002\u907f\u514d\u51b2\u52a8\u8d2d\u7269\uff0c\u5c24\u5176\u662f\u90a3\u4e9b\u4e3a\u4e86\u7f13\u89e3\u538b\u529b\u7684\u60c5\u7eea\u6027\u6d88\u8d39\u3002"}, "lucky": {"color": "\u6de1\u84dd\u8272", "number": "8", "match": "\u5929\u874e\u5ea7", "item": "\u6c34\u6676\u7403"}}, {"sign": "\u5929\u874e\u5ea7", "icon": "\u264f\ufe0f", "theme": "\u5185\u5728\u89c9\u9192", "today_analysis": "\u4eca\u65e5\u5929\u874e\u5ea7\u7684\u80fd\u91cf\u573a\u5448\u73b0\u51fa\u4e00\u79cd\u2018\u5411\u5185\u63a2\u7d22\u2019\u7684\u8d8b\u52bf\u3002\u5916\u754c\u7684\u5608\u6742\u4eff\u4f5b\u90fd\u88ab\u4e00\u5c42\u65e0\u5f62\u7684\u5c4f\u5e55\u9694\u79bb\uff0c\u6b63\u662f\u8fd9\u79cd\u5b81\u9759\uff0c\u8ba9\u4f60\u80fd\u6e05\u6670\u5730\u542c\u5230\u5185\u5fc3\u7684\u771f\u5b9e\u6e34\u671b\u3002\u5728\u5de5\u4f5c\u4e0e\u751f\u6d3b\u7684\u95f4\u9699\uff0c\u5c1d\u8bd5\u8fdb\u884c\u4e94\u5206\u949f\u7684\u6df1\u547c\u5438\uff0c\u4f60\u4f1a\u53d1\u73b0\uff0c\u6240\u6709\u7684\u7b54\u6848\u5176\u5b9e\u65e9\u5df2\u5b58\u5728\u4e8e\u4f60\u7684\u6f5c\u610f\u8bc6\u4e4b\u4e2d\u3002", "yearly_analysis": "2026\u5e74\u5bf9\u5929\u874e\u5ea7\u800c\u8a00\u662f\u2018\u5173\u7cfb\u91cd\u7ec4\u5e74\u2019\u3002\u4f60\u5c06\u5b66\u4f1a\u5982\u4f55\u5728\u4fdd\u6301\u72ec\u7acb\u7684\u540c\u65f6\uff0c\u4e0e\u8fd9\u4e2a\u4e16\u754c\u5efa\u7acb\u66f4\u6df1\u5c42\u7684\u8fde\u63a5\u3002\u4e0a\u534a\u5e74\u4f1a\u6709\u4e00\u4e9b\u65e7\u6709\u7684\u5173\u7cfb\u9762\u4e34\u7ec8\u7ed3\uff0c\u8fd9\u5b9e\u9645\u4e0a\u662f\u5728\u4e3a\u4f60\u817e\u51fa\u7a7a\u95f4\uff0c\u53bb\u8fce\u63a5\u90a3\u4e2a\u771f\u6b63\u80fd\u4e0e\u4f60\u7075\u9b42\u5951\u5408\u7684\u65b0\u5708\u5c42\u3002\u4e8b\u4e1a\u4e0a\uff0c\u4fdd\u6301\u4f4e\u8c03\u4e14\u6301\u7eed\u7684\u52aa\u529b\uff0c\u5e74\u5e95\u5c06\u6709\u4ee4\u4eba\u77a9\u76ee\u7684\u6536\u83b7\u3002", "details": {"love": "\u611f\u60c5\u65b9\u9762\u5efa\u8bae\u987a\u5176\u81ea\u7136\u3002\u4e0d\u8981\u8fc7\u5206\u6267\u7740\u4e8e\u7ed3\u679c\uff0c\u4eab\u53d7\u5f53\u4e0b\u7684\u4ea4\u6d41\u4e0e\u5171\u9e23\u3002\u4eca\u65e5\u9002\u5408\u5728\u6e29\u99a8\u7684\u73af\u5883\u4e2d\u8fdb\u884c\u6df1\u5ea6\u5bf9\u8bdd\u3002", "career": "\u804c\u573a\u5e73\u7a33\uff0c\u9002\u5408\u5904\u7406\u4e00\u4e9b\u9700\u8981\u9ad8\u5ea6\u8010\u5fc3\u548c\u7ec6\u81f4\u5ea6\u7684\u57fa\u7840\u5de5\u4f5c\u3002\u4f60\u7684\u8e0f\u5b9e\u4f1a\u4e3a\u4f60\u8d62\u5f97\u957f\u8f88\u6216\u4e0a\u53f8\u7684\u4fe1\u4efb\u3002", "wealth": "\u8d22\u8fd0\u7ec6\u6c34\u957f\u6d41\u3002\u4eca\u65e5\u9002\u5408\u5236\u5b9a\u4e0b\u4e00\u5b63\u5ea6\u7684\u8d22\u52a1\u8ba1\u5212\u3002\u907f\u514d\u51b2\u52a8\u8d2d\u7269\uff0c\u5c24\u5176\u662f\u90a3\u4e9b\u4e3a\u4e86\u7f13\u89e3\u538b\u529b\u7684\u60c5\u7eea\u6027\u6d88\u8d39\u3002"}, "lucky": {"color": "\u6de1\u84dd\u8272", "number": "8", "match": "\u5929\u874e\u5ea7", "item": "\u6c34\u6676\u7403"}}, {"sign": "\u5c04\u624b\u5ea7", "icon": "\u2650\ufe0f", "theme": "\u5185\u5728\u89c9\u9192", "today_analysis": "\u4eca\u65e5\u5c04\u624b\u5ea7\u7684\u80fd\u91cf\u573a\u5448\u73b0\u51fa\u4e00\u79cd\u2018\u5411\u5185\u63a2\u7d22\u2019\u7684\u8d8b\u52bf\u3002\u5916\u754c\u7684\u5608\u6742\u4eff\u4f5b\u90fd\u88ab\u4e00\u5c42\u65e0\u5f62\u7684\u5c4f\u5e55\u9694\u79bb\uff0c\u6b63\u662f\u8fd9\u79cd\u5b81\u9759\uff0c\u8ba9\u4f60\u80fd\u6e05\u6670\u5730\u542c\u5230\u5185\u5fc3\u7684\u771f\u5b9e\u6e34\u671b\u3002\u5728\u5de5\u4f5c\u4e0e\u751f\u6d3b\u7684\u95f4\u9699\uff0c\u5c1d\u8bd5\u8fdb\u884c\u4e94\u5206\u949f\u7684\u6df1\u547c\u5438\uff0c\u4f60\u4f1a\u53d1\u73b0\uff0c\u6240\u6709\u7684\u7b54\u6848\u5176\u5b9e\u65e9\u5df2\u5b58\u5728\u4e8e\u4f60\u7684\u6f5c\u610f\u8bc6\u4e4b\u4e2d\u3002", "yearly_analysis": "2026\u5e74\u5bf9\u5c04\u624b\u5ea7\u800c\u8a00\u662f\u2018\u5173\u7cfb\u91cd\u7ec4\u5e74\u2019\u3002\u4f60\u5c06\u5b66\u4f1a\u5982\u4f55\u5728\u4fdd\u6301\u72ec\u7acb\u7684\u540c\u65f6\uff0c\u4e0e\u8fd9\u4e2a\u4e16\u754c\u5efa\u7acb\u66f4\u6df1\u5c42\u7684\u8fde\u63a5\u3002\u4e0a\u534a\u5e74\u4f1a\u6709\u4e00\u4e9b\u65e7\u6709\u7684\u5173\u7cfb\u9762\u4e34\u7ec8\u7ed3\uff0c\u8fd9\u5b9e\u9645\u4e0a\u662f\u5728\u4e3a\u4f60\u817e\u51fa\u7a7a\u95f4\uff0c\u53bb\u8fce\u63a5\u90a3\u4e2a\u771f\u6b63\u80fd\u4e0e\u4f60\u7075\u9b42\u5951\u5408\u7684\u65b0\u5708\u5c42\u3002\u4e8b\u4e1a\u4e0a\uff0c\u4fdd\u6301\u4f4e\u8c03\u4e14\u6301\u7eed\u7684\u52aa\u529b\uff0c\u5e74\u5e95\u5c06\u6709\u4ee4\u4eba\u77a9\u76ee\u7684\u6536\u83b7\u3002", "details": {"love": "\u611f\u60c5\u65b9\u9762\u5efa\u8bae\u987a\u5176\u81ea\u7136\u3002\u4e0d\u8981\u8fc7\u5206\u6267\u7740\u4e8e\u7ed3\u679c\uff0c\u4eab\u53d7\u5f53\u4e0b\u7684\u4ea4\u6d41\u4e0e\u5171\u9e23\u3002\u4eca\u65e5\u9002\u5408\u5728\u6e29\u99a8\u7684\u73af\u5883\u4e2d\u8fdb\u884c\u6df1\u5ea6\u5bf9\u8bdd\u3002", "career": "\u804c\u573a\u5e73\u7a33\uff0c\u9002\u5408\u5904\u7406\u4e00\u4e9b\u9700\u8981\u9ad8\u5ea6\u8010\u5fc3\u548c\u7ec6\u81f4\u5ea6\u7684\u57fa\u7840\u5de5\u4f5c\u3002\u4f60\u7684\u8e0f\u5b9e\u4f1a\u4e3a\u4f60\u8d62\u5f97\u957f\u8f88\u6216\u4e0a\u53f8\u7684\u4fe1\u4efb\u3002", "wealth": "\u8d22\u8fd0\u7ec6\u6c34\u957f\u6d41\u3002\u4eca\u65e5\u9002\u5408\u5236\u5b9a\u4e0b\u4e00\u5b63\u5ea6\u7684\u8d22\u52a1\u8ba1\u5212\u3002\u907f\u514d\u51b2\u52a8\u8d2d\u7269\uff0c\u5c24\u5176\u662f\u90a3\u4e9b\u4e3a\u4e86\u7f13\u89e3\u538b\u529b\u7684\u60c5\u7eea\u6027\u6d88\u8d39\u3002"}, "lucky": {"color": "\u6de1\u84dd\u8272", "number": "8", "match": "\u5929\u874e\u5ea7", "item": "\u6c34\u6676\u7403"}}, {"sign": "\u6469\u7faf\u5ea7", "icon": "\u2651\ufe0f", "theme": "\u5185\u5728\u89c9\u9192", "today_analysis": "\u4eca\u65e5\u6469\u7faf\u5ea7\u7684\u80fd\u91cf\u573a\u5448\u73b0\u51fa\u4e00\u79cd\u2018\u5411\u5185\u63a2\u7d22\u2019\u7684\u8d8b\u52bf\u3002\u5916\u754c\u7684\u5608\u6742\u4eff\u4f5b\u90fd\u88ab\u4e00\u5c42\u65e0\u5f62\u7684\u5c4f\u5e55\u9694\u79bb\uff0c\u6b63\u662f\u8fd9\u79cd\u5b81\u9759\uff0c\u8ba9\u4f60\u80fd\u6e05\u6670\u5730\u542c\u5230\u5185\u5fc3\u7684\u771f\u5b9e\u6e34\u671b\u3002\u5728\u5de5\u4f5c\u4e0e\u751f\u6d3b\u7684\u95f4\u9699\uff0c\u5c1d\u8bd5\u8fdb\u884c\u4e94\u5206\u949f\u7684\u6df1\u547c\u5438\uff0c\u4f60\u4f1a\u53d1\u73b0\uff0c\u6240\u6709\u7684\u7b54\u6848\u5176\u5b9e\u65e9\u5df2\u5b58\u5728\u4e8e\u4f60\u7684\u6f5c\u610f\u8bc6\u4e4b\u4e2d\u3002", "yearly_analysis": "2026\u5e74\u5bf9\u6469\u7faf\u5ea7\u800c\u8a00\u662f\u2018\u5173\u7cfb\u91cd\u7ec4\u5e74\u2019\u3002\u4f60\u5c06\u5b66\u4f1a\u5982\u4f55\u5728\u4fdd\u6301\u72ec\u7acb\u7684\u540c\u65f6\uff0c\u4e0e\u8fd9\u4e2a\u4e16\u754c\u5efa\u7acb\u66f4\u6df1\u5c42\u7684\u8fde\u63a5\u3002\u4e0a\u534a\u5e74\u4f1a\u6709\u4e00\u4e9b\u65e7\u6709\u7684\u5173\u7cfb\u9762\u4e34\u7ec8\u7ed3\uff0c\u8fd9\u5b9e\u9645\u4e0a\u662f\u5728\u4e3a\u4f60\u817e\u51fa\u7a7a\u95f4\uff0c\u53bb\u8fce\u63a5\u90a3\u4e2a\u771f\u6b63\u80fd\u4e0e\u4f60\u7075\u9b42\u5951\u5408\u7684\u65b0\u5708\u5c42\u3002\u4e8b\u4e1a\u4e0a\uff0c\u4fdd\u6301\u4f4e\u8c03\u4e14\u6301\u7eed\u7684\u52aa\u529b\uff0c\u5e74\u5e95\u5c06\u6709\u4ee4\u4eba\u77a9\u76ee\u7684\u6536\u83b7\u3002", "details": {"love": "\u611f\u60c5\u65b9\u9762\u5efa\u8bae\u987a\u5176\u81ea\u7136\u3002\u4e0d\u8981\u8fc7\u5206\u6267\u7740\u4e8e\u7ed3\u679c\uff0c\u4eab\u53d7\u5f53\u4e0b\u7684\u4ea4\u6d41\u4e0e\u5171\u9e23\u3002\u4eca\u65e5\u9002\u5408\u5728\u6e29\u99a8\u7684\u73af\u5883\u4e2d\u8fdb\u884c\u6df1\u5ea6\u5bf9\u8bdd\u3002", "career": "\u804c\u573a\u5e73\u7a33\uff0c\u9002\u5408\u5904\u7406\u4e00\u4e9b\u9700\u8981\u9ad8\u5ea6\u8010\u5fc3\u548c\u7ec6\u81f4\u5ea6\u7684\u57fa\u7840\u5de5\u4f5c\u3002\u4f60\u7684\u8e0f\u5b9e\u4f1a\u4e3a\u4f60\u8d62\u5f97\u957f\u8f88\u6216\u4e0a\u53f8\u7684\u4fe1\u4efb\u3002", "wealth": "\u8d22\u8fd0\u7ec6\u6c34\u957f\u6d41\u3002\u4eca\u65e5\u9002\u5408\u5236\u5b9a\u4e0b\u4e00\u5b63\u5ea6\u7684\u8d22\u52a1\u8ba1\u5212\u3002\u907f\u514d\u51b2\u52a8\u8d2d\u7269\uff0c\u5c24\u5176\u662f\u90a3\u4e9b\u4e3a\u4e86\u7f13\u89e3\u538b\u529b\u7684\u60c5\u7eea\u6027\u6d88\u8d39\u3002"}, "lucky": {"color": "\u6de1\u84dd\u8272", "number": "8", "match": "\u5929\u874e\u5ea7", "item": "\u6c34\u6676\u7403"}}, {"sign": "\u6c34\u74f6\u5ea7", "icon": "\u2652\ufe0f", "theme": "\u5185\u5728\u89c9\u9192", "today_analysis": "\u4eca\u65e5\u6c34\u74f6\u5ea7\u7684\u80fd\u91cf\u573a\u5448\u73b0\u51fa\u4e00\u79cd\u2018\u5411\u5185\u63a2\u7d22\u2019\u7684\u8d8b\u52bf\u3002\u5916\u754c\u7684\u5608\u6742\u4eff\u4f5b\u90fd\u88ab\u4e00\u5c42\u65e0\u5f62\u7684\u5c4f\u5e55\u9694\u79bb\uff0c\u6b63\u662f\u8fd9\u79cd\u5b81\u9759\uff0c\u8ba9\u4f60\u80fd\u6e05\u6670\u5730\u542c\u5230\u5185\u5fc3\u7684\u771f\u5b9e\u6e34\u671b\u3002\u5728\u5de5\u4f5c\u4e0e\u751f\u6d3b\u7684\u95f4\u9699\uff0c\u5c1d\u8bd5\u8fdb\u884c\u4e94\u5206\u949f\u7684\u6df1\u547c\u5438\uff0c\u4f60\u4f1a\u53d1\u73b0\uff0c\u6240\u6709\u7684\u7b54\u6848\u5176\u5b9e\u65e9\u5df2\u5b58\u5728\u4e8e\u4f60\u7684\u6f5c\u610f\u8bc6\u4e4b\u4e2d\u3002", "yearly_analysis": "2026\u5e74\u5bf9\u6c34\u74f6\u5ea7\u800c\u8a00\u662f\u2018\u5173\u7cfb\u91cd\u7ec4\u5e74\u2019\u3002\u4f60\u5c06\u5b66\u4f1a\u5982\u4f55\u5728\u4fdd\u6301\u72ec\u7acb\u7684\u540c\u65f6\uff0c\u4e0e\u8fd9\u4e2a\u4e16\u754c\u5efa\u7acb\u66f4\u6df1\u5c42\u7684\u8fde\u63a5\u3002\u4e0a\u534a\u5e74\u4f1a\u6709\u4e00\u4e9b\u65e7\u6709\u7684\u5173\u7cfb\u9762\u4e34\u7ec8\u7ed3\uff0c\u8fd9\u5b9e\u9645\u4e0a\u662f\u5728\u4e3a\u4f60\u817e\u51fa\u7a7a\u95f4\uff0c\u53bb\u8fce\u63a5\u90a3\u4e2a\u771f\u6b63\u80fd\u4e0e\u4f60\u7075\u9b42\u5951\u5408\u7684\u65b0\u5708\u5c42\u3002\u4e8b\u4e1a\u4e0a\uff0c\u4fdd\u6301\u4f4e\u8c03\u4e14\u6301\u7eed\u7684\u52aa\u529b\uff0c\u5e74\u5e95\u5c06\u6709\u4ee4\u4eba\u77a9\u76ee\u7684\u6536\u83b7\u3002", "details": {"love": "\u611f\u60c5\u65b9\u9762\u5efa\u8bae\u987a\u5176\u81ea\u7136\u3002\u4e0d\u8981\u8fc7\u5206\u6267\u7740\u4e8e\u7ed3\u679c\uff0c\u4eab\u53d7\u5f53\u4e0b\u7684\u4ea4\u6d41\u4e0e\u5171\u9e23\u3002\u4eca\u65e5\u9002\u5408\u5728\u6e29\u99a8\u7684\u73af\u5883\u4e2d\u8fdb\u884c\u6df1\u5ea6\u5bf9\u8bdd\u3002", "career": "\u804c\u573a\u5e73\u7a33\uff0c\u9002\u5408\u5904\u7406\u4e00\u4e9b\u9700\u8981\u9ad8\u5ea6\u8010\u5fc3\u548c\u7ec6\u81f4\u5ea6\u7684\u57fa\u7840\u5de5\u4f5c\u3002\u4f60\u7684\u8e0f\u5b9e\u4f1a\u4e3a\u4f60\u8d62\u5f97\u957f\u8f88\u6216\u4e0a\u53f8\u7684\u4fe1\u4efb\u3002", "wealth": "\u8d22\u8fd0\u7ec6\u6c34\u957f\u6d41\u3002\u4eca\u65e5\u9002\u5408\u5236\u5b9a\u4e0b\u4e00\u5b63\u5ea6\u7684\u8d22\u52a1\u8ba1\u5212\u3002\u907f\u514d\u51b2\u52a8\u8d2d\u7269\uff0c\u5c24\u5176\u662f\u90a3\u4e9b\u4e3a\u4e86\u7f13\u89e3\u538b\u529b\u7684\u60c5\u7eea\u6027\u6d88\u8d39\u3002"}, "lucky": {"color": "\u6de1\u84dd\u8272", "number": "8", "match": "\u5929\u874e\u5ea7", "item": "\u6c34\u6676\u7403"}}, {"sign": "\u53cc\u9c7c\u5ea7", "icon": "\u2653\ufe0f", "theme": "\u5185\u5728\u89c9\u9192", "today_analysis": "\u4eca\u65e5\u53cc\u9c7c\u5ea7\u7684\u80fd\u91cf\u573a\u5448\u73b0\u51fa\u4e00\u79cd\u2018\u5411\u5185\u63a2\u7d22\u2019\u7684\u8d8b\u52bf\u3002\u5916\u754c\u7684\u5608\u6742\u4eff\u4f5b\u90fd\u88ab\u4e00\u5c42\u65e0\u5f62\u7684\u5c4f\u5e55\u9694\u79bb\uff0c\u6b63\u662f\u8fd9\u79cd\u5b81\u9759\uff0c\u8ba9\u4f60\u80fd\u6e05\u6670\u5730\u542c\u5230\u5185\u5fc3\u7684\u771f\u5b9e\u6e34\u671b\u3002\u5728\u5de5\u4f5c\u4e0e\u751f\u6d3b\u7684\u95f4\u9699\uff0c\u5c1d\u8bd5\u8fdb\u884c\u4e94\u5206\u949f\u7684\u6df1\u547c\u5438\uff0c\u4f60\u4f1a\u53d1\u73b0\uff0c\u6240\u6709\u7684\u7b54\u6848\u5176\u5b9e\u65e9\u5df2\u5b58\u5728\u4e8e\u4f60\u7684\u6f5c\u610f\u8bc6\u4e4b\u4e2d\u3002", "yearly_analysis": "2026\u5e74\u5bf9\u53cc\u9c7c\u5ea7\u800c\u8a00\u662f\u2018\u5173\u7cfb\u91cd\u7ec4\u5e74\u2019\u3002\u4f60\u5c06\u5b66\u4f1a\u5982\u4f55\u5728\u4fdd\u6301\u72ec\u7acb\u7684\u540c\u65f6\uff0c\u4e0e\u8fd9\u4e2a\u4e16\u754c\u5efa\u7acb\u66f4\u6df1\u5c42\u7684\u8fde\u63a5\u3002\u4e0a\u534a\u5e74\u4f1a\u6709\u4e00\u4e9b\u65e7\u6709\u7684\u5173\u7cfb\u9762\u4e34\u7ec8\u7ed3\uff0c\u8fd9\u5b9e\u9645\u4e0a\u662f\u5728\u4e3a\u4f60\u817e\u51fa\u7a7a\u95f4\uff0c\u53bb\u8fce\u63a5\u90a3\u4e2a\u771f\u6b63\u80fd\u4e0e\u4f60\u7075\u9b42\u5951\u5408\u7684\u65b0\u5708\u5c42\u3002\u4e8b\u4e1a\u4e0a\uff0c\u4fdd\u6301\u4f4e\u8c03\u4e14\u6301\u7eed\u7684\u52aa\u529b\uff0c\u5e74\u5e95\u5c06\u6709\u4ee4\u4eba\u77a9\u76ee\u7684\u6536\u83b7\u3002", "details": {"love": "\u611f\u60c5\u65b9\u9762\u5efa\u8bae\u987a\u5176\u81ea\u7136\u3002\u4e0d\u8981\u8fc7\u5206\u6267\u7740\u4e8e\u7ed3\u679c\uff0c\u4eab\u53d7\u5f53\u4e0b\u7684\u4ea4\u6d41\u4e0e\u5171\u9e23\u3002\u4eca\u65e5\u9002\u5408\u5728\u6e29\u99a8\u7684\u73af\u5883\u4e2d\u8fdb\u884c\u6df1\u5ea6\u5bf9\u8bdd\u3002", "career": "\u804c\u573a\u5e73\u7a33\uff0c\u9002\u5408\u5904\u7406\u4e00\u4e9b\u9700\u8981\u9ad8\u5ea6\u8010\u5fc3\u548c\u7ec6\u81f4\u5ea6\u7684\u57fa\u7840\u5de5\u4f5c\u3002\u4f60\u7684\u8e0f\u5b9e\u4f1a\u4e3a\u4f60\u8d62\u5f97\u957f\u8f88\u6216\u4e0a\u53f8\u7684\u4fe1\u4efb\u3002", "wealth": "\u8d22\u8fd0\u7ec6\u6c34\u957f\u6d41\u3002\u4eca\u65e5\u9002\u5408\u5236\u5b9a\u4e0b\u4e00\u5b63\u5ea6\u7684\u8d22\u52a1\u8ba1\u5212\u3002\u907f\u514d\u51b2\u52a8\u8d2d\u7269\uff0c\u5c24\u5176\u662f\u90a3\u4e9b\u4e3a\u4e86\u7f13\u89e3\u538b\u529b\u7684\u60c5\u7eea\u6027\u6d88\u8d39\u3002"}, "lucky": {"color": "\u6de1\u84dd\u8272", "number": "8", "match": "\u5929\u874e\u5ea7", "item": "\u6c34\u6676\u7403"}}];
+            const db = [{"sign": "\u767d\u7f8a\u5ea7", "icon": "\u2648\ufe0f", "theme": "\u52c7\u6c14\u4e0e\u65b0\u751f", "today_analysis": "\u4eca\u65e5\u767d\u7f8a\u5ea7\u7684\u80fd\u91cf\u5728\u2018\u521b\u9020\u5bab\u2019\u6c47\u805a\u3002\u4f60\u4f1a\u611f\u5230\u4e00\u79cd\u5f3a\u70c8\u7684\u51b2\u52a8\u53bb\u6253\u7834\u73b0\u72b6\uff0c\u65e0\u8bba\u662f\u804c\u573a\u4e0a\u4e00\u4e2a\u5927\u80c6\u7684\u63d0\u8bae\uff0c\u8fd8\u662f\u751f\u6d3b\u4e2d\u4e00\u4e2a\u79ef\u538b\u5df2\u4e45\u7684\u51b3\u5b9a\uff0c\u4eca\u65e5\u90fd\u662f\u6700\u4f73\u7684\u5207\u5165\u70b9\u3002\u6c34\u661f\u7684\u76f8\u4f4d\u63d0\u9192\u4f60\uff0c\u8a00\u8bed\u7684\u6e29\u548c\u5c06\u662f\u4f60\u6700\u5927\u7684\u6b66\u5668\u3002\u4e0b\u5348\u4e09\u70b9\u5de6\u53f3\uff0c\u4e00\u4e2a\u610f\u5916\u7684\u6d88\u606f\u53ef\u80fd\u4f1a\u5e26\u6765\u5173\u4e8e\u5408\u4f5c\u7684\u65b0\u7075\u611f\uff0c\u8bf7\u4fdd\u6301\u611f\u5b98\u7684\u5b8c\u5168\u5f00\u653e\u3002", "yearly_analysis": "2026\u5e74\u5bf9\u767d\u7f8a\u5ea7\u800c\u8a00\u662f\u2018\u91cd\u5851\u81ea\u6211\u2019\u7684\u5173\u952e\u5e74\u3002\u6728\u661f\u5728\u4f60\u7684\u547d\u5bab\u505c\u7559\uff0c\u4e3a\u4f60\u5e26\u6765\u4e86\u524d\u6240\u672a\u6709\u7684\u6269\u5f20\u673a\u9047\u3002\u4e0a\u534a\u5e74\uff0c\u4f60\u53ef\u80fd\u4f1a\u7ecf\u5386\u804c\u573a\u73af\u5883\u7684\u5267\u70c8\u53d8\u52a8\uff0c\u8fd9\u5b9e\u9645\u4e0a\u662f\u5728\u4e3a\u4f60\u672a\u6765\u7684\u5341\u5e74\u94fa\u8def\u3002\u4e0b\u534a\u5e74\uff0c\u91cd\u5fc3\u5c06\u8f6c\u5411\u5185\u5728\u6210\u957f\u4e0e\u5bb6\u5ead\u5173\u7cfb\u7684\u4fee\u590d\u3002\u8fd9\u4e00\u5e74\uff0c\u4f60\u7684\u5173\u952e\u8bcd\u662f\u2018\u575a\u97e7\u2019\uff0c\u5728\u6bcf\u4e00\u6b21\u60f3\u8981\u653e\u5f03\u7684\u65f6\u5019\uff0c\u8bf7\u8bb0\u4f4f\uff0c\u90a3\u662f\u7834\u8327\u6210\u8776\u524d\u6700\u6df1\u7684\u9ed1\u6697\u3002", "details": {"love": "\u4eca\u65e5\u60c5\u611f\u78c1\u573a\u67d4\u548c\u3002\u5355\u8eab\u8005\u5728\u5de5\u4f5c\u5f80\u6765\u4e2d\u53ef\u80fd\u4f1a\u9047\u5230\u5fd7\u540c\u9053\u5408\u7684\u4f19\u4f34\uff1b\u6709\u4f34\u8005\u9002\u5408\u8fdb\u884c\u4e00\u6b21\u5173\u4e8e\u672a\u6765\u7684\u6df1\u5ea6\u8c08\u8bdd\uff0c\u5766\u8bda\u662f\u6700\u597d\u7684\u589e\u8fdb\u5242\u3002", "career": "\u804c\u573a\u6267\u884c\u529b\u6ee1\u683c\u3002\u867d\u7136\u4f1a\u6709\u7410\u788e\u7684\u4efb\u52a1\u6253\u6270\uff0c\u4f46\u4f60\u7684\u5927\u5c40\u89c2\u80fd\u8ba9\u4f60\u5728\u4e71\u5c40\u4e2d\u627e\u5230\u6700\u4f18\u8def\u5f84\u3002\u4eca\u65e5\u9002\u5408\u5904\u7406\u5408\u540c\u6216\u8fdb\u884c\u957f\u8fdc\u89c4\u5212\u3002", "wealth": "\u8d22\u8fd0\u5448\u73b0\u7a33\u6b65\u4e0a\u5347\u8d8b\u52bf\u3002\u9002\u5408\u5173\u6ce8\u957f\u671f\u7684\u7a33\u5065\u6295\u8d44\uff0c\u800c\u975e\u77ed\u671f\u7684\u6295\u673a\u3002\u4eca\u65e5\u5728\u793e\u4ea4\u4e0a\u7684\u82b1\u8d39\u4f1a\u4e3a\u4f60\u6362\u6765\u6709\u4ef7\u503c\u7684\u4fe1\u606f\u3002"}, "lucky": {"color": "\u706b\u7ea2\u8272", "number": "9", "match": "\u72ee\u5b50\u5ea7", "item": "\u767d\u8272\u6269\u9999\u77f3"}}];
             function openDeepHoro(idx) {
                 const item = db[idx];
                 document.getElementById('mSign').innerText = item.sign;
