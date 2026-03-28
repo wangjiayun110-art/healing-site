@@ -4,232 +4,231 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <title>AI星语 · 深度疗愈百科</title>
+        <title>AI星语 · 疗愈百科</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;400;700&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
         <style>
-            body { background: #020617; font-family: 'Noto Serif SC', serif; min-height: 100vh; color: #f8fafc; overflow-x: hidden; }
-            .star-bg { position: fixed; inset: 0; z-index: -1; background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; opacity: 0.3; }
-            .glass-card { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px); border-radius: 35px; border: 1px solid rgba(255,255,255,0.05); }
+            body { background: #020617; font-family: 'Noto Serif SC', serif; min-height: 100vh; color: #f8fafc; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+            .star-bg { position: fixed; inset: 0; z-index: -1; background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80'); background-size: cover; opacity: 0.3; }
+            .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border-radius: 35px; border: 1px solid rgba(255,255,255,0.05); }
             .title-font { font-family: 'Zhi Mang Xing', cursive; }
-            .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(2, 6, 23, 0.9); backdrop-filter: blur(15px); z-index: 999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+            .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(2, 6, 23, 0.9); backdrop-filter: blur(20px); z-index: 9999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
             .modal-active { display: flex !important; opacity: 1; }
-            .modal-content { transform: scale(0.9); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-height: 80vh; overflow-y: auto; width: 90%; max-width: 400px; border-radius: 40px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+            .modal-content { transform: scale(0.9); transition: all 0.3s ease; width: 90%; max-width: 380px; border-radius: 40px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
             .modal-active .modal-content { transform: scale(1); }
-            .deep-text { font-size: 1rem; line-height: 1.8; }
             ::-webkit-scrollbar { width: 0; }
         </style>
     </head>
     <body class="p-6 md:p-16">
         <div class="star-bg"></div>
         <header class="text-center mb-24 mt-12">
-            <h1 class="text-7xl md:text-9xl title-font text-white mb-4 drop-shadow-2xl">AI星语</h1>
-            <p class="text-indigo-400 tracking-[0.5em] text-[10px] uppercase font-bold opacity-60">The Alchemy of Stars</p>
+            <h1 class="text-7xl md:text-9xl title-font text-white mb-4">AI星语</h1>
+            <p class="text-indigo-400 tracking-[0.5em] text-[10px] uppercase font-bold opacity-60">Encyclopedia of Stars</p>
         </header>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto pb-48">
             
-        <div class="glass-card group overflow-hidden border border-white/10 shadow-2xl">
+        <div class="glass-card group overflow-hidden border border-white/10">
             <div class="h-48 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000000000?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" alt="白羊座">
+                <img src="https://images.unsplash.com/photo-1500000000000?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block drop-shadow-2xl mb-1">♈️</span>
+                    <span class="text-5xl block mb-1">♈️</span>
                     <h3 class="text-2xl font-bold text-white tracking-tighter">白羊座</h3>
                 </div>
             </div>
             <div class="p-8 bg-slate-900/40">
                 <p class="text-slate-400 leading-relaxed text-sm mb-6 line-clamp-2 font-light italic">
-                    “ 点击‘深度全书’，让 AI 为您开启今日的星辰指引。我们将为您解析今日运势、性格特征及年度展望。 ”
+                    “ 今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。 ”
                 </p>
-                <button onclick="openDeepHoro(0)" class="text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
+                <button onclick="openDeepHoro(0)" class="relative z-10 text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
             </div>
         </div>
         
-        <div class="glass-card group overflow-hidden border border-white/10 shadow-2xl">
+        <div class="glass-card group overflow-hidden border border-white/10">
             <div class="h-48 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000000777?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" alt="金牛座">
+                <img src="https://images.unsplash.com/photo-1500000000099?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block drop-shadow-2xl mb-1">♉️</span>
+                    <span class="text-5xl block mb-1">♉️</span>
                     <h3 class="text-2xl font-bold text-white tracking-tighter">金牛座</h3>
                 </div>
             </div>
             <div class="p-8 bg-slate-900/40">
                 <p class="text-slate-400 leading-relaxed text-sm mb-6 line-clamp-2 font-light italic">
-                    “ 点击‘深度全书’，让 AI 为您开启今日的星辰指引。我们将为您解析今日运势、性格特征及年度展望。 ”
+                    “ 今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。 ”
                 </p>
-                <button onclick="openDeepHoro(1)" class="text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
+                <button onclick="openDeepHoro(1)" class="relative z-10 text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
             </div>
         </div>
         
-        <div class="glass-card group overflow-hidden border border-white/10 shadow-2xl">
+        <div class="glass-card group overflow-hidden border border-white/10">
             <div class="h-48 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000001554?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" alt="双子座">
+                <img src="https://images.unsplash.com/photo-1500000000198?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block drop-shadow-2xl mb-1">♊️</span>
+                    <span class="text-5xl block mb-1">♊️</span>
                     <h3 class="text-2xl font-bold text-white tracking-tighter">双子座</h3>
                 </div>
             </div>
             <div class="p-8 bg-slate-900/40">
                 <p class="text-slate-400 leading-relaxed text-sm mb-6 line-clamp-2 font-light italic">
-                    “ 点击‘深度全书’，让 AI 为您开启今日的星辰指引。我们将为您解析今日运势、性格特征及年度展望。 ”
+                    “ 今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。 ”
                 </p>
-                <button onclick="openDeepHoro(2)" class="text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
+                <button onclick="openDeepHoro(2)" class="relative z-10 text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
             </div>
         </div>
         
-        <div class="glass-card group overflow-hidden border border-white/10 shadow-2xl">
+        <div class="glass-card group overflow-hidden border border-white/10">
             <div class="h-48 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000002331?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" alt="巨蟹座">
+                <img src="https://images.unsplash.com/photo-1500000000297?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block drop-shadow-2xl mb-1">♋️</span>
+                    <span class="text-5xl block mb-1">♋️</span>
                     <h3 class="text-2xl font-bold text-white tracking-tighter">巨蟹座</h3>
                 </div>
             </div>
             <div class="p-8 bg-slate-900/40">
                 <p class="text-slate-400 leading-relaxed text-sm mb-6 line-clamp-2 font-light italic">
-                    “ 点击‘深度全书’，让 AI 为您开启今日的星辰指引。我们将为您解析今日运势、性格特征及年度展望。 ”
+                    “ 今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。 ”
                 </p>
-                <button onclick="openDeepHoro(3)" class="text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
+                <button onclick="openDeepHoro(3)" class="relative z-10 text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
             </div>
         </div>
         
-        <div class="glass-card group overflow-hidden border border-white/10 shadow-2xl">
+        <div class="glass-card group overflow-hidden border border-white/10">
             <div class="h-48 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000003108?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" alt="狮子座">
+                <img src="https://images.unsplash.com/photo-1500000000396?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block drop-shadow-2xl mb-1">♌️</span>
+                    <span class="text-5xl block mb-1">♌️</span>
                     <h3 class="text-2xl font-bold text-white tracking-tighter">狮子座</h3>
                 </div>
             </div>
             <div class="p-8 bg-slate-900/40">
                 <p class="text-slate-400 leading-relaxed text-sm mb-6 line-clamp-2 font-light italic">
-                    “ 点击‘深度全书’，让 AI 为您开启今日的星辰指引。我们将为您解析今日运势、性格特征及年度展望。 ”
+                    “ 今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。 ”
                 </p>
-                <button onclick="openDeepHoro(4)" class="text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
+                <button onclick="openDeepHoro(4)" class="relative z-10 text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
             </div>
         </div>
         
-        <div class="glass-card group overflow-hidden border border-white/10 shadow-2xl">
+        <div class="glass-card group overflow-hidden border border-white/10">
             <div class="h-48 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000003885?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" alt="处女座">
+                <img src="https://images.unsplash.com/photo-1500000000495?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block drop-shadow-2xl mb-1">♍️</span>
+                    <span class="text-5xl block mb-1">♍️</span>
                     <h3 class="text-2xl font-bold text-white tracking-tighter">处女座</h3>
                 </div>
             </div>
             <div class="p-8 bg-slate-900/40">
                 <p class="text-slate-400 leading-relaxed text-sm mb-6 line-clamp-2 font-light italic">
-                    “ 点击‘深度全书’，让 AI 为您开启今日的星辰指引。我们将为您解析今日运势、性格特征及年度展望。 ”
+                    “ 今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。 ”
                 </p>
-                <button onclick="openDeepHoro(5)" class="text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
+                <button onclick="openDeepHoro(5)" class="relative z-10 text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
             </div>
         </div>
         
-        <div class="glass-card group overflow-hidden border border-white/10 shadow-2xl">
+        <div class="glass-card group overflow-hidden border border-white/10">
             <div class="h-48 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000004662?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" alt="天秤座">
+                <img src="https://images.unsplash.com/photo-1500000000594?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block drop-shadow-2xl mb-1">♎️</span>
+                    <span class="text-5xl block mb-1">♎️</span>
                     <h3 class="text-2xl font-bold text-white tracking-tighter">天秤座</h3>
                 </div>
             </div>
             <div class="p-8 bg-slate-900/40">
                 <p class="text-slate-400 leading-relaxed text-sm mb-6 line-clamp-2 font-light italic">
-                    “ 点击‘深度全书’，让 AI 为您开启今日的星辰指引。我们将为您解析今日运势、性格特征及年度展望。 ”
+                    “ 今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。 ”
                 </p>
-                <button onclick="openDeepHoro(6)" class="text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
+                <button onclick="openDeepHoro(6)" class="relative z-10 text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
             </div>
         </div>
         
-        <div class="glass-card group overflow-hidden border border-white/10 shadow-2xl">
+        <div class="glass-card group overflow-hidden border border-white/10">
             <div class="h-48 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000005439?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" alt="天蝎座">
+                <img src="https://images.unsplash.com/photo-1500000000693?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block drop-shadow-2xl mb-1">♏️</span>
+                    <span class="text-5xl block mb-1">♏️</span>
                     <h3 class="text-2xl font-bold text-white tracking-tighter">天蝎座</h3>
                 </div>
             </div>
             <div class="p-8 bg-slate-900/40">
                 <p class="text-slate-400 leading-relaxed text-sm mb-6 line-clamp-2 font-light italic">
-                    “ 点击‘深度全书’，让 AI 为您开启今日的星辰指引。我们将为您解析今日运势、性格特征及年度展望。 ”
+                    “ 今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。 ”
                 </p>
-                <button onclick="openDeepHoro(7)" class="text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
+                <button onclick="openDeepHoro(7)" class="relative z-10 text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
             </div>
         </div>
         
-        <div class="glass-card group overflow-hidden border border-white/10 shadow-2xl">
+        <div class="glass-card group overflow-hidden border border-white/10">
             <div class="h-48 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000006216?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" alt="射手座">
+                <img src="https://images.unsplash.com/photo-1500000000792?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block drop-shadow-2xl mb-1">♐️</span>
+                    <span class="text-5xl block mb-1">♐️</span>
                     <h3 class="text-2xl font-bold text-white tracking-tighter">射手座</h3>
                 </div>
             </div>
             <div class="p-8 bg-slate-900/40">
                 <p class="text-slate-400 leading-relaxed text-sm mb-6 line-clamp-2 font-light italic">
-                    “ 点击‘深度全书’，让 AI 为您开启今日的星辰指引。我们将为您解析今日运势、性格特征及年度展望。 ”
+                    “ 今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。 ”
                 </p>
-                <button onclick="openDeepHoro(8)" class="text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
+                <button onclick="openDeepHoro(8)" class="relative z-10 text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
             </div>
         </div>
         
-        <div class="glass-card group overflow-hidden border border-white/10 shadow-2xl">
+        <div class="glass-card group overflow-hidden border border-white/10">
             <div class="h-48 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000006993?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" alt="摩羯座">
+                <img src="https://images.unsplash.com/photo-1500000000891?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block drop-shadow-2xl mb-1">♑️</span>
+                    <span class="text-5xl block mb-1">♑️</span>
                     <h3 class="text-2xl font-bold text-white tracking-tighter">摩羯座</h3>
                 </div>
             </div>
             <div class="p-8 bg-slate-900/40">
                 <p class="text-slate-400 leading-relaxed text-sm mb-6 line-clamp-2 font-light italic">
-                    “ 点击‘深度全书’，让 AI 为您开启今日的星辰指引。我们将为您解析今日运势、性格特征及年度展望。 ”
+                    “ 今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。 ”
                 </p>
-                <button onclick="openDeepHoro(9)" class="text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
+                <button onclick="openDeepHoro(9)" class="relative z-10 text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
             </div>
         </div>
         
-        <div class="glass-card group overflow-hidden border border-white/10 shadow-2xl">
+        <div class="glass-card group overflow-hidden border border-white/10">
             <div class="h-48 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000007770?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" alt="水瓶座">
+                <img src="https://images.unsplash.com/photo-1500000000990?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block drop-shadow-2xl mb-1">♒️</span>
+                    <span class="text-5xl block mb-1">♒️</span>
                     <h3 class="text-2xl font-bold text-white tracking-tighter">水瓶座</h3>
                 </div>
             </div>
             <div class="p-8 bg-slate-900/40">
                 <p class="text-slate-400 leading-relaxed text-sm mb-6 line-clamp-2 font-light italic">
-                    “ 点击‘深度全书’，让 AI 为您开启今日的星辰指引。我们将为您解析今日运势、性格特征及年度展望。 ”
+                    “ 今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。 ”
                 </p>
-                <button onclick="openDeepHoro(10)" class="text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
+                <button onclick="openDeepHoro(10)" class="relative z-10 text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
             </div>
         </div>
         
-        <div class="glass-card group overflow-hidden border border-white/10 shadow-2xl">
+        <div class="glass-card group overflow-hidden border border-white/10">
             <div class="h-48 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1500000008547?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" alt="双鱼座">
+                <img src="https://images.unsplash.com/photo-1500000001089?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                 <div class="absolute bottom-6 left-8">
-                    <span class="text-5xl block drop-shadow-2xl mb-1">♓️</span>
+                    <span class="text-5xl block mb-1">♓️</span>
                     <h3 class="text-2xl font-bold text-white tracking-tighter">双鱼座</h3>
                 </div>
             </div>
             <div class="p-8 bg-slate-900/40">
                 <p class="text-slate-400 leading-relaxed text-sm mb-6 line-clamp-2 font-light italic">
-                    “ 点击‘深度全书’，让 AI 为您开启今日的星辰指引。我们将为您解析今日运势、性格特征及年度展望。 ”
+                    “ 今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。 ”
                 </p>
-                <button onclick="openDeepHoro(11)" class="text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
+                <button onclick="openDeepHoro(11)" class="relative z-10 text-white text-xs font-black tracking-widest hover:text-indigo-400 transition-all uppercase border-b border-indigo-500/50 pb-1 cursor-pointer">深度解析 / Explore →</button>
             </div>
         </div>
         
@@ -238,43 +237,36 @@
         <div id="hModal" class="modal-overlay" onclick="closeDeepHoro()">
             <div class="modal-content glass-card p-8 md:p-10 relative border border-white/10" onclick="event.stopPropagation()">
                 <button onclick="closeDeepHoro()" class="absolute top-6 right-8 text-slate-500 text-3xl hover:text-white transition">✕</button>
-                
-                <div class="flex items-center gap-6 mb-8">
-                    <span id="mIcon" class="text-6xl">♈️</span>
+                <div class="flex items-center gap-4 mb-8">
+                    <span id="mIcon" class="text-5xl"></span>
+                    <div><h2 id="mSign" class="text-2xl font-bold text-white"></h2><p id="mTheme" class="text-indigo-400 text-[10px] font-bold uppercase"></p></div>
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-white/5 p-4 rounded-3xl border border-white/5">
+                        <h4 class="text-[9px] font-black text-indigo-300 mb-2 uppercase tracking-widest">灵魂画像 / Personality</h4>
+                        <p id="mPers" class="text-slate-200 text-xs leading-relaxed italic"></p>
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-3xl border border-white/5">
+                        <h4 class="text-[9px] font-black text-pink-300 mb-2 uppercase tracking-widest">暗影面 / Weakness</h4>
+                        <p id="mWeak" class="text-slate-200 text-xs leading-relaxed italic"></p>
+                    </div>
                     <div>
-                        <h2 id="mSign" class="text-3xl font-bold text-white"></h2>
-                        <p id="mTheme" class="text-indigo-400 font-bold tracking-widest text-[10px] uppercase mt-1"></p>
+                        <h4 class="text-[9px] font-black text-amber-200 mb-2 uppercase tracking-widest">今日详述 / Guidance</h4>
+                        <p id="mToday" class="text-slate-300 text-xs leading-relaxed font-light"></p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="bg-slate-900 p-2 rounded-2xl text-center"><span class="text-[8px] text-slate-500 block">幸运色</span><span id="mColor" class="text-[10px] text-indigo-200"></span></div>
+                        <div class="bg-slate-900 p-2 rounded-2xl text-center"><span class="text-[8px] text-slate-500 block">幸运数</span><span id="mNumber" class="text-[10px] text-indigo-200"></span></div>
+                        <div class="bg-slate-900 p-2 rounded-2xl text-center"><span class="text-[8px] text-slate-500 block">契合</span><span id="mMatch" class="text-[10px] text-indigo-200"></span></div>
                     </div>
                 </div>
-
-                <div class="space-y-8">
-                    <section class="bg-indigo-500/5 p-5 rounded-3xl border border-indigo-500/10">
-                        <h4 class="text-[10px] font-black text-indigo-300 mb-3 uppercase tracking-widest">🎭 灵魂画像 / Personality</h4>
-                        <p id="mPers" class="text-slate-200 text-sm leading-relaxed italic"></p>
-                    </section>
-
-                    <section class="bg-pink-500/5 p-5 rounded-3xl border border-pink-500/10">
-                        <h4 class="text-[10px] font-black text-pink-300 mb-3 uppercase tracking-widest">🌘 暗影面 / Weakness</h4>
-                        <p id="mWeak" class="text-slate-200 text-sm leading-relaxed italic"></p>
-                    </section>
-
-                    <section>
-                        <h4 class="text-[10px] font-black text-amber-200 mb-3 uppercase tracking-widest">🔮 今日详述</h4>
-                        <p id="mToday" class="text-slate-300 text-sm leading-relaxed font-light"></p>
-                    </section>
-
-                    <section class="grid grid-cols-3 gap-3">
-                        <div class="bg-slate-900/50 p-3 rounded-2xl text-center"><span class="text-[8px] text-slate-500 block mb-1">幸运色</span><span id="mColor" class="text-[10px] font-bold text-indigo-200"></span></div>
-                        <div class="bg-slate-900/50 p-3 rounded-2xl text-center"><span class="text-[8px] text-slate-500 block mb-1">幸运数</span><span id="mNumber" class="text-[10px] font-bold text-indigo-200"></span></div>
-                        <div class="bg-slate-900/50 p-3 rounded-2xl text-center"><span class="text-[8px] text-slate-500 block mb-1">契合</span><span id="mMatch" class="text-[10px] font-bold text-indigo-200"></span></div>
-                    </section>
-                </div>
-                <div class="text-center mt-10"><button onclick="closeDeepHoro()" class="text-slate-500 text-[10px] border-b border-slate-800">点击背景返回</button></div>
             </div>
         </div>
 
         <script>
-            const db = [{"sign": "\u767d\u7f8a\u5ea7", "icon": "\u2648\ufe0f", "theme": "\u6b63\u5728\u540c\u6b65...", "today_analysis": "\u70b9\u51fb\u2018\u6df1\u5ea6\u5168\u4e66\u2019\uff0c\u8ba9 AI \u4e3a\u60a8\u5f00\u542f\u4eca\u65e5\u7684\u661f\u8fb0\u6307\u5f15\u3002\u6211\u4eec\u5c06\u4e3a\u60a8\u89e3\u6790\u4eca\u65e5\u8fd0\u52bf\u3001\u6027\u683c\u7279\u5f81\u53ca\u5e74\u5ea6\u5c55\u671b\u3002", "personality": "\u79ef\u6781\u52c7\u6562\uff0c\u76f4\u7387\u5766\u8bda\uff0c\u62e5\u6709\u6781\u5f3a\u7684\u6267\u884c\u529b\u548c\u5f00\u62d3\u7cbe\u795e\u3002", "weakness": "\u6025\u8e81\u6613\u6012\uff0c\u6709\u65f6\u8fc7\u4e8e\u81ea\u6211\uff0c\u7f3a\u4e4f\u8010\u5fc3\uff0c\u5bb9\u6613\u4e09\u5206\u949f\u70ed\u5ea6\u3002", "yearly_analysis": "2026\u5e74\u662f\u60a8\u7684\u8dc3\u8fc1\u4e4b\u5e74\uff0c\u8bf7\u4fdd\u6301\u4e13\u6ce8\u3002", "details": {"love": "\u4fdd\u6301\u6c9f\u901a", "career": "\u7a33\u6b65\u63a8\u8fdb", "wealth": "\u7406\u6027\u6d88\u8d39"}, "lucky": {"color": "\u975b\u84dd\u8272", "number": "7", "match": "\u72ee\u5b50\u5ea7", "item": "\u624b\u529e"}}, {"sign": "\u91d1\u725b\u5ea7", "icon": "\u2649\ufe0f", "theme": "\u6b63\u5728\u540c\u6b65...", "today_analysis": "\u70b9\u51fb\u2018\u6df1\u5ea6\u5168\u4e66\u2019\uff0c\u8ba9 AI \u4e3a\u60a8\u5f00\u542f\u4eca\u65e5\u7684\u661f\u8fb0\u6307\u5f15\u3002\u6211\u4eec\u5c06\u4e3a\u60a8\u89e3\u6790\u4eca\u65e5\u8fd0\u52bf\u3001\u6027\u683c\u7279\u5f81\u53ca\u5e74\u5ea6\u5c55\u671b\u3002", "personality": "\u79ef\u6781\u52c7\u6562\uff0c\u76f4\u7387\u5766\u8bda\uff0c\u62e5\u6709\u6781\u5f3a\u7684\u6267\u884c\u529b\u548c\u5f00\u62d3\u7cbe\u795e\u3002", "weakness": "\u6025\u8e81\u6613\u6012\uff0c\u6709\u65f6\u8fc7\u4e8e\u81ea\u6211\uff0c\u7f3a\u4e4f\u8010\u5fc3\uff0c\u5bb9\u6613\u4e09\u5206\u949f\u70ed\u5ea6\u3002", "yearly_analysis": "2026\u5e74\u662f\u60a8\u7684\u8dc3\u8fc1\u4e4b\u5e74\uff0c\u8bf7\u4fdd\u6301\u4e13\u6ce8\u3002", "details": {"love": "\u4fdd\u6301\u6c9f\u901a", "career": "\u7a33\u6b65\u63a8\u8fdb", "wealth": "\u7406\u6027\u6d88\u8d39"}, "lucky": {"color": "\u975b\u84dd\u8272", "number": "7", "match": "\u72ee\u5b50\u5ea7", "item": "\u624b\u529e"}}, {"sign": "\u53cc\u5b50\u5ea7", "icon": "\u264a\ufe0f", "theme": "\u6b63\u5728\u540c\u6b65...", "today_analysis": "\u70b9\u51fb\u2018\u6df1\u5ea6\u5168\u4e66\u2019\uff0c\u8ba9 AI \u4e3a\u60a8\u5f00\u542f\u4eca\u65e5\u7684\u661f\u8fb0\u6307\u5f15\u3002\u6211\u4eec\u5c06\u4e3a\u60a8\u89e3\u6790\u4eca\u65e5\u8fd0\u52bf\u3001\u6027\u683c\u7279\u5f81\u53ca\u5e74\u5ea6\u5c55\u671b\u3002", "personality": "\u79ef\u6781\u52c7\u6562\uff0c\u76f4\u7387\u5766\u8bda\uff0c\u62e5\u6709\u6781\u5f3a\u7684\u6267\u884c\u529b\u548c\u5f00\u62d3\u7cbe\u795e\u3002", "weakness": "\u6025\u8e81\u6613\u6012\uff0c\u6709\u65f6\u8fc7\u4e8e\u81ea\u6211\uff0c\u7f3a\u4e4f\u8010\u5fc3\uff0c\u5bb9\u6613\u4e09\u5206\u949f\u70ed\u5ea6\u3002", "yearly_analysis": "2026\u5e74\u662f\u60a8\u7684\u8dc3\u8fc1\u4e4b\u5e74\uff0c\u8bf7\u4fdd\u6301\u4e13\u6ce8\u3002", "details": {"love": "\u4fdd\u6301\u6c9f\u901a", "career": "\u7a33\u6b65\u63a8\u8fdb", "wealth": "\u7406\u6027\u6d88\u8d39"}, "lucky": {"color": "\u975b\u84dd\u8272", "number": "7", "match": "\u72ee\u5b50\u5ea7", "item": "\u624b\u529e"}}, {"sign": "\u5de8\u87f9\u5ea7", "icon": "\u264b\ufe0f", "theme": "\u6b63\u5728\u540c\u6b65...", "today_analysis": "\u70b9\u51fb\u2018\u6df1\u5ea6\u5168\u4e66\u2019\uff0c\u8ba9 AI \u4e3a\u60a8\u5f00\u542f\u4eca\u65e5\u7684\u661f\u8fb0\u6307\u5f15\u3002\u6211\u4eec\u5c06\u4e3a\u60a8\u89e3\u6790\u4eca\u65e5\u8fd0\u52bf\u3001\u6027\u683c\u7279\u5f81\u53ca\u5e74\u5ea6\u5c55\u671b\u3002", "personality": "\u79ef\u6781\u52c7\u6562\uff0c\u76f4\u7387\u5766\u8bda\uff0c\u62e5\u6709\u6781\u5f3a\u7684\u6267\u884c\u529b\u548c\u5f00\u62d3\u7cbe\u795e\u3002", "weakness": "\u6025\u8e81\u6613\u6012\uff0c\u6709\u65f6\u8fc7\u4e8e\u81ea\u6211\uff0c\u7f3a\u4e4f\u8010\u5fc3\uff0c\u5bb9\u6613\u4e09\u5206\u949f\u70ed\u5ea6\u3002", "yearly_analysis": "2026\u5e74\u662f\u60a8\u7684\u8dc3\u8fc1\u4e4b\u5e74\uff0c\u8bf7\u4fdd\u6301\u4e13\u6ce8\u3002", "details": {"love": "\u4fdd\u6301\u6c9f\u901a", "career": "\u7a33\u6b65\u63a8\u8fdb", "wealth": "\u7406\u6027\u6d88\u8d39"}, "lucky": {"color": "\u975b\u84dd\u8272", "number": "7", "match": "\u72ee\u5b50\u5ea7", "item": "\u624b\u529e"}}, {"sign": "\u72ee\u5b50\u5ea7", "icon": "\u264c\ufe0f", "theme": "\u6b63\u5728\u540c\u6b65...", "today_analysis": "\u70b9\u51fb\u2018\u6df1\u5ea6\u5168\u4e66\u2019\uff0c\u8ba9 AI \u4e3a\u60a8\u5f00\u542f\u4eca\u65e5\u7684\u661f\u8fb0\u6307\u5f15\u3002\u6211\u4eec\u5c06\u4e3a\u60a8\u89e3\u6790\u4eca\u65e5\u8fd0\u52bf\u3001\u6027\u683c\u7279\u5f81\u53ca\u5e74\u5ea6\u5c55\u671b\u3002", "personality": "\u79ef\u6781\u52c7\u6562\uff0c\u76f4\u7387\u5766\u8bda\uff0c\u62e5\u6709\u6781\u5f3a\u7684\u6267\u884c\u529b\u548c\u5f00\u62d3\u7cbe\u795e\u3002", "weakness": "\u6025\u8e81\u6613\u6012\uff0c\u6709\u65f6\u8fc7\u4e8e\u81ea\u6211\uff0c\u7f3a\u4e4f\u8010\u5fc3\uff0c\u5bb9\u6613\u4e09\u5206\u949f\u70ed\u5ea6\u3002", "yearly_analysis": "2026\u5e74\u662f\u60a8\u7684\u8dc3\u8fc1\u4e4b\u5e74\uff0c\u8bf7\u4fdd\u6301\u4e13\u6ce8\u3002", "details": {"love": "\u4fdd\u6301\u6c9f\u901a", "career": "\u7a33\u6b65\u63a8\u8fdb", "wealth": "\u7406\u6027\u6d88\u8d39"}, "lucky": {"color": "\u975b\u84dd\u8272", "number": "7", "match": "\u72ee\u5b50\u5ea7", "item": "\u624b\u529e"}}, {"sign": "\u5904\u5973\u5ea7", "icon": "\u264d\ufe0f", "theme": "\u6b63\u5728\u540c\u6b65...", "today_analysis": "\u70b9\u51fb\u2018\u6df1\u5ea6\u5168\u4e66\u2019\uff0c\u8ba9 AI \u4e3a\u60a8\u5f00\u542f\u4eca\u65e5\u7684\u661f\u8fb0\u6307\u5f15\u3002\u6211\u4eec\u5c06\u4e3a\u60a8\u89e3\u6790\u4eca\u65e5\u8fd0\u52bf\u3001\u6027\u683c\u7279\u5f81\u53ca\u5e74\u5ea6\u5c55\u671b\u3002", "personality": "\u79ef\u6781\u52c7\u6562\uff0c\u76f4\u7387\u5766\u8bda\uff0c\u62e5\u6709\u6781\u5f3a\u7684\u6267\u884c\u529b\u548c\u5f00\u62d3\u7cbe\u795e\u3002", "weakness": "\u6025\u8e81\u6613\u6012\uff0c\u6709\u65f6\u8fc7\u4e8e\u81ea\u6211\uff0c\u7f3a\u4e4f\u8010\u5fc3\uff0c\u5bb9\u6613\u4e09\u5206\u949f\u70ed\u5ea6\u3002", "yearly_analysis": "2026\u5e74\u662f\u60a8\u7684\u8dc3\u8fc1\u4e4b\u5e74\uff0c\u8bf7\u4fdd\u6301\u4e13\u6ce8\u3002", "details": {"love": "\u4fdd\u6301\u6c9f\u901a", "career": "\u7a33\u6b65\u63a8\u8fdb", "wealth": "\u7406\u6027\u6d88\u8d39"}, "lucky": {"color": "\u975b\u84dd\u8272", "number": "7", "match": "\u72ee\u5b50\u5ea7", "item": "\u624b\u529e"}}, {"sign": "\u5929\u79e4\u5ea7", "icon": "\u264e\ufe0f", "theme": "\u6b63\u5728\u540c\u6b65...", "today_analysis": "\u70b9\u51fb\u2018\u6df1\u5ea6\u5168\u4e66\u2019\uff0c\u8ba9 AI \u4e3a\u60a8\u5f00\u542f\u4eca\u65e5\u7684\u661f\u8fb0\u6307\u5f15\u3002\u6211\u4eec\u5c06\u4e3a\u60a8\u89e3\u6790\u4eca\u65e5\u8fd0\u52bf\u3001\u6027\u683c\u7279\u5f81\u53ca\u5e74\u5ea6\u5c55\u671b\u3002", "personality": "\u79ef\u6781\u52c7\u6562\uff0c\u76f4\u7387\u5766\u8bda\uff0c\u62e5\u6709\u6781\u5f3a\u7684\u6267\u884c\u529b\u548c\u5f00\u62d3\u7cbe\u795e\u3002", "weakness": "\u6025\u8e81\u6613\u6012\uff0c\u6709\u65f6\u8fc7\u4e8e\u81ea\u6211\uff0c\u7f3a\u4e4f\u8010\u5fc3\uff0c\u5bb9\u6613\u4e09\u5206\u949f\u70ed\u5ea6\u3002", "yearly_analysis": "2026\u5e74\u662f\u60a8\u7684\u8dc3\u8fc1\u4e4b\u5e74\uff0c\u8bf7\u4fdd\u6301\u4e13\u6ce8\u3002", "details": {"love": "\u4fdd\u6301\u6c9f\u901a", "career": "\u7a33\u6b65\u63a8\u8fdb", "wealth": "\u7406\u6027\u6d88\u8d39"}, "lucky": {"color": "\u975b\u84dd\u8272", "number": "7", "match": "\u72ee\u5b50\u5ea7", "item": "\u624b\u529e"}}, {"sign": "\u5929\u874e\u5ea7", "icon": "\u264f\ufe0f", "theme": "\u6b63\u5728\u540c\u6b65...", "today_analysis": "\u70b9\u51fb\u2018\u6df1\u5ea6\u5168\u4e66\u2019\uff0c\u8ba9 AI \u4e3a\u60a8\u5f00\u542f\u4eca\u65e5\u7684\u661f\u8fb0\u6307\u5f15\u3002\u6211\u4eec\u5c06\u4e3a\u60a8\u89e3\u6790\u4eca\u65e5\u8fd0\u52bf\u3001\u6027\u683c\u7279\u5f81\u53ca\u5e74\u5ea6\u5c55\u671b\u3002", "personality": "\u79ef\u6781\u52c7\u6562\uff0c\u76f4\u7387\u5766\u8bda\uff0c\u62e5\u6709\u6781\u5f3a\u7684\u6267\u884c\u529b\u548c\u5f00\u62d3\u7cbe\u795e\u3002", "weakness": "\u6025\u8e81\u6613\u6012\uff0c\u6709\u65f6\u8fc7\u4e8e\u81ea\u6211\uff0c\u7f3a\u4e4f\u8010\u5fc3\uff0c\u5bb9\u6613\u4e09\u5206\u949f\u70ed\u5ea6\u3002", "yearly_analysis": "2026\u5e74\u662f\u60a8\u7684\u8dc3\u8fc1\u4e4b\u5e74\uff0c\u8bf7\u4fdd\u6301\u4e13\u6ce8\u3002", "details": {"love": "\u4fdd\u6301\u6c9f\u901a", "career": "\u7a33\u6b65\u63a8\u8fdb", "wealth": "\u7406\u6027\u6d88\u8d39"}, "lucky": {"color": "\u975b\u84dd\u8272", "number": "7", "match": "\u72ee\u5b50\u5ea7", "item": "\u624b\u529e"}}, {"sign": "\u5c04\u624b\u5ea7", "icon": "\u2650\ufe0f", "theme": "\u6b63\u5728\u540c\u6b65...", "today_analysis": "\u70b9\u51fb\u2018\u6df1\u5ea6\u5168\u4e66\u2019\uff0c\u8ba9 AI \u4e3a\u60a8\u5f00\u542f\u4eca\u65e5\u7684\u661f\u8fb0\u6307\u5f15\u3002\u6211\u4eec\u5c06\u4e3a\u60a8\u89e3\u6790\u4eca\u65e5\u8fd0\u52bf\u3001\u6027\u683c\u7279\u5f81\u53ca\u5e74\u5ea6\u5c55\u671b\u3002", "personality": "\u79ef\u6781\u52c7\u6562\uff0c\u76f4\u7387\u5766\u8bda\uff0c\u62e5\u6709\u6781\u5f3a\u7684\u6267\u884c\u529b\u548c\u5f00\u62d3\u7cbe\u795e\u3002", "weakness": "\u6025\u8e81\u6613\u6012\uff0c\u6709\u65f6\u8fc7\u4e8e\u81ea\u6211\uff0c\u7f3a\u4e4f\u8010\u5fc3\uff0c\u5bb9\u6613\u4e09\u5206\u949f\u70ed\u5ea6\u3002", "yearly_analysis": "2026\u5e74\u662f\u60a8\u7684\u8dc3\u8fc1\u4e4b\u5e74\uff0c\u8bf7\u4fdd\u6301\u4e13\u6ce8\u3002", "details": {"love": "\u4fdd\u6301\u6c9f\u901a", "career": "\u7a33\u6b65\u63a8\u8fdb", "wealth": "\u7406\u6027\u6d88\u8d39"}, "lucky": {"color": "\u975b\u84dd\u8272", "number": "7", "match": "\u72ee\u5b50\u5ea7", "item": "\u624b\u529e"}}, {"sign": "\u6469\u7faf\u5ea7", "icon": "\u2651\ufe0f", "theme": "\u6b63\u5728\u540c\u6b65...", "today_analysis": "\u70b9\u51fb\u2018\u6df1\u5ea6\u5168\u4e66\u2019\uff0c\u8ba9 AI \u4e3a\u60a8\u5f00\u542f\u4eca\u65e5\u7684\u661f\u8fb0\u6307\u5f15\u3002\u6211\u4eec\u5c06\u4e3a\u60a8\u89e3\u6790\u4eca\u65e5\u8fd0\u52bf\u3001\u6027\u683c\u7279\u5f81\u53ca\u5e74\u5ea6\u5c55\u671b\u3002", "personality": "\u79ef\u6781\u52c7\u6562\uff0c\u76f4\u7387\u5766\u8bda\uff0c\u62e5\u6709\u6781\u5f3a\u7684\u6267\u884c\u529b\u548c\u5f00\u62d3\u7cbe\u795e\u3002", "weakness": "\u6025\u8e81\u6613\u6012\uff0c\u6709\u65f6\u8fc7\u4e8e\u81ea\u6211\uff0c\u7f3a\u4e4f\u8010\u5fc3\uff0c\u5bb9\u6613\u4e09\u5206\u949f\u70ed\u5ea6\u3002", "yearly_analysis": "2026\u5e74\u662f\u60a8\u7684\u8dc3\u8fc1\u4e4b\u5e74\uff0c\u8bf7\u4fdd\u6301\u4e13\u6ce8\u3002", "details": {"love": "\u4fdd\u6301\u6c9f\u901a", "career": "\u7a33\u6b65\u63a8\u8fdb", "wealth": "\u7406\u6027\u6d88\u8d39"}, "lucky": {"color": "\u975b\u84dd\u8272", "number": "7", "match": "\u72ee\u5b50\u5ea7", "item": "\u624b\u529e"}}, {"sign": "\u6c34\u74f6\u5ea7", "icon": "\u2652\ufe0f", "theme": "\u6b63\u5728\u540c\u6b65...", "today_analysis": "\u70b9\u51fb\u2018\u6df1\u5ea6\u5168\u4e66\u2019\uff0c\u8ba9 AI \u4e3a\u60a8\u5f00\u542f\u4eca\u65e5\u7684\u661f\u8fb0\u6307\u5f15\u3002\u6211\u4eec\u5c06\u4e3a\u60a8\u89e3\u6790\u4eca\u65e5\u8fd0\u52bf\u3001\u6027\u683c\u7279\u5f81\u53ca\u5e74\u5ea6\u5c55\u671b\u3002", "personality": "\u79ef\u6781\u52c7\u6562\uff0c\u76f4\u7387\u5766\u8bda\uff0c\u62e5\u6709\u6781\u5f3a\u7684\u6267\u884c\u529b\u548c\u5f00\u62d3\u7cbe\u795e\u3002", "weakness": "\u6025\u8e81\u6613\u6012\uff0c\u6709\u65f6\u8fc7\u4e8e\u81ea\u6211\uff0c\u7f3a\u4e4f\u8010\u5fc3\uff0c\u5bb9\u6613\u4e09\u5206\u949f\u70ed\u5ea6\u3002", "yearly_analysis": "2026\u5e74\u662f\u60a8\u7684\u8dc3\u8fc1\u4e4b\u5e74\uff0c\u8bf7\u4fdd\u6301\u4e13\u6ce8\u3002", "details": {"love": "\u4fdd\u6301\u6c9f\u901a", "career": "\u7a33\u6b65\u63a8\u8fdb", "wealth": "\u7406\u6027\u6d88\u8d39"}, "lucky": {"color": "\u975b\u84dd\u8272", "number": "7", "match": "\u72ee\u5b50\u5ea7", "item": "\u624b\u529e"}}, {"sign": "\u53cc\u9c7c\u5ea7", "icon": "\u2653\ufe0f", "theme": "\u6b63\u5728\u540c\u6b65...", "today_analysis": "\u70b9\u51fb\u2018\u6df1\u5ea6\u5168\u4e66\u2019\uff0c\u8ba9 AI \u4e3a\u60a8\u5f00\u542f\u4eca\u65e5\u7684\u661f\u8fb0\u6307\u5f15\u3002\u6211\u4eec\u5c06\u4e3a\u60a8\u89e3\u6790\u4eca\u65e5\u8fd0\u52bf\u3001\u6027\u683c\u7279\u5f81\u53ca\u5e74\u5ea6\u5c55\u671b\u3002", "personality": "\u79ef\u6781\u52c7\u6562\uff0c\u76f4\u7387\u5766\u8bda\uff0c\u62e5\u6709\u6781\u5f3a\u7684\u6267\u884c\u529b\u548c\u5f00\u62d3\u7cbe\u795e\u3002", "weakness": "\u6025\u8e81\u6613\u6012\uff0c\u6709\u65f6\u8fc7\u4e8e\u81ea\u6211\uff0c\u7f3a\u4e4f\u8010\u5fc3\uff0c\u5bb9\u6613\u4e09\u5206\u949f\u70ed\u5ea6\u3002", "yearly_analysis": "2026\u5e74\u662f\u60a8\u7684\u8dc3\u8fc1\u4e4b\u5e74\uff0c\u8bf7\u4fdd\u6301\u4e13\u6ce8\u3002", "details": {"love": "\u4fdd\u6301\u6c9f\u901a", "career": "\u7a33\u6b65\u63a8\u8fdb", "wealth": "\u7406\u6027\u6d88\u8d39"}, "lucky": {"color": "\u975b\u84dd\u8272", "number": "7", "match": "\u72ee\u5b50\u5ea7", "item": "\u624b\u529e"}}];
+            // DATA_START
+            const db = [{"sign": "白羊座", "icon": "♈️", "theme": "星辰启示", "today_analysis": "今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。", "personality": "积极探索，勇往直前。", "weakness": "偶尔急躁，需要耐心。", "lucky": {"color": "靛蓝", "number": "7", "match": "狮子座", "item": "随身笔记"}}, {"sign": "金牛座", "icon": "♉️", "theme": "星辰启示", "today_analysis": "今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。", "personality": "积极探索，勇往直前。", "weakness": "偶尔急躁，需要耐心。", "lucky": {"color": "靛蓝", "number": "7", "match": "狮子座", "item": "随身笔记"}}, {"sign": "双子座", "icon": "♊️", "theme": "星辰启示", "today_analysis": "今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。", "personality": "积极探索，勇往直前。", "weakness": "偶尔急躁，需要耐心。", "lucky": {"color": "靛蓝", "number": "7", "match": "狮子座", "item": "随身笔记"}}, {"sign": "巨蟹座", "icon": "♋️", "theme": "星辰启示", "today_analysis": "今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。", "personality": "积极探索，勇往直前。", "weakness": "偶尔急躁，需要耐心。", "lucky": {"color": "靛蓝", "number": "7", "match": "狮子座", "item": "随身笔记"}}, {"sign": "狮子座", "icon": "♌️", "theme": "星辰启示", "today_analysis": "今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。", "personality": "积极探索，勇往直前。", "weakness": "偶尔急躁，需要耐心。", "lucky": {"color": "靛蓝", "number": "7", "match": "狮子座", "item": "随身笔记"}}, {"sign": "处女座", "icon": "♍️", "theme": "星辰启示", "today_analysis": "今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。", "personality": "积极探索，勇往直前。", "weakness": "偶尔急躁，需要耐心。", "lucky": {"color": "靛蓝", "number": "7", "match": "狮子座", "item": "随身笔记"}}, {"sign": "天秤座", "icon": "♎️", "theme": "星辰启示", "today_analysis": "今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。", "personality": "积极探索，勇往直前。", "weakness": "偶尔急躁，需要耐心。", "lucky": {"color": "靛蓝", "number": "7", "match": "狮子座", "item": "随身笔记"}}, {"sign": "天蝎座", "icon": "♏️", "theme": "星辰启示", "today_analysis": "今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。", "personality": "积极探索，勇往直前。", "weakness": "偶尔急躁，需要耐心。", "lucky": {"color": "靛蓝", "number": "7", "match": "狮子座", "item": "随身笔记"}}, {"sign": "射手座", "icon": "♐️", "theme": "星辰启示", "today_analysis": "今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。", "personality": "积极探索，勇往直前。", "weakness": "偶尔急躁，需要耐心。", "lucky": {"color": "靛蓝", "number": "7", "match": "狮子座", "item": "随身笔记"}}, {"sign": "摩羯座", "icon": "♑️", "theme": "星辰启示", "today_analysis": "今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。", "personality": "积极探索，勇往直前。", "weakness": "偶尔急躁，需要耐心。", "lucky": {"color": "靛蓝", "number": "7", "match": "狮子座", "item": "随身笔记"}}, {"sign": "水瓶座", "icon": "♒️", "theme": "星辰启示", "today_analysis": "今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。", "personality": "积极探索，勇往直前。", "weakness": "偶尔急躁，需要耐心。", "lucky": {"color": "靛蓝", "number": "7", "match": "狮子座", "item": "随身笔记"}}, {"sign": "双鱼座", "icon": "♓️", "theme": "星辰启示", "today_analysis": "今日能量平稳，适合静心思考。点击详情查看 AI 深度解析。", "personality": "积极探索，勇往直前。", "weakness": "偶尔急躁，需要耐心。", "lucky": {"color": "靛蓝", "number": "7", "match": "狮子座", "item": "随身笔记"}}];
+            // DATA_END
             function openDeepHoro(idx) {
                 const item = db[idx];
                 document.getElementById('mSign').innerText = item.sign;
